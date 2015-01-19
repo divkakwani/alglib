@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	test/Makefile	/^CC = g++$/;"	m
+DataGenerator	test/DataGenerator.h	/^		DataGenerator() {$/;"	f	class:DataGenerator
+DataGenerator	test/DataGenerator.h	/^class DataGenerator {$/;"	c
+FLAGS	test/Makefile	/^FLAGS = -std=c++11$/;"	m
+SortTest	test/test_sort.cpp	/^SortTest::SortTest(void (*sort_routine)(vector<int>::iterator first, vector<int>::iterator last), int tst_count) : test_count(tst_count) {$/;"	f	class:SortTest
+SortTest	test/test_sort.cpp	/^class SortTest : public Test {$/;"	c	file:
+Test	test/test.h	/^Test::Test() {$/;"	f	class:Test
+Test	test/test.h	/^class Test {$/;"	c
+_DATAGENERATOR_H	test/DataGenerator.h	4;"	d
+_UTILS_H	test/utils.h	4;"	d
+__SORT__H	src/sort.h	17;"	d
+assertPredicate	test/test.h	9;"	d
+assert_	test/test.h	6;"	d
+eval_test	test/test.h	/^void Test::eval_test(bool expr, const std::string& exprStr, const std::string& fname, long lineno, std::string error_input) {$/;"	f	class:Test
+failCount	test/test.h	/^		int failCount;$/;"	m	class:Test
+func	test/test_sort.cpp	/^	void (*func)(vector<int>::iterator first, vector<int>::iterator last);$/;"	m	class:SortTest	file:
+get_runtime	test/test_sort.cpp	/^float SortTest::get_runtime() {$/;"	f	class:SortTest
+main	test/test_sort.cpp	/^int main() {$/;"	f
+merge_sort	src/sort.h	/^void merge_sort(RandomAccessIter _first, RandomAccessIter _last) {$/;"	f
+operator ()	test/DataGenerator.h	/^		Seq<T> operator()(int sz) {$/;"	f	class:DataGenerator
+passCount	test/test.h	/^		int passCount;$/;"	m	class:Test
+quick_sort	src/sort.h	/^void quick_sort(_RandomAccessIter _first, _RandomAccessIter _last) {$/;"	f
+random_datum	test/DataGenerator.h	/^		T random_datum() {$/;"	f	class:DataGenerator
+randomized_partition	src/sort.h	/^_RandomAccessIter randomized_partition(_RandomAccessIter _first, _RandomAccessIter _last) {$/;"	f
+report	test/test.h	/^void Test::report() {$/;"	f	class:Test
+run_tests	test/test_sort.cpp	/^void SortTest::run_tests() {$/;"	f	class:SortTest
+selection_sort	src/sort.h	/^void selection_sort(_RandomAccessIter _first, _RandomAccessIter _last) {$/;"	f
+sprint	test/utils.h	/^std::string sprint(_ForwardIterator first, _ForwardIterator last) {$/;"	f
+test_count	test/test_sort.cpp	/^	const int test_count;$/;"	m	class:SortTest	file:
+verbose	test/test.h	/^		bool verbose;$/;"	m	class:Test
