@@ -11,7 +11,7 @@
 
 
 /* A general test class that describes the minimal interface of a test class.
-	This class has pass/fail counters, a method to add test results and a purely virtual method to run tests.
+	This class has pass/fail counters, a method to add test results and a pure virtual method to run tests.
 	The classes deriving from Test must override run_tests() at the least. The details of specifying the tests
 	is left to the derived classes.
 */
@@ -25,7 +25,7 @@ class Test {
 		void eval_test(bool expr, const std::string& exprStr, const std::string& fname, long lineno, std::string error_input = std::string());
 		virtual void run_tests() = 0;
 		void report();
-		
+
 };
 
 Test::Test() {
@@ -41,7 +41,7 @@ void Test::eval_test(bool expr, const std::string& exprStr, const std::string& f
 	}
 	else {
 		failCount++;
-		std::cout << "Test failed on input : " << error_input << std::endl; 
+		std::cout << "Test failed on input : " << error_input << std::endl;
 		if(verbose)	std::cout << fname << ": " << exprStr << " (Line: " << lineno << ") : Failed\n";
 	}
 }
@@ -52,6 +52,3 @@ void Test::report() {
 	std::cout << "Cases Passed: " << passCount << std::endl;
 	std::cout << "Cases Failed: " << failCount << std::endl;
 }
-
-
-
