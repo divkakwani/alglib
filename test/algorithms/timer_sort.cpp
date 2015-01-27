@@ -8,7 +8,7 @@ template<typename Seq>
 class SortTimer {
     Timer t;
     void (*func)(typename Seq::iterator first, typename Seq::iterator last);
-    DataGenerator<Seq> dg;
+    DataGenerator<Seq> gen;
   public:
     SortTimer(void (*func)(typename Seq::iterator first, typename Seq::iterator last));
     float time(int inp_sz, int runs = 1);
@@ -27,7 +27,7 @@ float SortTimer<Seq>::time(int inp_sz, int runs) {
 
   // Fill the sequences using data generator
   for(int i = 0; i < runs; i++)
-    sequences[i] = dg(inp_sz);
+    sequences[i] = gen.random_data(inp_sz);
 
   t.start();
 

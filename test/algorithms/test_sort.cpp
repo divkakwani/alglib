@@ -10,60 +10,70 @@
 
 using namespace std;
 
+
+template<typename Seq>
 class SortTest : public Test {
 	void (*func)(vector<int>::iterator first, vector<int>::iterator last);
-	const int test_count;
+	DataGenerator<Seq> gen;
 	public:
-		SortTest(void (*sort_routine)(vector<int>::iterator first, vector<int>::iterator last), int tst_count);
+		typedef typename Seq::iterator it_type;
+		SortTest(void (*sort_routine)(it_type first, it_type last));
 		void run_tests();
+		void random_tests(int tst_cnt, int inp_sz);
 
 };
 
-SortTest::SortTest(void (*sort_routine)(vector<int>::iterator first, vector<int>::iterator last),
- 													int tst_count) : test_count(tst_count) {
+template<typename Seq>
+SortTest<Seq>::SortTest(void (*sort_routine)(it_type first, it_type last)) {
 	func = sort_routine;
 }
 
-void SortTest::run_tests() {
+template<typename Seq>
+void SortTest<Seq>::run_tests() {
+	
+	random_tests(100, 100);
 
-	DataGenerator<vector<int>> dg;
-	for(int _ = 0; _ < test_count; _++) {
-		vector<int> subject = dg(10);
-		vector<int> subject_sorted_std = subject;
-		vector<int> subject_sorted_test = subject;
-		sort(subject_sorted_std.begin(), subject_sorted_std.end());	// Sorting through STL function
-		(*func)(subject_sorted_test.begin(), subject_sorted_test.end());	// Sorting through function to be tested;
+}
 
-		equal_to<vector<int>> predicate;
-		assertPredicate(subject_sorted_std, subject_sorted_test, predicate);
+template<typename Seq>
+void SortTest<Seq>::random_tests(int tst_cnt, int inp_sz) {
+
+	for(int _ = 0; _ < tst_cnt; _++) {
+	Seq subject = gen.random_data(inp_sz);
+	Seq subject_sorted_std = subject;
+	Seq subject_sorted_test = subject;
+	sort(subject_sorted_std.begin(), subject_sorted_std.end());	// Sorting through STL function
+	(*func)(subject_sorted_test.begin(), subject_sorted_test.end());	// Sorting through function to be tested;
+
+	assertPredicate(subject_sorted_std, subject_sorted_test, equal_to<vector<int>>());
 	}
 }
 
 int main() {
 
 	// Selection sort test
-	SortTest st1(selection_sort, 100);
+	SortTest<vector<int>> st1(selection_sort);
 	st1.run_tests();
 	st1.report();
 
 	cout << endl;
 
 	// Quick sort test
-	SortTest st2(quick_sort, 100);
+	SortTest<vector<int>> st2(quick_sort);
 	st2.run_tests();
 	st2.report();
 
 	cout << endl;
 
 	// Standard sort test
-	SortTest st3(sort, 100);
+	SortTest<vector<int>> st3(sort);
 	st3.run_tests();
 	st2.report();
 
 	cout << endl;
 
 	// Merge sort test
-	SortTest st4(merge_sort, 100);
+	SortTest<vector<int>> st4(merge_sort);
 	st4.run_tests();
 	st4.report();
 

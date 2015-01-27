@@ -2,7 +2,6 @@
 #ifndef _TIMER_H
 #define _TIMER_H
 
-#define _time_event(t, event)
 
 class Timer {
     clock_t clk_cycles_at_start;

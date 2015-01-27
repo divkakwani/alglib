@@ -35,7 +35,7 @@ class DataGenerator {
 			return elt;
 		}
 
-		Container operator()(int sz) {
+		Container random_data(int sz) {
 			Container res;
 			for(int i = 0; i < sz; i++) {
 				res.insert(res.end(), random_datum());
