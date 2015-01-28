@@ -60,9 +60,8 @@ template<typename RandomAccessIter>
 void merge_sort(RandomAccessIter _first, RandomAccessIter _last) {
 	int sz = _last - _first;
 	if(sz > 1) {
-		std::vector<typename RandomAccessIter::value_type> subarr1, subarr2;
-		std::copy(_first, _first + sz / 2, back_inserter(subarr1));
-		std::copy(_first + sz / 2, _last, back_inserter(subarr2));
+		std::vector<typename RandomAccessIter::value_type> subarr1(_first, _first + sz / 2);
+		std::vector<typename RandomAccessIter::value_type> subarr2(_first + sz / 2, _last);
 		merge_sort(subarr1.begin(), subarr1.end());
 		merge_sort(subarr2.begin(), subarr2.end());
 		std::merge(subarr1.begin(), subarr1.end(), subarr2.begin(), subarr2.end(), _first);
