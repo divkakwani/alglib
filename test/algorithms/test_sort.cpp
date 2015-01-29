@@ -30,7 +30,7 @@ SortTest<Seq>::SortTest(void (*sort_routine)(it_type first, it_type last)) {
 
 template<typename Seq>
 void SortTest<Seq>::run_tests() {
-	
+
 	random_tests(100, 100);
 
 }
