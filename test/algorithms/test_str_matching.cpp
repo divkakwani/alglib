@@ -11,15 +11,15 @@ using namespace std;
 
 class StrMatchingTest : public Test {
     DataGenerator<string> gen;
-    int (*func)(string haystack, string needle);
+    size_t (*func)(const string& text, const string& pattern);
   public:
-    StrMatchingTest(int (*fn)(string haystack, string needle));
+    StrMatchingTest(size_t (*fn)(const string& text, const string& search));
     void run_tests();
     void run_random_tests();
     void run_custom_tests();
 };
 
-StrMatchingTest::StrMatchingTest(int (*fn)(string haystack, string needle)) {
+StrMatchingTest::StrMatchingTest(size_t (*fn)(const string& text, const string& search)) {
   func = fn;
 }
 
@@ -29,11 +29,15 @@ void StrMatchingTest::run_tests() {
 }
 
 void StrMatchingTest::run_random_tests() {
-  const int pattern_sz = 10, search_sz = 1000;
-  string pattern = gen.random_data(pattern_sz);
-  string search = gen.random_data(search_sz);
+  const int test_cases = 10;
+  const int pattern_sz = 2, search_sz = 100;
 
-  assert_(func(search, pattern) == search.find(pattern));
+
+  for(int i = 0; i < test_cases; i++) {
+    string pattern = gen.random_data(pattern_sz);
+    string search = gen.random_data(search_sz);
+    assert_(func(search, pattern) == search.find(pattern));
+  }
 }
 
 void StrMatchingTest::run_custom_tests() {
@@ -42,5 +46,14 @@ void StrMatchingTest::run_custom_tests() {
 
 int main() {
 
-  return 0;
+	StrMatchingTest routine1(naive_str_matching);
+	routine1.run_tests();
+	routine1.report();
+
+
+  StrMatchingTest routine2(rabin_karp);
+  routine2.run_tests();
+  routine2.report();
+
+	return 0;
 }
