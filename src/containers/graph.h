@@ -6,6 +6,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <iterator>
 #include "vertex.h"
 #include "edge.h"
 
@@ -28,17 +29,23 @@ class UndirectedGraph {
   public:
     UndirectedGraph();
 
-    template<typename pvertex_type>
-    std::set<pvertex_type>& get_vertices() const;
+    int no_of_vertices() const;
 
-    template<typename pedge_type>
-    std::set<pedge_type> get_edges() const;
+    template<typename OutputIter>
+    OutputIter get_vertices(OutputIter dest) const;
+
+    template<typename OutputIter>
+    OutputIter get_edges(OutputIter dest) const;
 
     void add_vertex(Vertex* v);
     void add_edge(Edge* e);
 
-    template<typename pvertex_type>
-    std::vector<pvertex_type> adjTo(Vertex* v);
+    template<typename OutputIter>
+    OutputIter adjTo(Vertex* v, OutputIter dest);
+
+    // Experimental
+    // Iterator_type dfs_begin();
+    // Iterator_type dfs_end();
 
 
 };
@@ -47,24 +54,30 @@ UndirectedGraph::UndirectedGraph() {
   total_vertices = 0;
 }
 
-template<typename pvertex_type>
-std::set<pvertex_type>& UndirectedGraph::get_vertices() const {
-
-  std::set<pvertex_type>* pvertices = new std::set<pvertex_type>();
-  for(auto& vertex : vertices)
-    pvertices->insert(dynamic_cast<pvertex_type>(vertex));
-
-  return *pvertices;
+int UndirectedGraph::no_of_vertices() const {
+  return total_vertices;
 }
 
-template<typename pedge_type>
-std::set<pedge_type> UndirectedGraph::get_edges() const {
+template<typename OutputIter>
+OutputIter UndirectedGraph::get_vertices(OutputIter dest) const {
 
-  std::set<pedge_type>* pedges = new std::set<pedge_type>();
+  typedef typename std::iterator_traits<OutputIter>::value_type val_type;
+
+  for(auto& vertex : vertices)
+    *dest++ = dynamic_cast<val_type>(vertex);
+
+  return dest;
+}
+
+template<typename OutputIter>
+OutputIter UndirectedGraph::get_edges(OutputIter dest) const {
+
+  typedef typename std::iterator_traits<OutputIter>::value_type val_type;
+
   for(auto& edge : edges )
-    pedges->insert(dynamic_cast<pedge_type>(edge));
+    *dest++ = dynamic_cast<val_type>(edge);
 
-  return *pedges;
+  return dest;
 
 }
 
@@ -94,19 +107,19 @@ void UndirectedGraph::add_edge(Edge* e) {
   edges.insert(e);
 }
 
-template<typename pvertex_type>
-std::vector<pvertex_type> UndirectedGraph::adjTo(Vertex* v) {
+template<typename OutputIter>
+OutputIter UndirectedGraph::adjTo(Vertex* v, OutputIter dest) {
 
-  std::vector<pvertex_type> adjacent;
+  typedef typename std::iterator_traits<OutputIter>::value_type val_type;
 
   if(adj_list.find(v) == adj_list.end())
     throw "Invalid Vertex";
 
-  for(auto& vertex : adj_list[v]) {
-    adjacent.push_back(dynamic_cast<pvertex_type>(vertex));
+  for(auto& pvertex : adj_list[v]) {
+    *dest++ = dynamic_cast<val_type>(pvertex);
   }
 
-  return adjacent;
+  return dest;
 }
 
 

@@ -63,6 +63,7 @@ int main() {
 
   Friendship* f1 = new Friendship(p1, p5);
   Friendship* f2 = new Friendship(p2, p3);
+  Friendship* f3 = new Friendship(p2, p4);
 
   UndirectedGraph G;
 
@@ -74,19 +75,22 @@ int main() {
 
   G.add_edge(f1);
   G.add_edge(f2);
+  G.add_edge(f3);
 
-  vector<Person*> adj = G.adjTo<Person*>(p2);
-  for(auto& p : adj)
-    cout << p->get_name() << endl;
+  vector<Person*> adj(10);
+  auto last = G.adjTo(p2, adj.begin());
 
-  vector<Vertex*> dfs_traversal;
-  dfs_traversal.reserve(100);
+  for(auto it = adj.begin(); it != last; it++)
+    cout << (*it)->get_name() << endl;
 
+  vector<Person*> dfs_traversal(10);
 
-  dfs_order(G, back_inserter(dfs_traversal));
+  auto lst = dfs_order(G, dfs_traversal.begin());
+
   cout << endl << "The dfs order is \n";
-  for(auto& pvertex : dfs_traversal)
-    cout << dynamic_cast<Person*>(pvertex)->get_name() << endl;
+
+  for(auto it = dfs_traversal.begin(); it != lst; it++)
+    cout << (*it)->get_name() << endl;
 
   cout << endl;
 }
