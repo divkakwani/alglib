@@ -63,7 +63,7 @@ int main() {
 
   Friendship* f1 = new Friendship(p1, p5);
   Friendship* f2 = new Friendship(p2, p3);
-  Friendship* f3 = new Friendship(p2, p4);
+  Friendship* f3 = new Friendship(p1, p4);
 
   UndirectedGraph G;
 
@@ -85,7 +85,7 @@ int main() {
 
   vector<Person*> dfs_traversal(10);
 
-  auto lst = dfs_order(G, dfs_traversal.begin());
+  auto lst = bfs_order(G, dfs_traversal.begin());
 
   cout << endl << "The dfs order is \n";
 
