@@ -2,11 +2,13 @@
 #define _GRAPH_ALGO_H
 
 #include "../containers/graph.h"
+#include "../containers/vertex.h"
 #include <unordered_map>
 #include <iostream>
 #include <vector>
 #include <iterator>
 #include <queue>
+#include <stack>
 
 /*
 The following function is templatized by vertex type (a subtype of Vertex class)
@@ -18,6 +20,8 @@ OutputIter dfs_order(UndirectedGraph& G, OutputIter result) {
 	This procedure fills the sequence pointed by the result iterator
 	with the vertrices of the graph G traversed in depth-first order.
 	**/
+	
+	
 	std::unordered_map<Vertex*, bool, UndirectedGraph::Hasher> visited;
 	std::vector<Vertex*> pvertex_list(G.no_of_vertices());
 	G.get_vertices(pvertex_list.begin());
@@ -100,9 +104,19 @@ OutputIter topological_sort(UndirectedGraph& G, OutputIter dest) {
 	/**
 		Fills the input container with the topological order.
 	**/
+	
+	typedef typename std::iterator_traits<OutputIter>::value_type val_type;
+
+	std::vector<val_type> postorder(G.no_of_vertices());
+	
+	dfs_order(G, postorder.begin());
+	
+	return copy(postorder.rbegin(), postorder.rend(), dest);
+	
 }
 
 
+/*
 template<typename OutputIter>
 OutputIter connected_components(const Graph& G, OutputIter dest) {
 
@@ -113,6 +127,6 @@ OutputIter connected_components(const Graph& G, OutputIter dest) {
 void dijskitra_shortest_path(const Graph& G) {
 
 }
-
+*/
 
 #endif

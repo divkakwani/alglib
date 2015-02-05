@@ -80,17 +80,39 @@ int main() {
   vector<Person*> adj(10);
   auto last = G.adjTo(p2, adj.begin());
 
+	cout << "Persons adjacent to Divyanshu\n";
   for(auto it = adj.begin(); it != last; it++)
     cout << (*it)->get_name() << endl;
 
+
   vector<Person*> dfs_traversal(10);
 
-  auto lst = bfs_order(G, dfs_traversal.begin());
+  auto lst = dfs_order(G, dfs_traversal.begin());
 
   cout << endl << "The dfs order is \n";
 
   for(auto it = dfs_traversal.begin(); it != lst; it++)
     cout << (*it)->get_name() << endl;
+	
 
+  vector<Person*> bfs_traversal(10);
+
+  lst = bfs_order(G, bfs_traversal.begin());
+
+  cout << endl << "The bfs order is \n";
+
+  for(auto it = bfs_traversal.begin(); it != lst; it++)
+    cout << (*it)->get_name() << endl;
+	
+
+  vector<Person*> topological_order(10);
+
+  lst = topological_sort(G, topological_order.begin());
+
+  cout << endl << "The topological order is \n";
+
+  for(auto it = topological_order.begin(); it != lst; it++)
+    cout << (*it)->get_name() << endl;
+	
   cout << endl;
 }
