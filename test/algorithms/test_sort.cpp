@@ -51,6 +51,7 @@ void SortTest<Seq>::random_tests(int tst_cnt, int inp_sz) {
 
 int main() {
 
+
 	// Selection sort test
 	SortTest<vector<int>> st1(selection_sort);
 	st1.run_tests();
@@ -79,5 +80,5 @@ int main() {
 
 	cout << endl;
 
-	return 0;
+	return st1.get_status() | st2.get_status() | st3.get_status() | st4.get_status();
 }

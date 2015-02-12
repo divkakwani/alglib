@@ -1,0 +1,6 @@
+language: cpp
+compiler: gcc
+
+before_script: cd test
+
+script: make test

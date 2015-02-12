@@ -19,10 +19,12 @@ class Test {
 	private:
 		int passCount;
 		int failCount;
+		int status;	// pass or fail?
 	public:
 		bool verbose;
 		Test();
 		void eval_test(bool expr, const std::string& exprStr, const std::string& fname, long lineno, std::string error_input = std::string());
+		int get_status();
 		virtual void run_tests() = 0;
 		void report();
 
@@ -31,6 +33,11 @@ class Test {
 Test::Test() {
 	passCount = failCount = 0;
 	verbose = false;
+	status = 0;
+}
+
+int Test::get_status() {
+	return status;
 }
 
 void Test::eval_test(bool expr, const std::string& exprStr, const std::string& fname, long lineno, std::string error_input) {
@@ -40,6 +47,7 @@ void Test::eval_test(bool expr, const std::string& exprStr, const std::string& f
 		if(verbose)	std::cout << fname << ": " << exprStr << " (Line: " << lineno << ") : Passed\n";
 	}
 	else {
+		status = -1;
 		failCount++;
 		std::cout << "Test failed on input : " << error_input << std::endl;
 		if(verbose)	std::cout << fname << ": " << exprStr << " (Line: " << lineno << ") : Failed\n";

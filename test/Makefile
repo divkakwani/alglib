@@ -11,7 +11,7 @@ test_sort.o :
 timer_sort.o :
 	$(CC) $(FLAGS) -o timer_sort algorithms/timer_sort.cpp
 
-check : all
+test : all
 	./test_sort
 
 time :  timer_sort.o
