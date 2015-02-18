@@ -3,6 +3,7 @@
 #include "../../src/containers/vertex.h"
 #include "../../src/containers/edge.h"
 #include <string>
+#include <map>
 #include "../../src/algorithms/graph_algo.h"
 #include <unistd.h>
 using namespace std;
@@ -113,6 +114,11 @@ int main() {
 
   for(auto it = topological_order.begin(); it != lst; it++)
     cout << (*it)->get_name() << endl;
+    
+  /* 
+  vector<pair<<Person*, int>> components(G.no_of_vertices());
+  auto end = connected_components(G, components.begin());
+  */
 	
   cout << endl;
 }

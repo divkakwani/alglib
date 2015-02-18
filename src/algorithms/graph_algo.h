@@ -3,6 +3,7 @@
 
 #include "../containers/graph.h"
 #include "../containers/vertex.h"
+#include "../containers/edge.h"
 #include <unordered_map>
 #include <iostream>
 #include <vector>
@@ -46,7 +47,6 @@ void dfs(UndirectedGraph& G, Vertex* start,
 	typedef typename std::iterator_traits<OutputIter>::value_type val_type;
 
 	visited[start] = true;
-	*result++ = dynamic_cast<val_type>(start);
 
 	std::vector<Vertex*> adjacent(10);
 	auto last = G.adjTo(start, adjacent.begin());
@@ -55,6 +55,8 @@ void dfs(UndirectedGraph& G, Vertex* start,
 		if(!visited[*it])
 			dfs(G, *it, visited, result);
 	}
+	
+	*result++ = dynamic_cast<val_type>(start);
 }
 
 
@@ -116,17 +118,77 @@ OutputIter topological_sort(UndirectedGraph& G, OutputIter dest) {
 }
 
 
-/*
+
 template<typename OutputIter>
-OutputIter connected_components(const Graph& G, OutputIter dest) {
+OutputIter connected_components(UndirectedGraph& G, OutputIter dest) {
+	// dest must be an iterator to an associative container.
+	// The output will be a mapping of a vertex to its componenet id (an int)
+	
+	
+	std::unordered_map<Vertex*, bool, UndirectedGraph::Hasher> visited;
+	std::vector<Vertex*> pvertex_list(G.no_of_vertices());
+	G.get_vertices(pvertex_list.begin());
+
+	for(auto& pvertex : pvertex_list)
+		visited[pvertex] = false;	// Initially set all the vertices to unvisited
+
+
+	std::vector<Vertex*> dfs_list(G.no_of_vertices());	
+	
+	std::vector<Vertex*>::iterator dfs_it = dfs_list.begin();
+	int component_id = 0;
+	
+	for(auto& pvertex : pvertex_list) {
+		auto prev_it = dfs_it;
+		if(!visited[pvertex])
+			dfs(G, pvertex, visited, dfs_it);
+		for(auto it = prev_it; it != dfs_it; it++) {
+			// somehow insert at the place where dest points
+		}
+		
+	}
+	return dest;
 
 }
 
-// Dijikstra computes shortest path from single source to all vertex;
-// So Dijiksta should run only once.
-void dijskitra_shortest_path(const Graph& G) {
+//  Future work
+/*
+
+template<typename InputIter>
+OutputIter connected_components(const Graph& G, InputIter dfs_order) {
+
 
 }
+
+
+template<typename OutputIter>
+OutputIter strongly_connected_components(const DirectedGraph& G, OutputIter dest) {
+	// dest must be an iterator to an associative container.
+	// The output will be a mapping of a vertex to its componenet id (an int)
+	
+
+}
+
+
+// Helper function for shortest paths algorithm
+static void relax(const Graph& G, Edge& e) {
+	
+
+} 
+
+
+void Bellman_Ford(const Graph& G, Vertex* source, OutputIter dest) {
+
+}
+
+
+void dijskitra_shortest_path(const Graph& G, Vertex* source, OutputIter dest) {
+	// dest must be an iterator to an associative iterator.
+
+}
+
 */
+
+
 
 #endif
