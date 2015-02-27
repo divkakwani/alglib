@@ -31,7 +31,7 @@ class DataGenerator {
 			val_type elt;
 			char* mem = reinterpret_cast<char*>(&elt);
 			for(int i = 0; i < sizeof(val_type); i++)
-				*mem = rand() % 256;
+				*mem = rand() % 128;
 			return elt;
 		}
 

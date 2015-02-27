@@ -29,7 +29,7 @@ void StrMatchingTest::run_tests() {
 }
 
 void StrMatchingTest::run_random_tests() {
-  const int test_cases = 10;
+  const int test_cases = 100;
   const int pattern_sz = 2, search_sz = 100;
 
 
@@ -54,6 +54,12 @@ int main() {
   StrMatchingTest routine2(rabin_karp);
   routine2.run_tests();
   routine2.report();
+
+  StrMatchingTest routine3(horspool);
+  routine3.run_tests();
+  routine3.report();
+
+
 
 	return 0;
 }

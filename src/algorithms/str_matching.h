@@ -3,7 +3,7 @@
 
 #include <string>
 #include <cmath>
-
+#include <climits>
 
 #include <iostream>
 using namespace std;
@@ -34,6 +34,7 @@ size_t naive_str_matching(const std::string& text, const std::string& pattern) {
 		// in T[s, n].
 		if(text.substr(s, m) == pattern)
 			return s;
+
 	return std::string::npos;
 
 	/**
@@ -98,10 +99,46 @@ size_t rabin_karp(const std::string& text, const std::string& pattern) {
 	return std::string::npos;
 }
 
-/*
-size_t horspool(std::string text, std::string pattern) {
+
+
+
+size_t horspool(const std::string& text, const std::string& pattern) {
+
+	int skip_table[UCHAR_MAX + 1];
+	int n = text.length(), m = pattern.length();
+
+	// Initialize each of the index of the shift table to m.
+	std::fill_n(skip_table, UCHAR_MAX + 1, m);
+	
+	// Compute the skip table for the given pattern.
+	for(int i = 0; i < m - 1; i++) {
+		skip_table[pattern[i]] = m - i - 1;
+	}
+
+	// Do the string comparison
+
+	// align the pattern shifted with s in [0, n-m] with the text
+	for(int shift = 0; shift <= n - m;) {
+
+		// For every shift, start comparing from back
+		int i = m - 1;
+
+		// Keep moving to the right until a mismatch is detected.
+		while(i >= 0 && (text[shift + i] == pattern[i]))
+			i--;
+		
+		if(i == -1)
+			// if the pattern matched completely with the text
+			return shift;
+			
+		shift += skip_table[text[shift + m - 1]];
+	}
+
+	return std::string::npos;
 
 }
-*/
+
+
+
 
 #endif
