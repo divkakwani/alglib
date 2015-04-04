@@ -14,52 +14,29 @@
 // The class can be used with any vertex and edge types inherited from the
 // Vertex and the Edge class respectively.
 
-class UndirectedGraph {
+class undirected_graph : public graph {
 
-    struct Hasher {
-      std::size_t operator()(Vertex* const& key) const{
-        return key->hash_code();
-      }
-    };
     int total_vertices;
-    std::unordered_map<Vertex*, std::vector<Vertex*>, Hasher> adj_list;
+    std::unordered_map<Vertex*, std::vector<Vertex*>, graph::Hasher> adj_list;
     std::set<Vertex*> vertices;
     std::set<Edge*> edges;
 
   public:
-    UndirectedGraph();
-
-    int no_of_vertices() const;
-
-    template<typename OutputIter>
-    OutputIter get_vertices(OutputIter dest) const;
-
-    template<typename OutputIter>
-    OutputIter get_edges(OutputIter dest) const;
-
-    void add_vertex(Vertex* v);
-    void add_edge(Edge* e);
-
-    template<typename OutputIter>
-    OutputIter adjTo(Vertex* v, OutputIter dest);
-
-    // Experimental
-    // Iterator_type dfs_begin();
-    // Iterator_type dfs_end();
-
+  
+    undirected_graph();
 
 };
 
-UndirectedGraph::UndirectedGraph() {
+undirected_graph::undirected_graph() {
   total_vertices = 0;
 }
 
-int UndirectedGraph::no_of_vertices() const {
+int undirected_graph::no_of_vertices() const {
   return total_vertices;
 }
 
 template<typename OutputIter>
-OutputIter UndirectedGraph::get_vertices(OutputIter dest) const {
+OutputIter undirected_graph::get_vertices(OutputIter dest) const {
 
   typedef typename std::iterator_traits<OutputIter>::value_type val_type;
 
@@ -70,7 +47,7 @@ OutputIter UndirectedGraph::get_vertices(OutputIter dest) const {
 }
 
 template<typename OutputIter>
-OutputIter UndirectedGraph::get_edges(OutputIter dest) const {
+OutputIter undirected_graph::get_edges(OutputIter dest) const {
 
   typedef typename std::iterator_traits<OutputIter>::value_type val_type;
 
@@ -81,7 +58,7 @@ OutputIter UndirectedGraph::get_edges(OutputIter dest) const {
 
 }
 
-void UndirectedGraph::add_vertex(Vertex* v) {
+void undirected_graph::add_vertex(Vertex* v) {
 
   if(vertices.find(v) != vertices.end())
     throw "Duplicate ID";
@@ -90,7 +67,7 @@ void UndirectedGraph::add_vertex(Vertex* v) {
   total_vertices++;
 }
 
-void UndirectedGraph::add_edge(Edge* e) {
+void undirected_graph::add_edge(Edge* e) {
 
   Vertex* v1 = e->initial_vertex();
   Vertex* v2 = e->terminal_vertex();
@@ -108,7 +85,7 @@ void UndirectedGraph::add_edge(Edge* e) {
 }
 
 template<typename OutputIter>
-OutputIter UndirectedGraph::adjTo(Vertex* v, OutputIter dest) {
+OutputIter undirected_graph::adjTo(Vertex* v, OutputIter dest) {
 
   typedef typename std::iterator_traits<OutputIter>::value_type val_type;
 
@@ -122,6 +99,14 @@ OutputIter UndirectedGraph::adjTo(Vertex* v, OutputIter dest) {
   return dest;
 }
 
+int undirected_graph::indeg(Vertex* v) {
+	return 0;
+}
+
+
+int undirected_graph::outdeg(Vertex* v) {
+	return 0;
+}
 
 
 
