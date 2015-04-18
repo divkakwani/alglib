@@ -56,12 +56,3 @@ void disjoint_sets<elt_type>::unite(elt_type e1, elt_type e2) {
 }
 
 
-int main() {
-	disjoint_sets<int> sets;
-	sets.make_set(32);
-	sets.make_set(221);
-	sets.unite(32, 221);
-	cout << sets.find_set(32) << endl;
-	cout << sets.find_set(221) << endl;
-}
-
