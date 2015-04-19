@@ -81,6 +81,15 @@ int knapsack01(BidirectionalIter in, int n, int capacity, OutputIter dest) {
 		}
 		--item;
 	}
+
+    // Free the memory allocated for values & keep
+    for (int i = 0; i < n; i++) {
+        delete values[i];
+        delete keep[i];
+    }
+    delete values;
+    delete keep;
+
 	return values[n - 1][capacity];
 }
 
