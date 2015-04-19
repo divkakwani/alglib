@@ -22,7 +22,7 @@ class undirected_graph : public graph {
     std::set<Edge*> edges;
 
   public:
-  
+
     undirected_graph();
 
 };
@@ -107,6 +107,19 @@ int undirected_graph::indeg(Vertex* v) {
 int undirected_graph::outdeg(Vertex* v) {
 	return 0;
 }
+
+
+/*  Class remake */
+
+
+template<typename vertex_t, typename edge_t>
+class undirected_graph : directed_graph<vertex_t, edge_t> {
+
+  // Override add_edge function
+
+};
+
+
 
 
 

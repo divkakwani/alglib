@@ -2,31 +2,17 @@
 #ifndef _EDGE_H
 #define _EDGE_H
 
-#include "vertex.h"
-
+template<typename vertex_t>
 class edge {
 	public:
-		virtual int hash_code() = 0;
-		virtual vertex& either() = 0;
-		virtual vertex& other() = 0;
+		virtual vertex_t& from() const = 0;
+		virtual vertex_t& to() const = 0;
 };
 
-class weighted_edge : public edge {
+template<typename vertex_t, typename weight_t>
+class weighted_edge : public edge<vertex_t> {
 	public:
-		virtual int weight();
+		virtual weight_t weight() const;
 };
-
-class directed_edge {
-	public:
-		virtual int hash_code() = 0;
-		virtual vertex& from() = 0;
-		virtual vertex& to() = 0;
-};
-
-class weighted_directed_edge : public directed_edge {
-	public:
-		virtual int weight();
-};
-
 
 #endif
