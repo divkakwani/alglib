@@ -11,6 +11,7 @@
 * Provide several types of iterators to iterate over the graph.
 * Provide nested types for outsiders to work with it.
 * _Ownership_ : The graph creates a copy of the vertices and edges object edges that are passed to it. It becomes the sole owner of those copies. Cleaning up is, thus, the responsibility of the graph class.
+* Handling big objects:
 
 #### Design Patterns Used
 * _Iterator pattern_ <br>
