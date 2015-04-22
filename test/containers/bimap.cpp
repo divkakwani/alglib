@@ -17,5 +17,18 @@ int main() {
   cout << bm.getpreimage(1) << endl;
   cout << bm.getpreimage(2) << endl;
 
+  // Iterator tests
+  cout << "First type's set\n";
+  for(auto it = bm.type1begin(); it != bm.type1end(); ++it)
+    cout << *it << endl;
+
+  cout << "Second type's set\n";
+  for(auto it = bm.type2begin(); it != bm.type2end(); ++it)
+    cout << *it << endl;
+
+  cout << endl;
+
+
+
   return 0;
 }

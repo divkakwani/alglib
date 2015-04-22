@@ -25,8 +25,8 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
     ~directed_graph();
 
     // Iterators
-    typedef vector<vertex_t>::const_iterator const_viterator;
-    typedef vector<edge_t>::const_iterator const_eiterator;
+    class const_viterator;
+    class const_eiterator;
 
 
     // Iterator returning methods
@@ -40,6 +40,8 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
     const_eiterator aeend(const vertex_t& v);
 
   private:
+
+
 
     std::map<vertex_t, std::set<std::pair<vertex_t, edge_t>>> adjlist;
     int vertices;
@@ -123,19 +125,6 @@ const_viterator directed_graph<vertex_t, edge_t> :: vbegin() {
 
 
   /*
-
-
-  struct hasher {
-
-  int operator()(const vertex_t& v) const {
-  char* mem = static_cast<char*>(&v);
-  int hashval = 0;
-  for(int i = 0; i < sizeof(v); i++) {
-  hashval += mem;
-}
-return hashval;
-}
-};
 
 
 template<typename vertex_t, typename edge_t>
