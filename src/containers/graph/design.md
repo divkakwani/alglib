@@ -14,8 +14,11 @@
 * Handling big objects:
 
 #### Design Patterns Used
-* _Iterator pattern_ <br>
+* _Iterator Pattern_ <br>
 __Intent__: To traverse vertices/edges of a graph. There are four types of iterators: vertex iterator, edge iterator plus their constant versions. The iterators either traverse the entire graph or only vertices/edges adjacent to a vertex. These iterator types and their interfaces remain the same across all the graphs and thus can be used to write generic algorithms.
+
+* _Decorator Pattern_ <br>
+__Intent__: 
 
 
 

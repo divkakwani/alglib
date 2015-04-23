@@ -1,28 +1,28 @@
 #include <bits/stdc++.h>
-using namespace std;	
+using namespace std;
 
 
 /*
 class vertex_iterator
 	:	public std::iterator<std::bidirectional_iterator_tag,
 							type, std::ptrdiff_t
-							
-*/						
+
+*/
 
 template<typename vertex_type, typename edge_type> class undirected_graph {
 
-	public:	
+	public:
 		typedef vertex_type 							vertex_t;
 		typedef edge_type 								edge_t;
 		typedef typename vector<edge_t>::iterator 		edge_iter;
 		typedef typename vector<vertex_t>::iterator 	vertex_iter;
-	
+
 	private:
 		map<vertex_t, vector<vertex_t>>  adjacency_list;
 		map<vertex_t, vector<edge_t>>	 adjacency_edge;
 		vector<vertex_t> 				 vertex_list;
 		vector<edge_t> 					 edge_list;
-		
+
 	public:
 
 		void add_vertex(vertex_t vertex) {
@@ -43,45 +43,45 @@ template<typename vertex_type, typename edge_type> class undirected_graph {
 				adjacency_edge[v].push_back(e);
 				edge_list.push_back(e);
 			}
-		}		
-				
+		}
+
 		long long vsize() const {
 			return vertex_list.size();
 		}
 		auto vbegin() {
 			return vertex_list.begin();
 		}
-		
+
 		auto vend() {
 			return vertex_list.end();
 		}
-		
+
 		auto ebegin() {
 			return edge_list.begin();
 		}
 		auto eend() {
 			return  edge_list.end();
 		}
-		
+
 		auto avbegin(vertex_t vertex) {
 			return adjacency_list[vertex].begin();
-		
+
 		}
-		
+
 		auto avend(vertex_t vertex) {
 			return adjacency_list[vertex].end();
 		}
-		
+
 		auto aebegin(vertex_t vertex) {
 			return adjacency_edge[vertex].begin();
-		
+
 		}
-		
+
 		auto aeend(vertex_t vertex) {
 			return adjacency_edge[vertex].end();
 		}
-	
-	
+
+
 
 };
 
@@ -95,7 +95,7 @@ template<typename vertex_type, typename edge_type> class undirected_graph {
 
 
 template<typename vertex_t, typename edge_t, typename OutputIter>
-OutputIter prim_mst(undirected_graph<vertex_t, edge_t>& G, OutputIter res) { 
+OutputIter prim_mst(undirected_graph<vertex_t, edge_t>& G, OutputIter res) {
 
 	/*
 		Maintain a set of edges that go out of the tree
@@ -103,24 +103,24 @@ OutputIter prim_mst(undirected_graph<vertex_t, edge_t>& G, OutputIter res) {
 	*/
 	set<edge_t> edges;
 	set<vertex_t> T;
-	
+
 	vertex_t start = *G.vbegin();
 	T.insert(start);
 	for(auto it = G.aebegin(start); it != G.aeend(start); it++)		// Why seg-fault?
-		edges.insert(*it); 
-	
+		edges.insert(*it);
+
 	long long sz = G.vsize();
 	while(T.size() != sz) {
-		
+
 		edge_t lightest = *edges.begin();
 		edges.erase(*edges.begin());
-		
+
 		vertex_t u = lightest.either();
 		vertex_t v = lightest.other(u);
-		
+
 		bool u_in_T = T.find(u) != T.end();
 		bool v_in_T = T.find(v) != T.end();
-		
+
 		if(u_in_T and !v_in_T) {
 			res++ = lightest;
 			T.insert(v);
@@ -133,7 +133,7 @@ OutputIter prim_mst(undirected_graph<vertex_t, edge_t>& G, OutputIter res) {
 			for(auto it = G.aebegin(v); it != G.aeend(v); it++)
 				edges.insert(*it);
 		}
-	}	
+	}
 	return res;
 }
 
@@ -152,7 +152,7 @@ struct edge_t {
 int main() {
 
 	undirected_graph<long long, edge_t> g;
-	
+
 	long long n, m, u, v, wt;
 	cin >> n >> m;
 	while(m--) {
@@ -160,14 +160,14 @@ int main() {
 		edge_t e(u, v, wt);
 		g.add_edge(e);
 	}
-	
+
 	vector<edge_t> mst;
 	prim_mst(g, back_inserter(mst));
-	
+
 	long long cost = 0;
 	for(edge_t edge : mst)
 		cost += edge.wt;
-		
+
 	cout << cost << endl;
 }
 
@@ -175,7 +175,7 @@ int main() {
 
 concept graph {
 	Iterators
-	
+
 	vbegin();
 	vend();
 	ebegin();
@@ -184,7 +184,7 @@ concept graph {
 	avend();
 	aebegin(vertex);
 	aeend(vertex);
-	
+
 	Interface
 	add_edge
 	add_vertex
