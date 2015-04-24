@@ -52,12 +52,12 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
     |   |  Attr  |   |
     |   +--------+   |
     |   | vertex |   |
-    +---+--------+-+-+
+    +-|-+--------+-|-+
       |            |
       |            |
-    +-+--+      +--+-+
-    | in |      | out|
-    +----+      +----+
+    +-v-+        +-v-+
+    |IN |        |OUT|
+    +---+        +---+
 
 
 
@@ -65,14 +65,14 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
 
     struct composite_vertex {
       map<string, attrval&> attributes;   // for decorating vertices
-      List<composite_edge&> in;
-      List<composite_edge&> out;
+      set<composite_edge&> in;
+      set<composite_edge&> out;
       vertex_t v;
 
     }
 
     struct composite_edge {
-      map<string, Object&> attributes;  // for decorating edges
+      map<string, attrval&> attributes;  // for decorating edges
       composite_vertex& u;
       composite_vertex& v;
       edge_t edge;
@@ -82,13 +82,22 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
 
     /* Main container - holds composite edge and vertex objects */
 
-    list<composite_edge>    edge_list;
-    list<composite_vertex>  vertex_list;
+    set<composite_edge>    edge_list;
+    set<composite_vertex>  vertex_list;
 
 
     /** Complexity Gurantees
 
+        add_vertex    = O(log n)
+        add_edge      = O(log n)
+        remove_vertex = O(deg(v)log E)
+        remove_edge   = O(log E)
+        indeg         = O(log V)
+        outdeg        = O(log V)
+        num_vertices  = O(1)
+        num_edges     = O(1)
 
+        TODO: Improve indeg and outdeg.
 
     **/
 
@@ -159,15 +168,24 @@ class adjlist_directed_graph : public graph<vertex_t, edge_t> {
       return -1;
     }
 
-    int indeg(vertex_t v) {
+    int outdeg(vertex_t v) {
       auto it = vertex_list.find(v);
       if(it != vertex_list.end())
         return it->in.size();
-        return -1;
+      return -1;
     }
 
     int num_vertices() const { return vertex_list.size(); }
     int num_edges() const { return edge_list.size(); }
+
+
+    auto vbegin() {
+      return vertex_list.begin();
+    }
+
+    auto vend() {
+      return vertex_list.end();
+    }
 
 
 };
