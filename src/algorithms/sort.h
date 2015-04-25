@@ -71,4 +71,25 @@ void merge_sort(RandomAccessIter _first, RandomAccessIter _last) {
 
 
 
+
+template<typename RandomAccessIter>
+void heap_sort(RandomAccessIter first,
+		RandomAccessIter last) {
+
+	typedef typename std::iterator_traits<RandomAccessIter>::value_type val_type;
+
+	binary_heap<val_type> H;
+	
+	for(RandomAccessIter it = first; it != last; it++)
+		H.insert(*it);
+
+	for(RandomAccessIter it = first; it != last; it++)
+		*it = H.extract_min(); 
+
+}
+
+
+
+
+
 #endif
