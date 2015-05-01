@@ -20,12 +20,22 @@ Compatibility : C++11 onwards
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <cstdlib>
 #include "../containers/binary_heap.h"
 
-template<typename ForwardIter>
-void selection_sort(ForwardIter first, ForwardIter last) {
+// The default comparsion functor for sorting functions.
+// This just calls operator< as defined by the type T.
+template<typename T>
+struct DefaultLT {
+    bool operator()(const T& a, const T& b) const {
+        return a < b;
+    }
+};
+
+template<typename ForwardIter, typename BinaryPred>
+void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred& LT) {
     for (auto it = first; it != last; it++)
-        std::swap(*it, *std::min_element(it, last));
+        std::swap(*it, *std::min_element(it, last, LT));
 
     /* Analysis
      *   Proof of Correctness:
@@ -54,22 +64,30 @@ void selection_sort(ForwardIter first, ForwardIter last) {
      */
 }
 
-template<typename ForwardIter, typename BinaryFunct>
-void selection_sort(ForwardIter first, ForwardIter last, BinaryFunct LT) {
-    for (auto it = first; it != last; it++)
-        std::swap(*it, *std::min_element(it, last, LT));
+
+template<typename ForwardIter>
+inline void selection_sort(ForwardIter first, ForwardIter last) {
+    selection_sort(first, last, DefaultLT<typename ForwardIter::value_type>());
 }
 
 
 // Quick sort helper function
-template<typename _RandomAccessIter>
-_RandomAccessIter randomized_partition(_RandomAccessIter _first,
-                                       _RandomAccessIter _last) {
-    _RandomAccessIter it = _first + rand_r() % (_last - _first);  // O(n) cost
-    _RandomAccessIter pivot = _last - 1;
-    std::swap(*pivot, *it);
-    _RandomAccessIter sep = _first;  // sep heads the larger-elements partition
-    for (it = _first; it != _last; it++) {
+template<typename RandomAccessIter, typename BinaryPred>
+RandomAccessIter randomized_partition(RandomAccessIter first,
+                                      RandomAccessIter last,
+                                      const BinaryPred& LT) {
+    /* The function selects a random element in [first, last) as pivot and
+     * partitions the interval around it.
+     * The part
+     */
+    int sz = std::distance(first, last);
+
+    RandomAccessIter it = first + rand() % sz;  // O(n) cost
+    std::swap(*it, *(last - 1));
+    auto pivot = last - 1;
+
+    RandomAccessIter sep = first;  // sep heads the larger-elements partition
+    for (auto it = first; it != last; it++) {
         if (*it < *pivot) {
             std::swap(*it, *sep);
             sep++;
@@ -79,48 +97,64 @@ _RandomAccessIter randomized_partition(_RandomAccessIter _first,
     return sep;
 }
 
-template<typename _RandomAccessIter>
-void quick_sort(_RandomAccessIter _first, _RandomAccessIter _last) {
-    if (_first < _last) {
-        _RandomAccessIter pivot = randomized_partition(_first, _last);
-        quick_sort(_first, pivot);
-        quick_sort(pivot + 1, _last);
+template<typename RandomAccessIter, typename BinaryPred>
+void quick_sort(RandomAccessIter first, RandomAccessIter last,
+                const BinaryPred& LT) {
+    if (first < last) {
+        RandomAccessIter pivot = randomized_partition(first, last, LT);
+        quick_sort(first, pivot, LT);
+        quick_sort(pivot + 1, last, LT);
     }
 }
 
 
-
 template<typename RandomAccessIter>
-void merge_sort(RandomAccessIter _first, RandomAccessIter _last) {
-    int sz = _last - _first;
+void quick_sort(RandomAccessIter first, RandomAccessIter last) {
+    quick_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
+}
+
+
+template<typename RandomAccessIter, typename BinaryPred>
+void merge_sort(RandomAccessIter first, RandomAccessIter last,
+                const BinaryPred& LT) {
+    int sz = std::distance(first, last);
     if (sz > 1) {
         std::vector<typename RandomAccessIter::value_type>
-            subarr1(_first, _first + sz / 2);
+            subarr1(first, first + sz / 2);
         std::vector<typename RandomAccessIter::value_type>
-            subarr2(_first + sz / 2, _last);
-        merge_sort(subarr1.begin(), subarr1.end());
-        merge_sort(subarr2.begin(), subarr2.end());
+            subarr2(first + sz / 2, last);
+        merge_sort(subarr1.begin(), subarr1.end(), LT);
+        merge_sort(subarr2.begin(), subarr2.end(), LT);
         std::merge(subarr1.begin(), subarr1.end(),
-                   subarr2.begin(), subarr2.end(), _first);
+                   subarr2.begin(), subarr2.end(), first);
     }
 }
 
-
-
-
-
 template<typename RandomAccessIter>
-void heap_sort(RandomAccessIter first, RandomAccessIter last) {
+void merge_sort(RandomAccessIter first, RandomAccessIter last) {
+    merge_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
+}
+
+
+template<typename RandomAccessIter, typename BinaryPred>
+void heap_sort(RandomAccessIter first, RandomAccessIter last,
+               const BinaryPred& LT) {
     typedef
     typename std::iterator_traits<RandomAccessIter>::value_type val_type;
 
-    binary_heap<val_type> H;
+    binary_heap<val_type> H;  // Use LT here
 
     for (RandomAccessIter it = first; it != last; it++)
         H.insert(*it);
 
     for (RandomAccessIter it = first; it != last; it++)
         *it = H.extract_min();
+}
+
+
+template<typename RandomAccessIter>
+void heap_sort(RandomAccessIter first, RandomAccessIter last) {
+    heap_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
 }
 
 
