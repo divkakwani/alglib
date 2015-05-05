@@ -1,6 +1,8 @@
 language: cpp
 compiler: g++
 
-before_script: cd test
+before_script:
+	- sudo apt-get install libboost-test-dev
+    - cd test
 
 script: make test
