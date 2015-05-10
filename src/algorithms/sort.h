@@ -1,16 +1,22 @@
-/************
-Copyright 2015 Divyanshu Kakwani
-This library contains a collection of sorting algorithms, all of which can be applied on STL containers.
-The functions are templatized by the iterator type. A sorting function in general has the following interface:
-		<sorting_algorithm>(BEGIN_ITERATOR, END_ITERATOR, GREATER functor);
+/*
+ * This file is part of the alglib project.
+ *
+ * (c) Divyanshu Kakwani <divkakwani@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ *
+ * This library contains a collection of sorting algorithms, all of which can be
+ * applied on STL containers.The functions are templatized by the iterator type.
+ * A sorting function in general has the following interface:
+ *	<sorting_algorithm>(BEGIN_ITERATOR, END_ITERATOR, GREATER functor);
+ *
+ * Sorting Algorithms :
+ *   Comparsion Sorting Algorithms
+ *    Bubble Sort, Insertion sort, Selection sort, Merge sort, Quicksort,
+ *    Shell sort, Heap sort
 
-Author : Divyanshu Kakwani
-Sorting Algorithms :
-	Comparsion Sorting Algorithms
-		Bubble Sort, Insertion sort, Selection sort, Merge sort, Quicksort, Shell sort, Heap sort
-Compatibility : C++11 onwards
-
-***************/
+ */
 
 
 
@@ -21,16 +27,9 @@ Compatibility : C++11 onwards
 #include <algorithm>
 #include <iterator>
 #include <cstdlib>
-#include "../containers/binary_heap.h"
+#include <functional>
+//#include "../containers/binary_heap.h"
 
-// The default comparsion functor for sorting functions.
-// This just calls operator< as defined by the type T.
-template<typename T>
-struct DefaultLT {
-    bool operator()(const T& a, const T& b) const {
-        return a < b;
-    }
-};
 
 template<typename ForwardIter, typename BinaryPred>
 void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred& LT) {
@@ -67,7 +66,7 @@ void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred& LT) {
 
 template<typename ForwardIter>
 inline void selection_sort(ForwardIter first, ForwardIter last) {
-    selection_sort(first, last, DefaultLT<typename ForwardIter::value_type>());
+    selection_sort(first, last, std::less<typename ForwardIter::value_type>());
 }
 
 
@@ -110,7 +109,7 @@ void quick_sort(RandomAccessIter first, RandomAccessIter last,
 
 template<typename RandomAccessIter>
 void quick_sort(RandomAccessIter first, RandomAccessIter last) {
-    quick_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
+    quick_sort(first, last, std::less<typename RandomAccessIter::value_type>());
 }
 
 
@@ -132,9 +131,11 @@ void merge_sort(RandomAccessIter first, RandomAccessIter last,
 
 template<typename RandomAccessIter>
 void merge_sort(RandomAccessIter first, RandomAccessIter last) {
-    merge_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
+    merge_sort(first, last, std::less<typename RandomAccessIter::value_type>());
 }
 
+
+/*
 
 template<typename RandomAccessIter, typename BinaryPred>
 void heap_sort(RandomAccessIter first, RandomAccessIter last,
@@ -157,7 +158,7 @@ void heap_sort(RandomAccessIter first, RandomAccessIter last) {
     heap_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
 }
 
-
+*/
 
 
 
