@@ -10,7 +10,8 @@
 #include <iostream>
 #include "../../../src/containers/heap/binary_heap.h"
 
-using std::cout, std::endl;
+using std::cout;
+using std::endl;
 
 int main() {
     /* unkeyed binary heap test */
