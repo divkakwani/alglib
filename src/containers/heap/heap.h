@@ -60,8 +60,8 @@
 
 template<typename elt_t, typename key_t>
 class min_heap {
-    BOOST_CONCEPT_ASSERT((LessThanComparable<elt_t>));
-    BOOST_CONCEPT_ASSERT((LessThanComparable<key_t>));
+    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<elt_t>));
+    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<key_t>));
 
  public:
     virtual void insert(const elt_t& elt, const key_t& key) = 0;
@@ -72,18 +72,18 @@ class min_heap {
 
     /* remove the root */
     virtual void delete_min() = 0;
-    virtual void replace(const elt_type& elt, const key_t& key) = 0;
+    virtual void replace(const elt_t& elt, const key_t& key) = 0;
 
     /* Inspection */
     virtual int size() const = 0;
     virtual bool empty() const = 0;
 
     /* Internal modification */
-    virtual void update_key(const elt_type& elt, const key_t& key) = 0;
+    virtual void update_key(const elt_t& elt, const key_t& key) = 0;
 
 
     /* return a new heap that is the merger of the heap h and *this. */
-    min_heap<elt_t, Compare> merge_heaps(const min_heap<elt_t, Compare>& h);
+    // min_heap<elt_t, Compare> merge_heaps(const min_heap<elt_t, Compare>& h);
 };
 
 

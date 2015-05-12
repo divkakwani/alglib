@@ -19,10 +19,12 @@
 
 // TODO(divkakwani): Convert to rvalue-references
 
+
+
 template<typename elt_t, typename key_t>
 class binary_heap : public min_heap<elt_t, key_t> {
-    BOOST_CONCEPT_ASSERT((LessThanComparable<elt_t>));
-    BOOST_CONCEPT_ASSERT((LessThanComparable<key_t>));
+    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<elt_t>));
+    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<key_t>));
 
  public:
     /* typedefs */
@@ -34,10 +36,26 @@ class binary_heap : public min_heap<elt_t, key_t> {
 
     /* aggregate initialization */
     template<typename InputIter>
-    binary_heap(InputIter first, InputIter last);
+    binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first);
 
+
+    void insert(const elt_t& elt, const key_t& key);
+
+    /* get the root */
+    const elt_t& get_min_elt() const;
+    const key_t& get_min_key() const;
+
+    /* remove the root */
+    void delete_min();
+    void replace(const elt_t& elt, const key_t& key);
+
+    /* Inspection */
     int size() const override { return __sz; }
     bool empty() const override { return __sz == 0; }
+
+    /* Internal modification */
+    void update_key(const elt_t& elt, const key_t& key);
+
 
  private:
     /* `node` is wrapper around the key with an additional pointer to
@@ -45,8 +63,8 @@ class binary_heap : public min_heap<elt_t, key_t> {
      */
     struct node_t {
         key_t key;
-        std::map<elt_t, node_t&>::iterator elt_it;
-        bool operator<(const node_t& other) const { key < other.key; }
+        typename std::map<elt_t, int>::iterator elt_it;
+        bool operator<(const node_t& other) const { return key < other.key; }
     };
 
     /* `nodeof` stores the node corresponding to element inserted in the heap.
@@ -60,13 +78,13 @@ class binary_heap : public min_heap<elt_t, key_t> {
     std::vector<node_t> heaparr;
     int __sz;
 
-    map<elt_t, int>::iterator make_entry(const elt_t& elt) {
+    typename std::map<elt_t, int>::iterator make_entry(const elt_t& elt) {
         if (nodeof.find(elt) != nodeof.end())
             throw "Element already exists";
         nodeof[elt] = -1;
         return nodeof.find(elt);
     }
-    void update_entry(int idx) { (heaprr[idx].elt_it)->second = idx; }
+    void update_entry(int idx) { (heaparr[idx].elt_it)->second = idx; }
 
     /* Helper functions */
     inline int __parent(int node) { return (node - 1) / 2; }
@@ -76,26 +94,31 @@ class binary_heap : public min_heap<elt_t, key_t> {
     void __sift_down(int node);
 };
 
-template<typename elt_type, typename Compare>
-binary_heap<elt_type, Compare>::binary_heap() {
+template<typename elt_t, typename key_t>
+binary_heap<elt_t, key_t>::binary_heap() {
     __sz = 0;
 }
 
-template<typename elt_type, typename Compare>
+template<typename elt_t, typename key_t>
 template<typename InputIter>
-binary_heap<elt_type, Compare>::binary_heap<InputIter>(InputIter first,
-                                                       InputIter last) {
-    std::copy(first, last, back_inserter(__stash));
-    __sz = __stash.size();
+binary_heap<elt_t, key_t>::binary_heap(InputIter elt_first,
+                                       InputIter elt_last,
+                                       InputIter key_first) {
+    __sz = 0;
+    while (elt_first != elt_last) {
+        auto loc = make_entry(*elt_first);
+        heaparr[__sz++] = node_t {*key_first, loc};
+        ++elt_first;
+    }
 
     // Heapify the __stash
     for (int i = __sz / 2; i >= 0; i--)
          __sift_down(i);
 }
 
-template<typename elt_type, typename Compare>
-void binary_heap<elt_type, Compare>::insert(const elt_type& elt,
-                                            const key_type& key) override {
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::insert(const elt_t& elt,
+                                       const key_t& key) {
     auto loc = make_entry(elt);
     heaparr.push_back(node_t {key, loc});
     __sift_up(__sz);
@@ -103,22 +126,28 @@ void binary_heap<elt_type, Compare>::insert(const elt_type& elt,
 }
 
 
-template<typename elt_type, typename Compare>
-const elt_type& binary_heap<elt_type, Compare>::get_min() override {
+template<typename elt_t, typename key_t>
+const elt_t& binary_heap<elt_t, key_t>::get_min_elt() const {
     return (heaparr[0].elt_it)->first;
 }
 
-template<typename elt_type, typename Compare>
-void binary_heap<elt_type, Compare>::delete_min() override {
+
+template<typename elt_t, typename key_t>
+const key_t& binary_heap<elt_t, key_t>::get_min_key() const {
+    return heaparr[0].key;
+}
+
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::delete_min() {
     nodeof.erase(heaparr[0].elt_it);
     std::swap(heaparr[0], heaparr[__sz - 1]);
     --__sz;
     __sift_down(0);
 }
 
-template<typename elt_type, Compare>
-void binary_heap<elt_type, Compare>::replace(const elt_type& elt,
-                                             const key_type& key) override {
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::replace(const elt_t& elt,
+                                        const key_t& key) {
     if (__sz == 0)
         throw "no element";
     auto loc = make_entry(elt);
@@ -127,9 +156,9 @@ void binary_heap<elt_type, Compare>::replace(const elt_type& elt,
     __sift_down(0);
 }
 
-template<typename elt_type, Compare>
-void binary_heap<elt_type, Compare>::update_key(const elt_type& elt,
-                                                const key_type& key) override {
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
+                                           const key_t& key) {
     if (nodeof.find(elt) == nodeof.end())
         throw "Non-existent element";
     int index_in_heap = nodeof[elt];
@@ -138,8 +167,8 @@ void binary_heap<elt_type, Compare>::update_key(const elt_type& elt,
     __sift_down(index_in_heap);
 }
 
-template<typename elt_type, typename Compare>
-void binary_heap<elt_type, Compare>::__sift_up(int node) {
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::__sift_up(int node) {
     /*
      * Store the node in a temp and move all the other nodes encountered
      * while going upwards down and finally put the temp in the upmost place.
@@ -154,8 +183,8 @@ void binary_heap<elt_type, Compare>::__sift_up(int node) {
     update_entry(node);
 }
 
-template<typename elt_type, typename Compare>
-void binary_heap<elt_type, Compare>::__sift_down(int node) {
+template<typename elt_t, typename key_t>
+void binary_heap<elt_t, key_t>::__sift_down(int node) {
     int min_node = node;
     int left_child = __left_child(node);
     int right_child = __right_child(node);
@@ -177,8 +206,7 @@ void binary_heap<elt_type, Compare>::__sift_down(int node) {
  * order is the natural order itself.
  */
 template<typename elt_t>
-class binary_heap<elt_t, elt_t> {
-
+class unkeyed_binary_heap {
  private:
     binary_heap<elt_t, elt_t> heap;
 
@@ -190,12 +218,11 @@ class binary_heap<elt_t, elt_t> {
 
     /* remove the root */
     void delete_min() { heap.delete_min(); }
-    void replace(const elt_type& elt) { heap.replace(elt, elt); }
+    void replace(const elt_t& elt) { heap.replace(elt, elt); }
 
     /* Inspection */
     int size() const { return heap.size(); }
     bool empty() const { return heap.empty(); }
-
 };
 
 
