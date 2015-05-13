@@ -2,10 +2,10 @@
 
 #include <iostream>
 #include <string>
-#include "../data_generator.h"
-#include "../utils.h"
-#include "../test.h"
-#include "../../src/algorithms/str_matching.h"
+#include <test/data_generator.h>
+#include <test/utils.h>
+#include <test/test.h>
+#include <alglib/algorithms/str_matching.h>
 
 using namespace std;
 

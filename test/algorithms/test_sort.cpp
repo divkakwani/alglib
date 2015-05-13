@@ -1,11 +1,11 @@
-#include "../test.h"
-#include "../../src/algorithms/sort.h"
+#include <test/test.h>
+#include <alglib/algorithms/sort.h>
 #include <iostream>
 #include <vector>
 #include <limits>
 #include <ctime>
-#include "../data_generator.h"
-#include "../utils.h"
+#include <test/data_generator.h>
+#include <test/utils.h>
 #include <functional>
 
 using namespace std;

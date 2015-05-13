@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <string>
-#include "utils.h"
+#include <test/utils.h>
 
 #define assert_(expr) \
 	eval_test(expr, #expr, __FILE__, __LINE__)

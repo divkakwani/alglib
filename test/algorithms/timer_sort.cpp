@@ -1,8 +1,8 @@
 
 #include <iostream>
-#include "../timer.h"
-#include "../data_generator.h"
-#include "../../src/algorithms/sort.h"
+#include <test/timer.h>
+#include <test/data_generator.h>
+#include <alglib/algorithms/sort.h>
 
 template<typename Seq>
 class SortTimer {

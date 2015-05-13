@@ -15,7 +15,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
-#include "heap.h"
+#include <alglib/containers/heap/heap.h>
 
 // TODO(divkakwani): Convert to rvalue-references
 

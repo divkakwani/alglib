@@ -1,5 +1,5 @@
 
-#include "../../src/containers/bimap.h"
+#include <alglib/containers/bimap.h>
 #include <string>
 #include <iostream>
 

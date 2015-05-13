@@ -1,7 +1,7 @@
 
 
 #include <iostream>
-#include "../../src/containers/disjoint_sets.h"
+#include <alglib/containers/disjoint_sets.h>
 
 
 int main() {

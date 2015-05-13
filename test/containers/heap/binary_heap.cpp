@@ -8,7 +8,7 @@
  */
 
 #include <iostream>
-#include "../../../src/containers/heap/binary_heap.h"
+#include <alglib/containers/heap/binary_heap.h>
 
 using std::cout;
 using std::endl;

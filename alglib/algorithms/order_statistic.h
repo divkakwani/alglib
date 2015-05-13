@@ -2,7 +2,7 @@
 #ifndef _ORDER_STATISTIC_H
 #define _ORDER_STATISTIC_H
 
-#include "sort.h"
+#include <alglib/algorithms/sort.h>
 
 template<typename RandomAccessIter>
 RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i) {
