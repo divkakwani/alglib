@@ -26,11 +26,13 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
-#include <cstdlib>
 #include <functional>
-//#include "../containers/binary_heap.h"
+// #include "../containers/binary_heap.h"
 
-
+/* Sorts the elements in [first, last) using selection sort
+ * @first The starting iterator of the range
+ * @last The one-past-the-end iterator of the range.
+ */
 template<typename ForwardIter, typename BinaryPred>
 void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred& LT) {
     for (auto it = first; it != last; it++)
