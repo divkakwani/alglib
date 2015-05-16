@@ -10,4 +10,4 @@ A library of generic algorithms intended as an extension of the STL. All the alg
 * Download the source code and add the path of src to the `CPLUS_INCLUDE_PATH` environment variable.
 
 ### Documentation
-The documentation is available online [here](divkakwani.github.io/alglib)
+The documentation is available online [here](https://divkakwani.github.io/alglib)
