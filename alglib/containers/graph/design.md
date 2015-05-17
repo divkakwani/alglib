@@ -21,6 +21,24 @@ __Intent__:
 
 ## Graph API
 
+#### Undirected Graph
+
+```
+// vertex opertions
+add_vertex (const vertex& v);
+delete_vertex (const vertex& v);
+
+// edge operations
+add_edge (const vertex_t& u, const vertex_t& v);
+add_edge (const edge_t<vertex_t, attr_t>& edge);
+delete_edge (const vertex_t u, const vertex_t v);
+delete_edge (const edge_t<vertex_t, attr_t>& edge);
+get_attr (const vertex_t& u, const vertex_t& v);
+
+// Iterators
+// vertex, edge and adjacency iterators.
+```
+
 
 
 ## Graph Classes Hierarchy
