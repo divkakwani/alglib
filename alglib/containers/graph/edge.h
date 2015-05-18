@@ -9,21 +9,33 @@
 
 #pragma once
 
-typedef int NIL;
-const NIL nil_val = -1;
+#include <type_traits>
 
-template<typename vertex_t, typename attr_t = NIL>
-struct edge_t {
+template<typename vertex_t, typename attr_t = int, typename Enable = void>
+struct edge_t : public attr_t {
+
     vertex_t from;
     vertex_t to;
-    attr_t attribute;
-
-    typedef vertex_t vertex_type;
-    typedef attr_t   attribute_type;
 };
 
 
-template<typename vertex_t, typename attr_t = NIL>
-edge_t make_edge (vertex_t from, vertex_t to, attr_t attribute = nil_val) {
-    return edge_t {from, to attribute};
+template<typename vertex_t, typename attr_t>
+struct edge_t<vertex_t, attr_t,
+              typename std::enable_if<std::is_fundamental<attr_t>::value>::type> {
+              
+    vertex_t from;
+    vertex_t to;
+    attr_t attribute;
+};
+
+/*
+
+template<typename vertex_t, typename attr_t>
+edge_t<vertex_t, attr_t> make_edge (vertex_t from, vertex_t to,
+                                    attr_t attribute = -1) {
+    return edge_t<vertex_t, attr_t> {from, to, attribute};
 }
+*/
+
+
+
