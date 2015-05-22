@@ -1,6 +1,6 @@
-# Algorithms Library
 
-![Build Status](https://travis-ci.org/divkakwani/alglib.svg?branch=master)
+# Algorithms Library ![Build Status](https://travis-ci.org/divkakwani/alglib.svg?branch=master)
+
 
 A library of generic algorithms intended as an extension of the STL. All the algorithms are compatible with STL containers and follow similar design patterns as that of the STL.
 
