@@ -1,5 +1,7 @@
-#ifndef _STR_MATCHING_
-#define _STR_MATCHING_
+// Document this file
+/** @file */ 
+
+# pragma once
 
 #include <string>
 #include <cmath>
@@ -138,7 +140,14 @@ size_t horspool(const std::string& text, const std::string& pattern) {
 
 }
 
+/**
+ * \brief Performs substring search in a given string
+ * \param text The text in which the pattern is to be searched
+ * \param pattern The string to be searched
+ * \return The starting position of the first occurence of pattern in text
+ */
+size_t kmp(const std::string& text, const std::string& pattern) {
 
 
+}
 
-#endif

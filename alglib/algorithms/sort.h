@@ -18,10 +18,13 @@
 
  */
 
-
+// Document this file
+/** @file */
 
 #ifndef _ALGLIB_SORT_H_
 #define _ALGLIB_SORT_H_
+
+#pragma once
 
 #include <vector>
 #include <algorithm>
