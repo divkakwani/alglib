@@ -28,6 +28,13 @@ struct edge_t<vertex_t, attr_t,
     attr_t attribute;
 };
 
+template<typename vertex_t, typename attr_t>
+std::ostream& operator<<(std::ostream& out, const edge_t<vertex_t, attr_t>& e) {
+
+    std::cout << "(" << e.from << ", " << e.to << ") ";
+    return out;
+}
+
 /*
 
 template<typename vertex_t, typename attr_t>

@@ -20,7 +20,7 @@
  */
 template<typename T>
 struct get_first {
-    typename T::first_type operator() (const T& p) const { return p.first; }
+    const typename T::first_type& operator() (const T& p) const { return p.first; }
 };
 
 /**
@@ -29,7 +29,7 @@ struct get_first {
  */
 template<typename T>
 struct get_second {
-    typename T::second_type operator() (const T& p) const { return p.second; }
+    const typename T::second_type& operator() (const T& p) const { return p.second; }
 };
 
 
@@ -249,10 +249,8 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
 
     friend class adj_list<vertex_t, edge_t>;
 
-    friend std::ostream& operator<<(std::ostream& out, const_eiterator eit) {
-        out << *(eit.aeit);
-        return out;
-    }
+    template<typename t1, typename t2>
+    friend std::ostream& operator<<(std::ostream& out, typename adj_list<t1, t2>::const_eiterator cit);
 
     const_eiterator() { }
 
@@ -260,7 +258,7 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     
 
     const_eiterator(adj_list<vertex_t, edge_t>& obj) : object(obj) {
-        if(obj.alists.size() != 0) {
+        if(object.alists.size() != 0) {
             vit = obj.vbegin();
             aeit = obj.aebegin(*vit);
         }
@@ -277,12 +275,15 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
         aeit++;
         if(aeit == object.aeend(*vit)) {
             vit++;
+            while(vit != object.vend() and object.aebegin(*vit) == object.aeend(*vit))
+                vit++;
             aeit = object.aebegin(*vit);
         }
         //return *aeit;  // FIXME: set to previos aeit;
     }
 
     const edge_t& operator*() {
+
         return *aeit;
     }
 
@@ -291,8 +292,16 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     } 
 
     bool operator!=(const const_eiterator& other) const {
-        return !(vit == other.vit && aeit == other.aeit) && !(vit == object.vend() && vit == other.vit);
+        return !(*this == other);
     }
 
 };
 
+
+template<typename vertex_t, typename edge_t>
+std::ostream& operator<<(std::ostream& out, typename adj_list<vertex_t, edge_t>::const_eiterator eit) {
+ 
+        out << *(eit.aeit);
+        return out;
+
+}
