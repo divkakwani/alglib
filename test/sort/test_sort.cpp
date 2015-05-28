@@ -1,5 +1,5 @@
 #include <test/test.h>
-#include <alglib/algorithms/sort.h>
+#include <alglib/sort/sort.h>
 #include <iostream>
 #include <vector>
 #include <limits>

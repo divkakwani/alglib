@@ -2,7 +2,7 @@
 #include <iostream>
 #include <test/timer.h>
 #include <test/data_generator.h>
-#include <alglib/algorithms/sort.h>
+#include <alglib/sort/sort.h>
 
 template<typename Seq>
 class SortTimer {
