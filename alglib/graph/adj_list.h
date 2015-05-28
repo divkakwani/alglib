@@ -89,26 +89,33 @@ class adj_list : public graph_model<vertex_t, edge_t> {
 
  private:
        
-    alist_t                       alist;
     std::map<vertex_t, alist_t>   alists;
-
-    
     
 };
 
 
 template<typename vertex_t, typename edge_t>
 inline void adj_list<vertex_t, edge_t>::add_vertex(const vertex_t& v) {
-    
+    /**
+     *  If the vertex doesn't already exist, create a new entry in alists
+     *  and initialize it with an empty alist.
+     *  Complexity: O(lg n)
+     */
     if(alists.find(v) == alists.end())
         alists[v] = alist_t();
 
 }
 
 template<typename vertex_t, typename edge_t>
-inline void adj_list<vertex_t, edge_t>::add_edge(const vertex_t& u, const vertex_t& v, const edge_t& e) {
-
-    // Ensure that both u and v exists
+inline void adj_list<vertex_t, edge_t>::add_edge(const vertex_t& u,
+                                                 const vertex_t& v,
+                                                 const edge_t& e) {
+    /**
+     *  Add vertex u and v if they don't already exist. Then insert e into
+     *  the adjacency list of u.
+     *  Complexity Gurantee: O(lg n)
+     */
+    
     add_vertex(u);
     add_vertex(v);
     
@@ -117,8 +124,11 @@ inline void adj_list<vertex_t, edge_t>::add_edge(const vertex_t& u, const vertex
 
 template<typename vertex_t, typename edge_t>
 inline void adj_list<vertex_t, edge_t>::add_edge(const edge_t& e) {
-
-    // Ensure that both u and v exists
+    /**
+     *  Ensure that both e.from and e.to exist and then insert e into
+     *  the adjacency list of e.from.
+     *  Complexity Gurantee: O(lg n)
+     */
     add_vertex(e.from);
     add_vertex(e.to);
     
@@ -127,75 +137,120 @@ inline void adj_list<vertex_t, edge_t>::add_edge(const edge_t& e) {
 
 template<typename vertex_t, typename edge_t>
 inline void adj_list<vertex_t, edge_t>::remove_vertex(const vertex_t& v){
+     /**
+      *  Delete the adjacency list of v. Then, delete v from any other alist
+      *  that contains it.
+      *  Complexity Gurantee: O(V lg V)
+      */
 
-    // Delete the vertex
     alists.erase(v);
     
-    // Delete the vertex from other alists
-    for(auto it = alists.begin(); it != alists.end(); it++)
-        (it->second).erase(v);
-    
+    for(auto& entry : alists) {
+        entry.second.erase(v);
+    }
 }
 
 template<typename vertex_t, typename edge_t>
-inline void adj_list<vertex_t, edge_t>::remove_edge(const vertex_t& u, const vertex_t& v) {
+inline void adj_list<vertex_t, edge_t>::remove_edge(const vertex_t& u,
+                                                    const vertex_t& v) {
+    /**
+     *  Remove v from the adjacency list of u.
+     *  Complexity Gurantee: O(lg outdeg u)
+     */
     alists[u].erase(v);
 }
 
 template<typename vertex_t, typename edge_t>
 inline int adj_list<vertex_t, edge_t>::indeg(const vertex_t& v) const {
+    /**
+     *  For each alist, if v exists in the alist, increment deg by 1.
+     *  Complexity Gurantee: O(V lg V)
+     */
 
     int deg = 0;
-    for(auto it = alists.begin(); it != alists.end(); it++)
-        if((it->second).find(v) != (it->second).end())
-            deg++;
-            
+
+    for(auto& entry : alists) {
+        auto& alist = entry.second;
+        if(alist.find(v) != alist.end())
+            deg++
+    }
     return deg;
 }
 
 template<typename vertex_t, typename edge_t>
 inline int adj_list<vertex_t, edge_t>::outdeg(const vertex_t& v) const {
+    /**
+     *  Locate the alist of v and return its size.
+     *  Complexity Gurantee: O(lg V)
+     */
     return alists.at(v).size();
 }
 
 template<typename vertex_t, typename edge_t>
 inline int adj_list<vertex_t, edge_t>::num_vertices() const {
+    /**
+     *  Complexity Gurantee: O(1)
+     */
+
     return alists.size();
 }
 
 template<typename vertex_t, typename edge_t>
 inline int adj_list<vertex_t, edge_t>::num_edges() const {
+    /**
+     *  Sum the sizes of all the alists.
+     *  Complexity Gurantee: O(V lg V)
+     */
 
     int sum = 0;    
-    for(auto it = alists.begin(); it != alists.end(); it++)
-        sum += (it->second).size();
+    for(auto& entry : alists)
+        sum += entry.second.size();
     return sum;
 }
 
 
 template<typename vertex_t, typename edge_t>
-inline bool adj_list<vertex_t, edge_t>::are_adj(const vertex_t& u, const vertex_t& v) const {
+inline bool adj_list<vertex_t, edge_t>::are_adj(const vertex_t& u,
+                                                const vertex_t& v) const {
+    /** 
+     *  If v exists in the adjacency list of u, then return true, otherwise
+     *  false.
+     *  Complexity Gurantee: O(lg V + lg deg u)
+     */
     
-    return alists.at(u).find(v) == alists.at(u).end();
-
+    return alists.at(u).find(v) != alists.at(u).end();
 }
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_viterator adj_list<vertex_t, edge_t>::vbegin() {
+inline typename adj_list<vertex_t, edge_t>::const_viterator
+adj_list<vertex_t, edge_t>::vbegin() {
+    /**
+     *  Using boost::transform_iterator, transform the map iterator to
+     *  look like an iterator to a sequential container holding vertices.
+     *  Complexity Gurantee: O(1)
+     */
     get_first<std::pair<vertex_t, alist_t>> trans;
     return boost::make_transform_iterator(alists.begin(), trans);
 }
     
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_viterator adj_list<vertex_t, edge_t>::vend() {
+inline typename adj_list<vertex_t, edge_t>::const_viterator 
+adj_list<vertex_t, edge_t>::vend() {
+    /**
+     *  Complexity Gurantee: O(1)
+     */
     get_first<std::pair<vertex_t, alist_t>> trans;
     return boost::make_transform_iterator(alists.end(), trans);
 }
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aviterator adj_list<vertex_t, edge_t>::avbegin(const vertex_t& u) {
+inline typename adj_list<vertex_t, edge_t>::const_aviterator 
+adj_list<vertex_t, edge_t>::avbegin(const vertex_t& u) {
+    /**
+     *  Complexity Gurantee: O(lg V)
+     */
     get_first<std::pair<vertex_t, edge_t>> trans;
     return boost::make_transform_iterator(alists[u].begin(), trans);
 }
@@ -203,14 +258,23 @@ inline typename adj_list<vertex_t, edge_t>::const_aviterator adj_list<vertex_t, 
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aviterator adj_list<vertex_t, edge_t>::avend(const vertex_t& u) { 
+inline typename adj_list<vertex_t, edge_t>::const_aviterator 
+adj_list<vertex_t, edge_t>::avend(const vertex_t& u) { 
+    /**
+     *  Complexity Gurantee: O(lg V)
+     */
+
     get_first<std::pair<vertex_t, edge_t>> trans;
     return boost::make_transform_iterator(alists[u].end(), trans);
 }
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aeiterator adj_list<vertex_t, edge_t>::aebegin(const vertex_t& u) {
+inline typename adj_list<vertex_t, edge_t>::const_aeiterator 
+adj_list<vertex_t, edge_t>::aebegin(const vertex_t& u) {
+    /** 
+     *  Complexity Gurantee: O(lg V)
+     */
     get_second<std::pair<vertex_t, edge_t>> trans;
     return boost::make_transform_iterator(alists[u].begin(), trans);
 }
@@ -218,21 +282,33 @@ inline typename adj_list<vertex_t, edge_t>::const_aeiterator adj_list<vertex_t, 
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aeiterator adj_list<vertex_t, edge_t>::aeend(const vertex_t& u) { 
+inline typename adj_list<vertex_t, edge_t>::const_aeiterator
+adj_list<vertex_t, edge_t>::aeend(const vertex_t& u) { 
+    /** 
+     *  Complexity Gurantee: O(lg V)
+     */
     get_second<std::pair<vertex_t, edge_t>> trans;
     return boost::make_transform_iterator(alists[u].end(), trans);
 }
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_eiterator adj_list<vertex_t, edge_t>::ebegin() {
+inline typename adj_list<vertex_t, edge_t>::const_eiterator 
+adj_list<vertex_t, edge_t>::ebegin() {
+    /**
+     *  Complexity Gurantee: O(1)
+     */
     return const_eiterator(*this);
 }
 
 
 
 template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_eiterator adj_list<vertex_t, edge_t>::eend() { 
+inline typename adj_list<vertex_t, edge_t>::const_eiterator 
+adj_list<vertex_t, edge_t>::eend() { 
+    /**
+     *  Complexity Gurantee: O(1)
+     */
     const_eiterator it(*this);
     it.vit = vend();
     return it;
