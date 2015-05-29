@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>Alglib: alglib/algorithms/order_statistic.h Source File</title>
+        <title>alglib: alglib/order_stat/order_statistic.h Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Alglib 0.0.1</a>
+                    <a class="navbar-brand">alglib 0.0.1</a>
                 </div>
             </div>
         </nav>
@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -87,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_9e64708614450ac5954aaf30570135df.html">algorithms</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_14bf631cbecc6dcfbdcaa126bd9c6868.html">order_stat</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,34 +96,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">order_statistic.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<a href="order__statistic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef _ORDER_STATISTIC_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define _ORDER_STATISTIC_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;alglib/algorithms/sort.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, <span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">    8</a></span>&#160;RandomAccessIter <a class="code" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a>(RandomAccessIter _first, RandomAccessIter _last, <span class="keywordtype">int</span> i) {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">if</span>(_last &lt;= _first)</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordflow">return</span> _last;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    RandomAccessIter pivot = randomized_partition(_first, _last);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    RandomAccessIter pivot = <a class="code" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a>(_first, _last);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> k = pivot - _first + 1;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span>(k == i)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> pivot;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i &lt; k)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> select_i(_first, pivot, i);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a>(_first, pivot, i);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> select_i(pivot + 1, _last, i - k);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a>(pivot + 1, _last, i - k);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="sort_8h_html_ab793044c7cf327241fe7290422e0d907"><div class="ttname"><a href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:80</div></div>
+<div class="ttc" id="order__statistic_8h_html_a2915fa2293730d0331094e6f3f8e408d"><div class="ttname"><a href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a></div><div class="ttdeci">RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i)</div><div class="ttdef"><b>Definition:</b> order_statistic.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -132,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 00:16:02 for Alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

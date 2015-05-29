@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>Alglib: alglib/containers/heap/heap.h Source File</title>
+        <title>alglib: alglib/heap/heap.h Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Alglib 0.0.1</a>
+                    <a class="navbar-brand">alglib 0.0.1</a>
                 </div>
             </div>
         </nav>
@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -87,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_7fd23ad090b4bde80e0748b3b42a56cf.html">containers</a></li><li class="navelem"><a class="el" href="dir_d2c6df7cf1ce5469fc8740cf028a3185.html">heap</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_2a9e99a494383dfb5a93b178b1a5d54e.html">heap</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">heap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="heap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * This file is part of the alglib project.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * (c) Divyanshu Kakwani &lt;divkakwani@gmail.com&gt;</span></div>
@@ -161,22 +162,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    BOOST_CONCEPT_ASSERT((boost::LessThanComparable&lt;key_t&gt;));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> insert(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a3a72875777085fbaa7b3639635603859">insert</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">/* get the root */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> elt_t&amp; get_min_elt() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> key_t&amp; get_min_key() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> elt_t&amp; <a class="code" href="classmin__heap.html#ae891bca9a2009b3b13f8316e17c3cf4f">get_min_elt</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> key_t&amp; <a class="code" href="classmin__heap.html#ae6bdbed68407d2fcd73a69eff2b2c5bb">get_min_key</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* remove the root */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> delete_min() = 0;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> replace(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#af54a5c911f44dddafb9bafe55d9a14f7">delete_min</a>() = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a561bbc95c3045f9bec6817556cd2e94a">replace</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">/* Inspection */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> size() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> empty() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classmin__heap.html#a1879392f7b11be7e69f4c4ac787746aa">size</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classmin__heap.html#aa4dc2f89a1ee8495d65f974efcca69c6">empty</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">/* Internal modification */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update_key(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a37227dcd88275133fceff58444852d70">update_key</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* return a new heap that is the merger of the heap h and *this. */</span></div>
@@ -185,7 +186,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // _HEAP_H</span></div>
+<div class="ttc" id="classmin__heap_html_ae891bca9a2009b3b13f8316e17c3cf4f"><div class="ttname"><a href="classmin__heap.html#ae891bca9a2009b3b13f8316e17c3cf4f">min_heap::get_min_elt</a></div><div class="ttdeci">virtual const elt_t &amp; get_min_elt() const  =0</div></div>
+<div class="ttc" id="classmin__heap_html_a37227dcd88275133fceff58444852d70"><div class="ttname"><a href="classmin__heap.html#a37227dcd88275133fceff58444852d70">min_heap::update_key</a></div><div class="ttdeci">virtual void update_key(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classmin__heap_html_a1879392f7b11be7e69f4c4ac787746aa"><div class="ttname"><a href="classmin__heap.html#a1879392f7b11be7e69f4c4ac787746aa">min_heap::size</a></div><div class="ttdeci">virtual int size() const  =0</div></div>
 <div class="ttc" id="classmin__heap_html"><div class="ttname"><a href="classmin__heap.html">min_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:62</div></div>
+<div class="ttc" id="classmin__heap_html_ae6bdbed68407d2fcd73a69eff2b2c5bb"><div class="ttname"><a href="classmin__heap.html#ae6bdbed68407d2fcd73a69eff2b2c5bb">min_heap::get_min_key</a></div><div class="ttdeci">virtual const key_t &amp; get_min_key() const  =0</div></div>
+<div class="ttc" id="classmin__heap_html_a561bbc95c3045f9bec6817556cd2e94a"><div class="ttname"><a href="classmin__heap.html#a561bbc95c3045f9bec6817556cd2e94a">min_heap::replace</a></div><div class="ttdeci">virtual void replace(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classmin__heap_html_aa4dc2f89a1ee8495d65f974efcca69c6"><div class="ttname"><a href="classmin__heap.html#aa4dc2f89a1ee8495d65f974efcca69c6">min_heap::empty</a></div><div class="ttdeci">virtual bool empty() const  =0</div></div>
+<div class="ttc" id="classmin__heap_html_a3a72875777085fbaa7b3639635603859"><div class="ttname"><a href="classmin__heap.html#a3a72875777085fbaa7b3639635603859">min_heap::insert</a></div><div class="ttdeci">virtual void insert(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classmin__heap_html_af54a5c911f44dddafb9bafe55d9a14f7"><div class="ttname"><a href="classmin__heap.html#af54a5c911f44dddafb9bafe55d9a14f7">min_heap::delete_min</a></div><div class="ttdeci">virtual void delete_min()=0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -195,7 +204,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 00:16:02 for Alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

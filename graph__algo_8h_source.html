@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>Alglib: alglib/algorithms/graph/graph_algo.h Source File</title>
+        <title>alglib: alglib/graph/graph_algo.h Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Alglib 0.0.1</a>
+                    <a class="navbar-brand">alglib 0.0.1</a>
                 </div>
             </div>
         </nav>
@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -87,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_9e64708614450ac5954aaf30570135df.html">algorithms</a></li><li class="navelem"><a class="el" href="dir_6d0ff1784d9e811e062d9b79fbde9b06.html">graph</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_f75a3bd253f8465ea2256a57fffd9d37.html">graph</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">graph_algo.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _GRAPH_ALGO_H</span></div>
+<a href="graph__algo_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _GRAPH_ALGO_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _GRAPH_ALGO_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../containers/graph.h&quot;</span></div>
@@ -116,12 +117,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OutputIter&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;OutputIter topological_sort(UndirectedGraph&amp; G, OutputIter dest) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="graph__algo_8h.html#a4ceb0357adcdd2d38c49fb06a01af1b0">   22</a></span>&#160;OutputIter <a class="code" href="graph__algo_8h.html#a4ceb0357adcdd2d38c49fb06a01af1b0">topological_sort</a>(UndirectedGraph&amp; G, OutputIter dest) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;OutputIter&gt;::value_type val_type;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::vector&lt;val_type&gt; postorder(G.no_of_vertices());</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    dfs_order(G, postorder.begin());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="search_8h.html#a07ce6099eccb570b3848442885d9b3e2">dfs_order</a>(G, postorder.begin());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> copy(postorder.rbegin(), postorder.rend(), dest);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
@@ -130,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OutputIter&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;OutputIter connected_components(UndirectedGraph&amp; G, OutputIter dest) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="graph__algo_8h.html#aad9db4c07a758d067608716ecec8eab2">   40</a></span>&#160;OutputIter <a class="code" href="graph__algo_8h.html#aad9db4c07a758d067608716ecec8eab2">connected_components</a>(UndirectedGraph&amp; G, OutputIter dest) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// dest must be an iterator to an associative container.</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// The output will be a mapping of a vertex to its componenet id (an int)</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
@@ -151,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; pvertex : pvertex_list) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">auto</span> prev_it = dfs_it;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span>(!visited[pvertex])</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            dfs(G, pvertex, visited, dfs_it);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="search_8h.html#a2e21c942607d06effbe6c03d2046e1f7">dfs</a>(G, pvertex, visited, dfs_it);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = prev_it; it != dfs_it; it++) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// somehow insert at the place where dest points</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
@@ -204,6 +205,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="graph__algo_8h_html_aad9db4c07a758d067608716ecec8eab2"><div class="ttname"><a href="graph__algo_8h.html#aad9db4c07a758d067608716ecec8eab2">connected_components</a></div><div class="ttdeci">OutputIter connected_components(UndirectedGraph &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> graph_algo.h:40</div></div>
+<div class="ttc" id="search_8h_html_a2e21c942607d06effbe6c03d2046e1f7"><div class="ttname"><a href="search_8h.html#a2e21c942607d06effbe6c03d2046e1f7">dfs</a></div><div class="ttdeci">void dfs(graph &amp;G, Vertex *start, std::unordered_map&lt; Vertex *, bool, graph::Hasher &gt; &amp;visited, OutputIterator dest)</div><div class="ttdef"><b>Definition:</b> search.h:44</div></div>
+<div class="ttc" id="search_8h_html_a07ce6099eccb570b3848442885d9b3e2"><div class="ttname"><a href="search_8h.html#a07ce6099eccb570b3848442885d9b3e2">dfs_order</a></div><div class="ttdeci">OutputIterator dfs_order(graph &amp;G, OutputIterator dest)</div><div class="ttdef"><b>Definition:</b> search.h:16</div></div>
+<div class="ttc" id="graph__algo_8h_html_a4ceb0357adcdd2d38c49fb06a01af1b0"><div class="ttname"><a href="graph__algo_8h.html#a4ceb0357adcdd2d38c49fb06a01af1b0">topological_sort</a></div><div class="ttdeci">OutputIter topological_sort(UndirectedGraph &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> graph_algo.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -213,7 +218,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 00:16:02 for Alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

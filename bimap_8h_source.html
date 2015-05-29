@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>Alglib: alglib/containers/bimap.h Source File</title>
+        <title>alglib: alglib/bimap/bimap.h Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Alglib 0.0.1</a>
+                    <a class="navbar-brand">alglib 0.0.1</a>
                 </div>
             </div>
         </nav>
@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -87,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_7fd23ad090b4bde80e0748b3b42a56cf.html">containers</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_60de339b473fc1c665924ed90508b031.html">bimap</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">bimap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<a href="bimap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef _BIMAP_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define _BIMAP_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
@@ -107,28 +108,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classbimap.html">bimap</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classbimap.html#a408ed58272b5327b4c61c1f0f57aacad">bimap</a>();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> insert(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classbimap.html#aacc4e999ff749046f413e1e8d9b1593e">insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> type2&amp; getimage(<span class="keyword">const</span> type1&amp; elt) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">const</span> type1&amp; getpreimage(<span class="keyword">const</span> type2&amp; elt) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">const</span> type2&amp; <a class="code" href="classbimap.html#a0a6f204c8dd2f4e724159660e3720561">getimage</a>(<span class="keyword">const</span> type1&amp; elt) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">const</span> type1&amp; <a class="code" href="classbimap.html#aa1066c4aaa7a3bf9f77188b3e7522e8f">getpreimage</a>(<span class="keyword">const</span> type2&amp; elt) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> type&gt;</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html">   21</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classbimap_1_1type__iterator.html">type_iterator</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// Iterators</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> type1begin() {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classbimap.html#af1a2f1868cab40ebb4a0fb8de9b84cd3">   24</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> <a class="code" href="classbimap.html#af1a2f1868cab40ebb4a0fb8de9b84cd3">type1begin</a>() {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a>(type1set.begin());</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> type1end() {</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classbimap.html#a7b3b28e0c32aa2ea5bd81fcbfe160218">   27</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> <a class="code" href="classbimap.html#a7b3b28e0c32aa2ea5bd81fcbfe160218">type1end</a>() {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a>(type1set.end());</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    type_iterator&lt;type2&gt; type2begin() {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordflow">return</span> type_iterator&lt;type2&gt;(type2set.begin());</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classbimap.html#a92a0f1f1430ce4a43ac722cd5bd7905d">   30</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a> <a class="code" href="classbimap.html#a92a0f1f1430ce4a43ac722cd5bd7905d">type2begin</a>() {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a>(type2set.begin());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    type_iterator&lt;type2&gt; type2end() {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">return</span> type_iterator&lt;type2&gt;(type2set.end());</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classbimap.html#a36fc5783ad0008accf191da4c65a6465">   33</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a> <a class="code" href="classbimap.html#a36fc5783ad0008accf191da4c65a6465">type2end</a>() {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a>(type2set.end());</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
@@ -144,12 +145,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="classbimap.html">bimap&lt;type1, type2&gt; :: bimap</a>() {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classbimap.html#a408ed58272b5327b4c61c1f0f57aacad">   50</a></span>&#160;<a class="code" href="classbimap.html#a408ed58272b5327b4c61c1f0f57aacad">bimap&lt;type1, type2&gt; :: bimap</a>() {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  dir_entries = 0;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classbimap.html">bimap&lt;type1, type2&gt; :: insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classbimap.html#aacc4e999ff749046f413e1e8d9b1593e">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classbimap.html#aacc4e999ff749046f413e1e8d9b1593e">bimap&lt;type1, type2&gt; :: insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// throw an exception if either elt1 or elt2 exists</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
@@ -162,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">const</span> type2&amp; <a class="code" href="classbimap.html">bimap&lt;type1, type2&gt; :: getimage</a>(<span class="keyword">const</span> type1&amp; elt)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classbimap.html#a0a6f204c8dd2f4e724159660e3720561">   68</a></span>&#160;<span class="keyword">const</span> type2&amp; <a class="code" href="classbimap.html#a0a6f204c8dd2f4e724159660e3720561">bimap&lt;type1, type2&gt; :: getimage</a>(<span class="keyword">const</span> type1&amp; elt)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">auto</span> it = type1set.find(elt);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span>(it == type1set.end())</div>
@@ -173,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">const</span> type1&amp; <a class="code" href="classbimap.html">bimap&lt;type1, type2&gt; :: getpreimage</a>(<span class="keyword">const</span> type2&amp; elt)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classbimap.html#aa1066c4aaa7a3bf9f77188b3e7522e8f">   79</a></span>&#160;<span class="keyword">const</span> type1&amp; <a class="code" href="classbimap.html#aa1066c4aaa7a3bf9f77188b3e7522e8f">bimap&lt;type1, type2&gt; :: getpreimage</a>(<span class="keyword">const</span> type2&amp; elt)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">auto</span> it = type2set.find(elt);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span>(it == type2set.end())</div>
@@ -191,23 +192,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    type_iterator(<span class="keyword">typename</span> std::map&lt;type, int&gt;::iterator it) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html#a46bd4efe17f45a6610f31f986aae6cf9">   97</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html#a46bd4efe17f45a6610f31f986aae6cf9">type_iterator</a>(<span class="keyword">typename</span> std::map&lt;type, int&gt;::iterator it) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      current = it;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">const</span> type&amp; operator*()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html#ad1889f42a62aecd58bb61273eddd8519">  101</a></span>&#160;    <span class="keyword">const</span> type&amp; <a class="code" href="classbimap_1_1type__iterator.html#ad1889f42a62aecd58bb61273eddd8519">operator*</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keywordflow">return</span> current-&gt;first;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">const</span> type&amp; operator++() {</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html#a89de921db40a5b10a2365aca81a1a37b">  104</a></span>&#160;    <span class="keyword">const</span> type&amp; <a class="code" href="classbimap_1_1type__iterator.html#a89de921db40a5b10a2365aca81a1a37b">operator++</a>() {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keyword">const</span> type&amp; ref = current-&gt;first;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      ++current;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordflow">return</span> ref;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    type_iterator&amp; operator=(type_iterator&lt;type&gt;&amp; other) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html#aadd2f7a6f23def87b9d81a2e05696ba4">  109</a></span>&#160;    <a class="code" href="classbimap_1_1type__iterator.html">type_iterator</a>&amp; <a class="code" href="classbimap_1_1type__iterator.html#aadd2f7a6f23def87b9d81a2e05696ba4">operator=</a>(<a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type&gt;</a>&amp; other) {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      current = other.current;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> operator!=(type_iterator&lt;type&gt; other) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classbimap_1_1type__iterator.html#a9ea6c4f0da5b2ab89777a49a3c2dcf4d">  113</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classbimap_1_1type__iterator.html#a9ea6c4f0da5b2ab89777a49a3c2dcf4d">operator!=</a>(<a class="code" href="classbimap_1_1type__iterator.html">type_iterator&lt;type&gt;</a> other) {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keywordflow">if</span>(current == other.current)</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -219,7 +220,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;};</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classbimap_1_1type__iterator_html_aadd2f7a6f23def87b9d81a2e05696ba4"><div class="ttname"><a href="classbimap_1_1type__iterator.html#aadd2f7a6f23def87b9d81a2e05696ba4">bimap::type_iterator::operator=</a></div><div class="ttdeci">type_iterator &amp; operator=(type_iterator&lt; type &gt; &amp;other)</div><div class="ttdef"><b>Definition:</b> bimap.h:109</div></div>
+<div class="ttc" id="classbimap_1_1type__iterator_html_ad1889f42a62aecd58bb61273eddd8519"><div class="ttname"><a href="classbimap_1_1type__iterator.html#ad1889f42a62aecd58bb61273eddd8519">bimap::type_iterator::operator*</a></div><div class="ttdeci">const type &amp; operator*() const </div><div class="ttdef"><b>Definition:</b> bimap.h:101</div></div>
+<div class="ttc" id="classbimap_html_aa1066c4aaa7a3bf9f77188b3e7522e8f"><div class="ttname"><a href="classbimap.html#aa1066c4aaa7a3bf9f77188b3e7522e8f">bimap::getpreimage</a></div><div class="ttdeci">const type1 &amp; getpreimage(const type2 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:79</div></div>
+<div class="ttc" id="classbimap_html_aacc4e999ff749046f413e1e8d9b1593e"><div class="ttname"><a href="classbimap.html#aacc4e999ff749046f413e1e8d9b1593e">bimap::insert</a></div><div class="ttdeci">void insert(const type1 &amp;elt1, const type2 &amp;elt2)</div><div class="ttdef"><b>Definition:</b> bimap.h:55</div></div>
+<div class="ttc" id="classbimap_html_a36fc5783ad0008accf191da4c65a6465"><div class="ttname"><a href="classbimap.html#a36fc5783ad0008accf191da4c65a6465">bimap::type2end</a></div><div class="ttdeci">type_iterator&lt; type2 &gt; type2end()</div><div class="ttdef"><b>Definition:</b> bimap.h:33</div></div>
+<div class="ttc" id="classbimap_1_1type__iterator_html_a9ea6c4f0da5b2ab89777a49a3c2dcf4d"><div class="ttname"><a href="classbimap_1_1type__iterator.html#a9ea6c4f0da5b2ab89777a49a3c2dcf4d">bimap::type_iterator::operator!=</a></div><div class="ttdeci">bool operator!=(type_iterator&lt; type &gt; other)</div><div class="ttdef"><b>Definition:</b> bimap.h:113</div></div>
+<div class="ttc" id="classbimap_1_1type__iterator_html_a46bd4efe17f45a6610f31f986aae6cf9"><div class="ttname"><a href="classbimap_1_1type__iterator.html#a46bd4efe17f45a6610f31f986aae6cf9">bimap::type_iterator::type_iterator</a></div><div class="ttdeci">type_iterator(typename std::map&lt; type, int &gt;::iterator it)</div><div class="ttdef"><b>Definition:</b> bimap.h:97</div></div>
+<div class="ttc" id="classbimap_html_a7b3b28e0c32aa2ea5bd81fcbfe160218"><div class="ttname"><a href="classbimap.html#a7b3b28e0c32aa2ea5bd81fcbfe160218">bimap::type1end</a></div><div class="ttdeci">type_iterator&lt; type1 &gt; type1end()</div><div class="ttdef"><b>Definition:</b> bimap.h:27</div></div>
+<div class="ttc" id="classbimap_1_1type__iterator_html_a89de921db40a5b10a2365aca81a1a37b"><div class="ttname"><a href="classbimap_1_1type__iterator.html#a89de921db40a5b10a2365aca81a1a37b">bimap::type_iterator::operator++</a></div><div class="ttdeci">const type &amp; operator++()</div><div class="ttdef"><b>Definition:</b> bimap.h:104</div></div>
+<div class="ttc" id="classbimap_html_a92a0f1f1430ce4a43ac722cd5bd7905d"><div class="ttname"><a href="classbimap.html#a92a0f1f1430ce4a43ac722cd5bd7905d">bimap::type2begin</a></div><div class="ttdeci">type_iterator&lt; type2 &gt; type2begin()</div><div class="ttdef"><b>Definition:</b> bimap.h:30</div></div>
+<div class="ttc" id="classbimap_html_a408ed58272b5327b4c61c1f0f57aacad"><div class="ttname"><a href="classbimap.html#a408ed58272b5327b4c61c1f0f57aacad">bimap::bimap</a></div><div class="ttdeci">bimap()</div><div class="ttdef"><b>Definition:</b> bimap.h:50</div></div>
+<div class="ttc" id="classbimap_html_a0a6f204c8dd2f4e724159660e3720561"><div class="ttname"><a href="classbimap.html#a0a6f204c8dd2f4e724159660e3720561">bimap::getimage</a></div><div class="ttdeci">const type2 &amp; getimage(const type1 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:68</div></div>
 <div class="ttc" id="classbimap_1_1type__iterator_html"><div class="ttname"><a href="classbimap_1_1type__iterator.html">bimap::type_iterator</a></div><div class="ttdef"><b>Definition:</b> bimap.h:21</div></div>
+<div class="ttc" id="classbimap_html_af1a2f1868cab40ebb4a0fb8de9b84cd3"><div class="ttname"><a href="classbimap.html#af1a2f1868cab40ebb4a0fb8de9b84cd3">bimap::type1begin</a></div><div class="ttdeci">type_iterator&lt; type1 &gt; type1begin()</div><div class="ttdef"><b>Definition:</b> bimap.h:24</div></div>
 <div class="ttc" id="classbimap_html"><div class="ttname"><a href="classbimap.html">bimap</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -230,7 +244,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 00:16:02 for Alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

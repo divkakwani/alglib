@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['min_5fheap',['min_heap',['../classmin__heap.html',1,'']]],
-  ['min_5fheap_3c_20elt_5ft_2c_20elt_5ft_20_3e',['min_heap&lt; elt_t, elt_t &gt;',['../classmin__heap.html',1,'']]]
+  ['heap_2eh',['heap.h',['../heap_8h.html',1,'']]],
+  ['horspool',['horspool',['../str__matching_8h.html#a66699a0ccf2b10e292393bcdafb47cef',1,'str_matching.h']]]
 ];
