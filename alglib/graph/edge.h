@@ -9,16 +9,16 @@
 
 #pragma once
 
-#include <type_traits>
+#include <iostream>
 
-template<typename vertex_t, typename attr_t>
+template<typename vertex_t, typename attr_t = void>
 struct edge_t {
               
     vertex_t from;
     vertex_t to;
     attr_t attribute;
 
-    edge_t(const vertex_t& u, const vertex_t& v, const vertex_t& attr) {
+    edge_t(const vertex_t& u, const vertex_t& v, const attr_t& attr) {
         from = u;
         to = v;
         attribute = attr;
@@ -58,4 +58,11 @@ edge_t<vertex_t, attr_t> make_edge(vertex_t from, vertex_t to,
     return edge_t<vertex_t, attr_t>(from, to, attribute);
 }
 
+// Specialization for types when the attribute is void
+template<typename vertex_t>
+struct edge_t<vertex_t, void> : public edge_t<vertex_t, int> {
+
+    edge_t(const vertex_t& u, const vertex_t v) : edge_t<vertex_t, int>(u, v, 1) {}
+
+};
 
