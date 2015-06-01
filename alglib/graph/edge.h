@@ -18,6 +18,8 @@ struct edge_t {
     vertex_t to;
     attr_t attribute;
 
+    edge_t() {}
+
     edge_t(const vertex_t& u, const vertex_t& v, const attr_t& attr) {
         from = u;
         to = v;
@@ -61,7 +63,8 @@ edge_t<vertex_t, attr_t> make_edge(vertex_t from, vertex_t to,
 // Specialization for types when the attribute is void
 template<typename vertex_t>
 struct edge_t<vertex_t, void> : public edge_t<vertex_t, int> {
-
+    
+    edge_t() {}
     edge_t(const vertex_t& u, const vertex_t v) : edge_t<vertex_t, int>(u, v, 1) {}
 
 };
