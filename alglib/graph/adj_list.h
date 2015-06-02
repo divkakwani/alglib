@@ -42,6 +42,9 @@ template<typename vertex_t, typename edge_t>
 class adj_list : public graph_model<vertex_t, edge_t> {
 
  public:
+
+    typedef vertex_t vertex_type;
+    typedef edge_t   edge_type;
     
     /// Returs true if the two given vertices are adjacent, otherwise false
     bool are_adj (const vertex_t&, const vertex_t&) const;
@@ -59,8 +62,11 @@ class adj_list : public graph_model<vertex_t, edge_t> {
     int num_edges () const;
     
  
+ private:
+    typedef std::map<vertex_t, edge_t> alist_t;
+    typedef std::map<vertex_t, alist_t> alists_t;
 
-    typedef std::map<vertex_t, edge_t> alist_t; 
+ public:
     
     /// Iterators
     typedef boost::transform_iterator<get_first<std::pair<vertex_t, alist_t>>,
@@ -75,6 +81,7 @@ class adj_list : public graph_model<vertex_t, edge_t> {
             const_aeiterator;
     
     class const_eiterator;
+    friend class const_iterator;
     
     /// Returns an iterator to the beg
     const_viterator vbegin();
@@ -99,7 +106,7 @@ inline void adj_list<vertex_t, edge_t>::add_vertex(const vertex_t& v) {
     /**
      *  If the vertex doesn't already exist, create a new entry in alists
      *  and initialize it with an empty alist.
-     *  Complexity: O(lg n)
+     *  Complexity: O(lg V)
      */
     if(alists.find(v) == alists.end())
         alists[v] = alist_t();
@@ -113,7 +120,7 @@ inline void adj_list<vertex_t, edge_t>::add_edge(const vertex_t& u,
     /**
      *  Add vertex u and v if they don't already exist. Then insert e into
      *  the adjacency list of u.
-     *  Complexity Gurantee: O(lg n)
+     *  Complexity Gurantee: O(lg V)
      */
     
     add_vertex(u);
@@ -127,7 +134,7 @@ inline void adj_list<vertex_t, edge_t>::add_edge(const edge_t& e) {
     /**
      *  Ensure that both e.from and e.to exist and then insert e into
      *  the adjacency list of e.from.
-     *  Complexity Gurantee: O(lg n)
+     *  Complexity Gurantee: O(lg V)
      */
     add_vertex(e.from);
     add_vertex(e.to);
@@ -172,7 +179,7 @@ inline int adj_list<vertex_t, edge_t>::indeg(const vertex_t& v) const {
     for(auto& entry : alists) {
         auto& alist = entry.second;
         if(alist.find(v) != alist.end())
-            deg++
+            deg++;
     }
     return deg;
 }
@@ -199,7 +206,7 @@ template<typename vertex_t, typename edge_t>
 inline int adj_list<vertex_t, edge_t>::num_edges() const {
     /**
      *  Sum the sizes of all the alists.
-     *  Complexity Gurantee: O(V lg V)
+     *  Complexity Gurantee: O(V)
      */
 
     int sum = 0;    
@@ -221,6 +228,7 @@ inline bool adj_list<vertex_t, edge_t>::are_adj(const vertex_t& u,
     return alists.at(u).find(v) != alists.at(u).end();
 }
 
+// Iterator-returning methods:
 
 template<typename vertex_t, typename edge_t>
 inline typename adj_list<vertex_t, edge_t>::const_viterator
@@ -310,7 +318,7 @@ adj_list<vertex_t, edge_t>::eend() {
      *  Complexity Gurantee: O(1)
      */
     const_eiterator it(*this);
-    it.vit = vend();
+    it.vit = alists.end();
     return it;
 }
 
@@ -319,9 +327,11 @@ template<typename vertex_t, typename edge_t>
 class adj_list<vertex_t, edge_t>::const_eiterator {
 
  private:
-    const_aeiterator aeit;
-    const_viterator  vit;
-    adj_list<vertex_t, edge_t>& object;
+    typename alist_t::iterator  ait;
+    typename alists_t::iterator vit;
+    adj_list<vertex_t, edge_t>& G;
+
+    typedef adj_list<vertex_t, edge_t> outer;
 
     friend class adj_list<vertex_t, edge_t>;
 
@@ -332,39 +342,59 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
 
  public:
     
-
-    const_eiterator(adj_list<vertex_t, edge_t>& obj) : object(obj) {
-        if(object.alists.size() != 0) {
-            vit = obj.vbegin();
-            aeit = obj.aebegin(*vit);
+    const_eiterator(adj_list<vertex_t, edge_t>& graph) : G(graph) {
+        if(G.alists.size() != 0) {
+            vit = G.alists.begin();
+            ait = (vit->second).begin();
         }
     }
 
-    const_eiterator(const const_eiterator& eit) : object(eit.object){
+    const_eiterator(const const_eiterator& eit) : G(eit.G){
         vit = eit.vit;
-        aeit = eit.aeit;
-
+        ait = eit.ait;
     }
 
-
-    void operator++() {
-        aeit++;
-        if(aeit == object.aeend(*vit)) {
+    // Prefix increment
+    const outer::edge_type& operator++() {
+        ait++;
+        while(vit != G.alists.end() and ait == (vit->second).end()) {
             vit++;
-            while(vit != object.vend() and object.aebegin(*vit) == object.aeend(*vit))
-                vit++;
-            aeit = object.aebegin(*vit);
+            ait = (vit->second).begin();
         }
-        //return *aeit;  // FIXME: set to previos aeit;
+        return ait->second;
+    }
+
+    // prefix decrement
+    const outer::edge_type& operator--() {
+        if(ait == (vit->second).begin()) {
+            while(vit != G.alists.begin() and (vit->second).begin() == (vit->second).end())
+                vit--;
+            ait = --((vit->second).end());
+        } else {
+            ait--;
+        }
+    }
+
+    // postfix increment
+    outer::edge_type operator++(int) {
+        outer::edge_type e = ait->second;
+        ++(*this);
+        return e;
+    }
+
+    // postfix decrement
+    outer::edge_type operator--(int) {
+        outer::edge_type e = ait->second;
+        --(*this);
+        return e;
     }
 
     const edge_t& operator*() {
-
-        return *aeit;
+        return ait->second;
     }
 
     bool operator==(const const_eiterator& other) const {
-        return (vit == other.vit && aeit == other.aeit) || (vit == other.vit && vit == object.vend());
+        return (vit == other.vit && ait == other.ait) || (vit == other.vit && vit == G.alists.end());
     } 
 
     bool operator!=(const const_eiterator& other) const {
@@ -376,8 +406,6 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
 
 template<typename vertex_t, typename edge_t>
 std::ostream& operator<<(std::ostream& out, typename adj_list<vertex_t, edge_t>::const_eiterator eit) {
- 
-        out << *(eit.aeit);
+        out << *(eit.ait).second;
         return out;
-
 }
