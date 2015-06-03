@@ -9,17 +9,20 @@
 
 #include <iostream>
 #include <map>
+#include <functional>
 #include <boost/iterator/transform_iterator.hpp>
 #include <alglib/graph/graph_model.h>
 
 #pragma once
+
 
 /**
  * \breif A functor that returns the first element of a pair
  *
  */
 template<typename T>
-struct get_first {
+struct get_first : public std::unary_function<const T&, const typename T::first_type&> {
+
     const typename T::first_type& operator() (const T& p) const { return p.first; }
 };
 
@@ -28,7 +31,7 @@ struct get_first {
  *
  */
 template<typename T>
-struct get_second {
+struct get_second : public std::unary_function<const T&, const typename T::second_type&> {
     const typename T::second_type& operator() (const T& p) const { return p.second; }
 };
 
@@ -82,17 +85,41 @@ class adj_list : public graph_model<vertex_t, edge_t> {
     
     class const_eiterator;
     friend class const_iterator;
-    
-    /// Returns an iterator to the beg
-    const_viterator vbegin();
-    const_viterator vend();
-    const_eiterator ebegin();
-    const_eiterator eend();
-    const_aviterator avbegin(const vertex_t& v);
-    const_aviterator avend(const vertex_t& v);
-    const_aeiterator aebegin(const vertex_t& v);
-    const_aeiterator aeend(const vertex_t& v);
 
+    get_first<std::pair<vertex_t, alist_t>> get_vertex;
+    get_second<std::pair<vertex_t, alist_t>> get_alist;
+
+    get_first<std::pair<vertex_t, edge_t>> get_avertex;
+    get_second<std::pair<vertex_t, edge_t>> get_aedge;
+    
+    
+    const_viterator vbegin() {
+        return boost::make_transform_iterator(alists.begin(),get_vertex);
+    }
+    const_viterator vend() {
+        return boost::make_transform_iterator(alists.end(), get_vertex);
+    }
+    const_eiterator ebegin() {
+        return const_eiterator(*this);
+    }
+    const_eiterator eend() {      
+        const_eiterator it(*this);
+        it.vit = alists.end();
+        return it;
+    }
+    const_aviterator avbegin(const vertex_t& u) { 
+        return boost::make_transform_iterator(alists[u].begin(), get_avertex);
+    }
+    const_aviterator avend(const vertex_t& u) {
+        return boost::make_transform_iterator(alists[u].end(), get_avertex);
+    }
+    
+    const_aeiterator aebegin(const vertex_t& u) {
+        return boost::make_transform_iterator(alists[u].begin(), get_aedge);
+    }
+    const_aeiterator aeend(const vertex_t& u) {
+        return boost::make_transform_iterator(alists[u].end(), get_aedge);
+    }
 
  private:
        
@@ -110,7 +137,6 @@ inline void adj_list<vertex_t, edge_t>::add_vertex(const vertex_t& v) {
      */
     if(alists.find(v) == alists.end())
         alists[v] = alist_t();
-
 }
 
 template<typename vertex_t, typename edge_t>
@@ -227,101 +253,6 @@ inline bool adj_list<vertex_t, edge_t>::are_adj(const vertex_t& u,
     
     return alists.at(u).find(v) != alists.at(u).end();
 }
-
-// Iterator-returning methods:
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_viterator
-adj_list<vertex_t, edge_t>::vbegin() {
-    /**
-     *  Using boost::transform_iterator, transform the map iterator to
-     *  look like an iterator to a sequential container holding vertices.
-     *  Complexity Gurantee: O(1)
-     */
-    get_first<std::pair<vertex_t, alist_t>> trans;
-    return boost::make_transform_iterator(alists.begin(), trans);
-}
-    
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_viterator 
-adj_list<vertex_t, edge_t>::vend() {
-    /**
-     *  Complexity Gurantee: O(1)
-     */
-    get_first<std::pair<vertex_t, alist_t>> trans;
-    return boost::make_transform_iterator(alists.end(), trans);
-}
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aviterator 
-adj_list<vertex_t, edge_t>::avbegin(const vertex_t& u) {
-    /**
-     *  Complexity Gurantee: O(lg V)
-     */
-    get_first<std::pair<vertex_t, edge_t>> trans;
-    return boost::make_transform_iterator(alists[u].begin(), trans);
-}
-
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aviterator 
-adj_list<vertex_t, edge_t>::avend(const vertex_t& u) { 
-    /**
-     *  Complexity Gurantee: O(lg V)
-     */
-
-    get_first<std::pair<vertex_t, edge_t>> trans;
-    return boost::make_transform_iterator(alists[u].end(), trans);
-}
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aeiterator 
-adj_list<vertex_t, edge_t>::aebegin(const vertex_t& u) {
-    /** 
-     *  Complexity Gurantee: O(lg V)
-     */
-    get_second<std::pair<vertex_t, edge_t>> trans;
-    return boost::make_transform_iterator(alists[u].begin(), trans);
-}
-
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_aeiterator
-adj_list<vertex_t, edge_t>::aeend(const vertex_t& u) { 
-    /** 
-     *  Complexity Gurantee: O(lg V)
-     */
-    get_second<std::pair<vertex_t, edge_t>> trans;
-    return boost::make_transform_iterator(alists[u].end(), trans);
-}
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_eiterator 
-adj_list<vertex_t, edge_t>::ebegin() {
-    /**
-     *  Complexity Gurantee: O(1)
-     */
-    return const_eiterator(*this);
-}
-
-
-
-template<typename vertex_t, typename edge_t>
-inline typename adj_list<vertex_t, edge_t>::const_eiterator 
-adj_list<vertex_t, edge_t>::eend() { 
-    /**
-     *  Complexity Gurantee: O(1)
-     */
-    const_eiterator it(*this);
-    it.vit = alists.end();
-    return it;
-}
-
 
 template<typename vertex_t, typename edge_t>
 class adj_list<vertex_t, edge_t>::const_eiterator {
