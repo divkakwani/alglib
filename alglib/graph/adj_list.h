@@ -21,9 +21,9 @@
  *
  */
 template<typename T>
-struct get_first : public std::unary_function<const T&, const typename T::first_type&> {
-
-    const typename T::first_type& operator() (const T& p) const { return p.first; }
+struct get_first : public std::unary_function<T, typename T::first_type> {
+    
+    typename T::first_type operator() (const T& p) const  { return p.first; }
 };
 
 /**
@@ -31,8 +31,9 @@ struct get_first : public std::unary_function<const T&, const typename T::first_
  *
  */
 template<typename T>
-struct get_second : public std::unary_function<const T&, const typename T::second_type&> {
-    const typename T::second_type& operator() (const T& p) const { return p.second; }
+struct get_second : public std::unary_function<T, typename T::second_type> {
+
+    typename T::second_type operator() (const T& p) const { return p.second; }
 };
 
 
@@ -91,10 +92,9 @@ class adj_list : public graph_model<vertex_t, edge_t> {
 
     get_first<std::pair<vertex_t, edge_t>> get_avertex;
     get_second<std::pair<vertex_t, edge_t>> get_aedge;
-    
-    
+   
     const_viterator vbegin() {
-        return boost::make_transform_iterator(alists.begin(),get_vertex);
+        return boost::make_transform_iterator(alists.begin(), get_vertex);
     }
     const_viterator vend() {
         return boost::make_transform_iterator(alists.end(), get_vertex);
@@ -267,7 +267,8 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     friend class adj_list<vertex_t, edge_t>;
 
     template<typename t1, typename t2>
-    friend std::ostream& operator<<(std::ostream& out, typename adj_list<t1, t2>::const_eiterator cit);
+    friend std::ostream& operator<<(std::ostream& out,
+                                    typename adj_list<t1, t2>::const_eiterator cit);
 
     const_eiterator() { }
 
@@ -325,7 +326,8 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     }
 
     bool operator==(const const_eiterator& other) const {
-        return (vit == other.vit && ait == other.ait) || (vit == other.vit && vit == G.alists.end());
+        return (vit == other.vit && ait == other.ait) || 
+               (vit == other.vit && vit == G.alists.end());
     } 
 
     bool operator!=(const const_eiterator& other) const {
@@ -336,7 +338,8 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
 
 
 template<typename vertex_t, typename edge_t>
-std::ostream& operator<<(std::ostream& out, typename adj_list<vertex_t, edge_t>::const_eiterator eit) {
+std::ostream& operator<<(std::ostream& out, 
+                         typename adj_list<vertex_t, edge_t>::const_eiterator eit) {
         out << *(eit.ait).second;
         return out;
 }
