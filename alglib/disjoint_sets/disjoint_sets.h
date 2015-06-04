@@ -1,58 +1,84 @@
 #include <iostream>
 #include <map>
 
-using namespace std;
-/*
+#pragma once
+/**
 	Operations on a disjoint set data structure
-		union
+        union_set
 		find_set
 		make_set
-		
+	    same_set	
+        set_count
+        set_size
 */
 
 
 template<typename elt_type>
 class disjoint_sets {
+
+ private:
+    std::vector<int> parent;
+
+    /* Translate to int */
+    std::map<elt_type, int> eltid;
 	
-	private:
-		map<int, int> parent;
+    /* Number of elements in the disjoint set */
+    int elts;
 
-		/* Translate to int */
-		map<elt_type, int> eltid;
-		map<int, elt_type> inv_eltid;
-
-		int elts;
-
-	public:
-		disjoint_sets() : elts(0) {}
-		void unite(elt_type e1, elt_type e2);
-		int find_set(elt_type e);
-		void make_set(elt_type e);
+ public:
+    disjoint_sets() : elts(0) {}
+	void union_set(const elt_type& e1, const elt_type& e2);
+	int find_set(const elt_type& e);
+    int find_set_by_id(int id);
+	void make_set(const elt_type& e);
+    bool same_set(const elt_type& e1, const elt_type& e2);
+    int set_count();
+    int set_size(const elt_type& e);
 };
 
-template<typename elt_type>
-void disjoint_sets<elt_type>::make_set(elt_type e) {
+tempate <typename elt_type>
+int disjoint_set<elt_type>::find_set_by_id(int id) {
 
-	inv_eltid[elts] = e;
+    if (id == parent[id])
+        return id;
+
+    return parent[id] = find_set_by_id(parent[id]);     // Path compression
+}
+
+template <typename elt_type>
+void disjoint_sets<elt_type>::make_set(const elt_type& e) {
+
 	eltid[e] = elts;
 	parent[elts] = elts;
-	++elts;
-	
+	++elts;	
 }
 
-template<typename elt_type>
-int disjoint_sets<elt_type>::find_set(elt_type e) {
-	int id = eltid[e];
-	while(id != parent[id])
-		id = parent[id];
-	return id;
+template <typename elt_type>
+int disjoint_sets<elt_type>::find_set(const elt_type& e) {
+
+	return find_set_by_id(eltid[e]);
 }
 
-template<typename elt_type>
-void disjoint_sets<elt_type>::unite(elt_type e1, elt_type e2) {
+template <typename elt_type>
+void disjoint_sets<elt_type>::union_set(const elt_type& e1, const elt_type& e2) {
+
 	int repr_id1 = find_set(e1);
 	int repr_id2 = find_set(e2);
 	parent[repr_id1] = repr_id2;
 }
 
+template <typename elt_type>
+bool disjoint_set<elt_type>::same_set(const elt_type& e1, const elt_type& e2) {
+    
+    return find_set(eltid[e1]) == find_set(eltid[e2]);
+}
 
+template <typename elt_type>
+int disjoint_set<elt_type>::set_count() {
+    
+}
+
+template <typename elt_type>
+int disjoint_set<elt_type>::set_count() {
+
+}
