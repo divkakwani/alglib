@@ -26,9 +26,16 @@ class directed_graph : public model<vertex_t, edge_t<vertex_t, attr_t>> {
 };
 
 
-/*
 template<typename vertex_t,
          template<typename, typename> class model>
- class directed_graph<vertex_t, void, model> : public
+class directed_graph<vertex_t, void, model> : public model<vertex_t, edge_t<vertex_t>> {
 
- */
+ public:    
+    typedef edge_t<vertex_t, void> edge_type;
+    
+    void add_edge(const vertex_t& u, const vertex_t& v) {
+        model<vertex_t, edge_type>::add_edge(u, v, edge_type(u, v));
+    }
+
+};
+
