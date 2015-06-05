@@ -15,11 +15,14 @@
 #include <vector>
 #include <algorithm>
 #include <map>
-#include <alglib/containers/heap/heap.h>
+#include <alglib/heap/heap.h>
+
+
+namespace alglib {
+namespace heap {
+
 
 // TODO(divkakwani): Convert to rvalue-references
-
-
 
 template<typename elt_t, typename key_t>
 class binary_heap : public min_heap<elt_t, key_t> {
@@ -225,6 +228,7 @@ class unkeyed_binary_heap {
     bool empty() const { return heap.empty(); }
 };
 
-
+}  // end heap namespace
+}  // end alglib namespace
 
 #endif  // _BINARY_HEAP_H

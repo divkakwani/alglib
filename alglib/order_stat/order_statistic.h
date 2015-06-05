@@ -2,7 +2,11 @@
 #ifndef _ORDER_STATISTIC_H
 #define _ORDER_STATISTIC_H
 
-#include <alglib/algorithms/sort.h>
+#include <alglib/sort/sort.h>
+
+namespace alglib {
+namespace order_stat {
+
 
 template<typename RandomAccessIter>
 RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i) {
@@ -23,6 +27,7 @@ RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i
 		return select_i(pivot + 1, _last, i - k);
 }
 
-
+}  // end of order_stat namespace
+}  // end of alglib namespace
 
 #endif

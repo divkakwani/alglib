@@ -6,25 +6,29 @@
 #include <thread>
 #include <vector>
 
+namespace alglib {
+namespace mutithreaded {
 
 template<typename RandomAccessIter>
-void merge_sort(RandomAccessIter _first, RandomAccessIter _last) {
-	int sz = _last - _first;
+void merge_sort(RandomAccessIter first, RandomAccessIter last) {
+	int sz = last - first;
 	if(sz > 1) {
 
-		// Left subarray
-		std::vector<typename RandomAccessIter::value_type> subarr1(_first, _first + sz / 2);
+		// Left subarray - spawn a thread for it
+		std::vector<typename RandomAccessIter::value_type> subarr1(first, first + sz / 2);
 		std::thread left(merge_sort<RandomAccessIter>, subarr1.begin(), subarr1.end());
 
 		// Right subarray
-		std::vector<typename RandomAccessIter::value_type> subarr2(_first + sz / 2, _last);
-		std::thread right(merge_sort<RandomAccessIter>, subarr2.begin(), subarr2.end());
+		std::vector<typename RandomAccessIter::value_type> subarr2(first + sz / 2, last);
+		merge_sort<RandomAccessIter>(subarr2.begin(), subarr2.end());
 
 		left.join();
-		right.join();
 
-		std::merge(subarr1.begin(), subarr1.end(), subarr2.begin(), subarr2.end(), _first);
+		std::merge(subarr1.begin(), subarr1.end(), subarr2.begin(), subarr2.end(), first);
 	}
 }
+
+}  // end of multithreaded namespace
+}  // end of alglib namespace
 
 #endif

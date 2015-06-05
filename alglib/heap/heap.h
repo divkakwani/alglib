@@ -13,7 +13,10 @@
 #include <boost/concept_check.hpp>
 #include <functional>
 
-/*
+namespace alglib {
+namespace heap {
+
+/**
  *  Abstract class for a heap
  *  Any heap must conform to this interface
  *
@@ -85,6 +88,9 @@ class min_heap {
     /* return a new heap that is the merger of the heap h and *this. */
     // min_heap<elt_t, Compare> merge_heaps(const min_heap<elt_t, Compare>& h);
 };
+
+}  // end heap namespace
+}  // end alglib namespace
 
 
 #endif // _HEAP_H

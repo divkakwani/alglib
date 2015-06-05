@@ -5,6 +5,11 @@
 #include <map>
 #include <vector>
 
+namespace alglib {
+
+namespace bimap {
+
+
 template<typename type1, typename type2>
 class bimap {
 
@@ -120,5 +125,9 @@ class bimap<type1, type2> :: type_iterator {
     typename std::map<type, int>::iterator current;
 
 };
+
+
+}  // end bimap namespace
+}  // end alglib namespace
 
 #endif

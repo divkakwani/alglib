@@ -10,8 +10,7 @@
 #include <iostream>
 using namespace std;
 
-
-/*
+/**
 
   * String matching algorithms covered :
   *  Naive
@@ -21,6 +20,9 @@ using namespace std;
   *  Horspool's algorithm
 
 */
+
+namespace alglib {
+namespace string {
 
 size_t naive_str_matching(const std::string& text, const std::string& pattern) {
 	/**
@@ -151,3 +153,7 @@ size_t kmp(const std::string& text, const std::string& pattern) {
 
 }
 
+
+
+}  // end string namespace
+}  // end alglib namespace
