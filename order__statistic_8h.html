@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -93,75 +94,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">order_statistic.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;alglib/algorithms/sort.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="sort_8h_source.html">alglib/sort/sort.h</a>&gt;</code><br />
 </div>
 <p><a href="order__statistic_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacealglib"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib.html">alglib</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacealglib_1_1order__stat"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1order__stat.html">alglib::order_stat</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2915fa2293730d0331094e6f3f8e408d"><td class="memTemplParams" colspan="2">template&lt;typename RandomAccessIter &gt; </td></tr>
-<tr class="memitem:a2915fa2293730d0331094e6f3f8e408d"><td class="memTemplItemLeft" align="right" valign="top">RandomAccessIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a> (RandomAccessIter _first, RandomAccessIter _last, int i)</td></tr>
-<tr class="separator:a2915fa2293730d0331094e6f3f8e408d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae58877fc007fadf1a6a8913c653003b5"><td class="memTemplParams" colspan="2">template&lt;typename RandomAccessIter &gt; </td></tr>
+<tr class="memitem:ae58877fc007fadf1a6a8913c653003b5"><td class="memTemplItemLeft" align="right" valign="top">RandomAccessIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1order__stat.html#ae58877fc007fadf1a6a8913c653003b5">alglib::order_stat::select_i</a> (RandomAccessIter _first, RandomAccessIter _last, int i)</td></tr>
+<tr class="separator:ae58877fc007fadf1a6a8913c653003b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a2915fa2293730d0331094e6f3f8e408d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename RandomAccessIter &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">RandomAccessIter select_i </td>
-          <td>(</td>
-          <td class="paramtype">RandomAccessIter&#160;</td>
-          <td class="paramname"><em>_first</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">RandomAccessIter&#160;</td>
-          <td class="paramname"><em>_last</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>i</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                                                                  {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">if</span>(_last &lt;= _first)</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordflow">return</span> _last;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    RandomAccessIter pivot = <a class="code" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a>(_first, _last);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> k = pivot - _first + 1;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span>(k == i)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> pivot;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i &lt; k)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a>(_first, pivot, i);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a>(pivot + 1, _last, i - k);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="ttc" id="sort_8h_html_ab793044c7cf327241fe7290422e0d907"><div class="ttname"><a href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:80</div></div>
-<div class="ttc" id="order__statistic_8h_html_a2915fa2293730d0331094e6f3f8e408d"><div class="ttname"><a href="order__statistic_8h.html#a2915fa2293730d0331094e6f3f8e408d">select_i</a></div><div class="ttdeci">RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i)</div><div class="ttdef"><b>Definition:</b> order_statistic.h:8</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -171,7 +126,7 @@ template&lt;typename RandomAccessIter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

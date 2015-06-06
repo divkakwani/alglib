@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['undirected_5fgraph',['undirected_graph',['../classundirected__graph.html',1,'']]],
-  ['unkeyed_5fbinary_5fheap',['unkeyed_binary_heap',['../classunkeyed__binary__heap.html',1,'']]]
+  ['tree',['Tree',['../structTree.html',1,'']]],
+  ['tree_5fmodel',['tree_model',['../classtree__model.html',1,'']]],
+  ['type_5fiterator',['type_iterator',['../classalglib_1_1bimap_1_1bimap_1_1type__iterator.html',1,'alglib::bimap::bimap']]]
 ];

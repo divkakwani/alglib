@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -94,6 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classadj__list-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">adj_list&lt; vertex_t, edge_t &gt; Class Template Reference</div>  </div>
@@ -118,9 +120,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0935abdd082014ae5f80afb5a86a6eac"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a></td></tr>
-<tr class="separator:a0935abdd082014ae5f80afb5a86a6eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae21037390546abb0d910db024e0e6560"><td class="memItemLeft" align="right" valign="top">typedef boost::transform_iterator&lt; <a class="el" href="structget__first.html">get_first</a>&lt; std::pair&lt; vertex_t, <a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a> &gt; &gt;, typename std::map&lt; vertex_t, <a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a> &gt;::iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a></td></tr>
+<tr class="memitem:a0f2767e2dc3b9cdbdb3c361f43d7842d"><td class="memItemLeft" align="right" valign="top">typedef vertex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a0f2767e2dc3b9cdbdb3c361f43d7842d">vertex_type</a></td></tr>
+<tr class="separator:a0f2767e2dc3b9cdbdb3c361f43d7842d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae571b52d105fa83ea9f82258444e14b0"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structedge__t.html">edge_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ae571b52d105fa83ea9f82258444e14b0">edge_type</a></td></tr>
+<tr class="separator:ae571b52d105fa83ea9f82258444e14b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae21037390546abb0d910db024e0e6560"><td class="memItemLeft" align="right" valign="top">typedef boost::transform_iterator&lt; <a class="el" href="structget__first.html">get_first</a>&lt; std::pair&lt; vertex_t, alist_t &gt; &gt;, typename std::map&lt; vertex_t, alist_t &gt;::iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a></td></tr>
 <tr class="memdesc:ae21037390546abb0d910db024e0e6560"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterators.  <a href="#ae21037390546abb0d910db024e0e6560">More...</a><br /></td></tr>
 <tr class="separator:ae21037390546abb0d910db024e0e6560"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1f51687317638b0c551806a8f89837b"><td class="memItemLeft" align="right" valign="top">typedef boost::transform_iterator&lt; <a class="el" href="structget__first.html">get_first</a>&lt; std::pair&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt; &gt;, typename std::map&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a></td></tr>
@@ -151,23 +155,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4f4503c399333ffdd2846eced28c6739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bea35632a136d5da6967a9dd854b2ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a2bea35632a136d5da6967a9dd854b2ca">num_edges</a> () const </td></tr>
 <tr class="separator:a2bea35632a136d5da6967a9dd854b2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae32905002325e656ccc3e46d70b87d74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ae32905002325e656ccc3e46d70b87d74">vbegin</a> ()</td></tr>
-<tr class="memdesc:ae32905002325e656ccc3e46d70b87d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator to the beg.  <a href="#ae32905002325e656ccc3e46d70b87d74">More...</a><br /></td></tr>
-<tr class="separator:ae32905002325e656ccc3e46d70b87d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7a8862664fc6a37f1855a8f4fd75b83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ab7a8862664fc6a37f1855a8f4fd75b83">vend</a> ()</td></tr>
-<tr class="separator:ab7a8862664fc6a37f1855a8f4fd75b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a820c4c7a9fafe85681c8e3769b9fb459"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a820c4c7a9fafe85681c8e3769b9fb459">ebegin</a> ()</td></tr>
-<tr class="separator:a820c4c7a9fafe85681c8e3769b9fb459"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f50415f52dade9603bb96136c25b1ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a8f50415f52dade9603bb96136c25b1ce">eend</a> ()</td></tr>
-<tr class="separator:a8f50415f52dade9603bb96136c25b1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcf49c4c1c34ae327f86d434a30e7fdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#adcf49c4c1c34ae327f86d434a30e7fdc">avbegin</a> (const vertex_t &amp;v)</td></tr>
-<tr class="separator:adcf49c4c1c34ae327f86d434a30e7fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74404baf9eb77ca0773dc2c2a339bf19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a74404baf9eb77ca0773dc2c2a339bf19">avend</a> (const vertex_t &amp;v)</td></tr>
-<tr class="separator:a74404baf9eb77ca0773dc2c2a339bf19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17bf8a3d86c292af40cbabd30660e0c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a17bf8a3d86c292af40cbabd30660e0c1">aebegin</a> (const vertex_t &amp;v)</td></tr>
-<tr class="separator:a17bf8a3d86c292af40cbabd30660e0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d21c95b1fd9be91f580bab87467afbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a7d21c95b1fd9be91f580bab87467afbc">aeend</a> (const vertex_t &amp;v)</td></tr>
-<tr class="separator:a7d21c95b1fd9be91f580bab87467afbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3d79ef725014206b4919df33116ff9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a5f3d79ef725014206b4919df33116ff9">vbegin</a> ()</td></tr>
+<tr class="separator:a5f3d79ef725014206b4919df33116ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a479ae0cbf044b2c9887412f87c6e9209"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a479ae0cbf044b2c9887412f87c6e9209">vend</a> ()</td></tr>
+<tr class="separator:a479ae0cbf044b2c9887412f87c6e9209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bacc0c58be60294cca53ce0c4482b42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a7bacc0c58be60294cca53ce0c4482b42">ebegin</a> ()</td></tr>
+<tr class="separator:a7bacc0c58be60294cca53ce0c4482b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40703b94489443c45f427de0d24cf578"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a40703b94489443c45f427de0d24cf578">eend</a> ()</td></tr>
+<tr class="separator:a40703b94489443c45f427de0d24cf578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345cec6294e2a9721f6724c71c716d50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a345cec6294e2a9721f6724c71c716d50">avbegin</a> (const vertex_t &amp;u)</td></tr>
+<tr class="separator:a345cec6294e2a9721f6724c71c716d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75c7e8dbfc40a083b5bec561bea53b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ad75c7e8dbfc40a083b5bec561bea53b7">avend</a> (const vertex_t &amp;u)</td></tr>
+<tr class="separator:ad75c7e8dbfc40a083b5bec561bea53b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396df39fd3f8ede5deede246a2871a65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a396df39fd3f8ede5deede246a2871a65">aebegin</a> (const vertex_t &amp;u)</td></tr>
+<tr class="separator:a396df39fd3f8ede5deede246a2871a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c67911a13d4d800bd67fffe54fe4c76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#a7c67911a13d4d800bd67fffe54fe4c76">aeend</a> (const vertex_t &amp;u)</td></tr>
+<tr class="separator:a7c67911a13d4d800bd67fffe54fe4c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ac220ce1c155db1ac44146c12d178056f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html#ac220ce1c155db1ac44146c12d178056f">const_iterator</a></td></tr>
+<tr class="separator:ac220ce1c155db1ac44146c12d178056f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename vertex_t, typename edge_t&gt;<br />
@@ -175,20 +183,6 @@ class adj_list&lt; vertex_t, edge_t &gt;</h3>
 
 <p>A 'model' of a graph </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a0935abdd082014ae5f80afb5a86a6eac"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_t, typename edge_t&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::map&lt;vertex_t, <a class="el" href="structedge__t.html">edge_t</a>&gt; <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="af0d6302af296fec48d94c719282e6d90"></a>
 <div class="memitem">
 <div class="memproto">
@@ -224,12 +218,40 @@ template&lt;typename vertex_t, typename edge_t&gt; </div>
 template&lt;typename vertex_t, typename edge_t&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="structget__first.html">get_first</a>&lt;std::pair&lt;vertex_t, <a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a>&gt; &gt;, typename std::map&lt;vertex_t, <a class="el" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a>&gt;::iterator&gt; <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a></td>
+          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="structget__first.html">get_first</a>&lt;std::pair&lt;vertex_t, alist_t&gt; &gt;, typename std::map&lt;vertex_t, alist_t&gt;::iterator&gt; <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Iterators. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae571b52d105fa83ea9f82258444e14b0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t, typename edge_t&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structedge__t.html">edge_t</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae571b52d105fa83ea9f82258444e14b0">edge_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0f2767e2dc3b9cdbdb3c361f43d7842d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t, typename edge_t&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef vertex_t <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#a0f2767e2dc3b9cdbdb3c361f43d7842d">vertex_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -273,16 +295,16 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Add vertex u and v if they don't already exist. Then insert e into the adjacency list of u. Complexity Gurantee: O(lg n)</p>
+<p>Add vertex u and v if they don't already exist. Then insert e into the adjacency list of u. Complexity Gurantee: O(lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a98fcdf23d8c48c173c9f4d9415d948d4">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                                  {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(u);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(v);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    alists[u][v] = e;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
-<div class="ttc" id="classadj__list_html_afd5087b5da32ecccdb6632bfd06b4a57"><div class="ttname"><a href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">adj_list::add_vertex</a></div><div class="ttdeci">void add_vertex(const vertex_t &amp;v)</div><div class="ttdef"><b>Definition:</b> adj_list.h:98</div></div>
+<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(u);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(v);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    alists[u][v] = e;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<div class="ttc" id="classadj__list_html_afd5087b5da32ecccdb6632bfd06b4a57"><div class="ttname"><a href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">adj_list::add_vertex</a></div><div class="ttdeci">void add_vertex(const vertex_t &amp;v)</div><div class="ttdef"><b>Definition:</b> adj_list.h:132</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,18 +331,18 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Ensure that both e.from and e.to exist and then insert e into the adjacency list of e.from. Complexity Gurantee: O(lg n)</p>
+<p>Ensure that both e.from and e.to exist and then insert e into the adjacency list of e.from. Complexity Gurantee: O(lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a40b8e28c40b2d94ffd047f043930fbb5">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                                {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(e.<a class="code" href="structedge__t.html#a8360d1329de6686f66140ae7dd0c85df">from</a>);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(e.<a class="code" href="structedge__t.html#a444ec2f7c90fdb696834e44c061bb8c9">to</a>);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    alists[e.<a class="code" href="structedge__t.html#a8360d1329de6686f66140ae7dd0c85df">from</a>][e.<a class="code" href="structedge__t.html#a444ec2f7c90fdb696834e44c061bb8c9">to</a>] = e;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
-<div class="ttc" id="structedge__t_html_a8360d1329de6686f66140ae7dd0c85df"><div class="ttname"><a href="structedge__t.html#a8360d1329de6686f66140ae7dd0c85df">edge_t::from</a></div><div class="ttdeci">vertex_t from</div><div class="ttdef"><b>Definition:</b> edge.h:17</div></div>
-<div class="ttc" id="classadj__list_html_afd5087b5da32ecccdb6632bfd06b4a57"><div class="ttname"><a href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">adj_list::add_vertex</a></div><div class="ttdeci">void add_vertex(const vertex_t &amp;v)</div><div class="ttdef"><b>Definition:</b> adj_list.h:98</div></div>
-<div class="ttc" id="structedge__t_html_a444ec2f7c90fdb696834e44c061bb8c9"><div class="ttname"><a href="structedge__t.html#a444ec2f7c90fdb696834e44c061bb8c9">edge_t::to</a></div><div class="ttdeci">vertex_t to</div><div class="ttdef"><b>Definition:</b> edge.h:18</div></div>
+<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                                                {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(e.<a class="code" href="structedge__t.html#a964e11a5c3d2f63c26d460c6d4dcca4e">from</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">add_vertex</a>(e.<a class="code" href="structedge__t.html#a6d5759c00591f2f72a713458d55731dc">to</a>);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    alists[e.<a class="code" href="structedge__t.html#a964e11a5c3d2f63c26d460c6d4dcca4e">from</a>][e.<a class="code" href="structedge__t.html#a6d5759c00591f2f72a713458d55731dc">to</a>] = e;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="ttc" id="structedge__t_html_a6d5759c00591f2f72a713458d55731dc"><div class="ttname"><a href="structedge__t.html#a6d5759c00591f2f72a713458d55731dc">edge_t::to</a></div><div class="ttdeci">vertex_t to</div><div class="ttdef"><b>Definition:</b> edge.h:18</div></div>
+<div class="ttc" id="classadj__list_html_afd5087b5da32ecccdb6632bfd06b4a57"><div class="ttname"><a href="classadj__list.html#afd5087b5da32ecccdb6632bfd06b4a57">adj_list::add_vertex</a></div><div class="ttdeci">void add_vertex(const vertex_t &amp;v)</div><div class="ttdef"><b>Definition:</b> adj_list.h:132</div></div>
+<div class="ttc" id="structedge__t_html_a964e11a5c3d2f63c26d460c6d4dcca4e"><div class="ttname"><a href="structedge__t.html#a964e11a5c3d2f63c26d460c6d4dcca4e">edge_t::from</a></div><div class="ttdeci">vertex_t from</div><div class="ttdef"><b>Definition:</b> edge.h:17</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -347,32 +369,30 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>If the vertex doesn't already exist, create a new entry in alists and initialize it with an empty alist. Complexity: O(lg n)</p>
+<p>If the vertex doesn't already exist, create a new entry in alists and initialize it with an empty alist. Complexity: O(lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#ad26c6bcb7d3a4a2906b4a327cbc289b3">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span>(alists.find(v) == alists.end())</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        alists[v] = <a class="code" href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">alist_t</a>();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="ttc" id="classadj__list_html_a0935abdd082014ae5f80afb5a86a6eac"><div class="ttname"><a href="classadj__list.html#a0935abdd082014ae5f80afb5a86a6eac">adj_list::alist_t</a></div><div class="ttdeci">std::map&lt; vertex_t, edge_t &gt; alist_t</div><div class="ttdef"><b>Definition:</b> adj_list.h:63</div></div>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">if</span>(alists.find(v) == alists.end())</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        alists[v] = alist_t();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a17bf8a3d86c292af40cbabd30660e0c1"></a>
+<a class="anchor" id="a396df39fd3f8ede5deede246a2871a65"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::aebegin </td>
+          <td class="memname"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::aebegin </td>
           <td>(</td>
           <td class="paramtype">const vertex_t &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -382,29 +402,26 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(lg V)</p>
-<div class="fragment"><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                                     {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="structget__second.html">get_second&lt;std::pair&lt;vertex_t, edge_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].begin(), trans);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
-<div class="ttc" id="structget__second_html"><div class="ttname"><a href="structget__second.html">get_second</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:31</div></div>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].begin(), get_aedge);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a7d21c95b1fd9be91f580bab87467afbc"></a>
+<a class="anchor" id="a7c67911a13d4d800bd67fffe54fe4c76"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::aeend </td>
+          <td class="memname"><a class="el" href="classadj__list.html#af0d6302af296fec48d94c719282e6d90">const_aeiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::aeend </td>
           <td>(</td>
           <td class="paramtype">const vertex_t &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -414,12 +431,9 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(lg V)</p>
-<div class="fragment"><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                                   { </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="structget__second.html">get_second&lt;std::pair&lt;vertex_t, edge_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].end(), trans);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;}</div>
-<div class="ttc" id="structget__second_html"><div class="ttname"><a href="structget__second.html">get_second</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:31</div></div>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                              {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].end(), get_aedge);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -461,26 +475,26 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>If v exists in the adjacency list of u, then return true, otherwise false. Complexity Gurantee: O(lg V + lg deg u)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#ab2056e8423bf924e5bb172b3b634af83">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                                         {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">return</span> alists.at(u).find(v) != alists.at(u).end();</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span> alists.at(u).find(v) != alists.at(u).end();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="adcf49c4c1c34ae327f86d434a30e7fdc"></a>
+<a class="anchor" id="a345cec6294e2a9721f6724c71c716d50"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::avbegin </td>
+          <td class="memname"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::avbegin </td>
           <td>(</td>
           <td class="paramtype">const vertex_t &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -490,29 +504,26 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(lg V)</p>
-<div class="fragment"><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                                     {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="structget__first.html">get_first&lt;std::pair&lt;vertex_t, edge_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].begin(), trans);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
-<div class="ttc" id="structget__first_html"><div class="ttname"><a href="structget__first.html">get_first</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:22</div></div>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                                { </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].begin(), get_avertex);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a74404baf9eb77ca0773dc2c2a339bf19"></a>
+<a class="anchor" id="ad75c7e8dbfc40a083b5bec561bea53b7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::avend </td>
+          <td class="memname"><a class="el" href="classadj__list.html#ae1f51687317638b0c551806a8f89837b">const_aviterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::avend </td>
           <td>(</td>
           <td class="paramtype">const vertex_t &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -522,26 +533,23 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(lg V)</p>
-<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                                   { </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="structget__first.html">get_first&lt;std::pair&lt;vertex_t, edge_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].end(), trans);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
-<div class="ttc" id="structget__first_html"><div class="ttname"><a href="structget__first.html">get_first</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:22</div></div>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                              {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists[u].end(), get_avertex);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a820c4c7a9fafe85681c8e3769b9fb459"></a>
+<a class="anchor" id="a7bacc0c58be60294cca53ce0c4482b42"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::ebegin </td>
+          <td class="memname"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::ebegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -553,24 +561,23 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(1)</p>
-<div class="fragment"><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                   {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">return</span> const_eiterator(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                             {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> const_eiterator(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a8f50415f52dade9603bb96136c25b1ce"></a>
+<a class="anchor" id="a40703b94489443c45f427de0d24cf578"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::eend </td>
+          <td class="memname"><a class="el" href="classadj__list_1_1const__eiterator.html">const_eiterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::eend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -582,13 +589,11 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Complexity Gurantee: O(1)</p>
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                 { </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    const_eiterator it(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    it.vit = <a class="code" href="classadj__list.html#ab7a8862664fc6a37f1855a8f4fd75b83">vend</a>();</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">return</span> it;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
-<div class="ttc" id="classadj__list_html_ab7a8862664fc6a37f1855a8f4fd75b83"><div class="ttname"><a href="classadj__list.html#ab7a8862664fc6a37f1855a8f4fd75b83">adj_list::vend</a></div><div class="ttdeci">const_viterator vend()</div><div class="ttdef"><b>Definition:</b> adj_list.h:239</div></div>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                           {      </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        const_eiterator it(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        it.vit = alists.end();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> it;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -618,16 +623,16 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>For each alist, if v exists in the alist, increment deg by 1. Complexity Gurantee: O(V lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a66b073da29281043b6ab67a018b61b82">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">int</span> deg = 0;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">auto</span>&amp; alist = entry.second;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(alist.find(v) != alist.end())</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            deg++</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> deg;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">int</span> deg = 0;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keyword">auto</span>&amp; alist = entry.second;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span>(alist.find(v) != alist.end())</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            deg++;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">return</span> deg;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -653,15 +658,15 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sum the sizes of all the alists. Complexity Gurantee: O(V lg V)</p>
+<p>Sum the sizes of all the alists. Complexity Gurantee: O(V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#adaa87c254865ea31a7fdf0a5c0218820">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                                       {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">int</span> sum = 0;    </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists)</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        sum += entry.second.size();</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">return</span> sum;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                                       {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">int</span> sum = 0;    </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        sum += entry.second.size();</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> sum;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -690,9 +695,9 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>Complexity Gurantee: O(1)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a0db5dab1eb4f4d9920516e474fe2c3a0">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                                          {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> alists.size();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                                          {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">return</span> alists.size();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -722,9 +727,9 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>Locate the alist of v and return its size. Complexity Gurantee: O(lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a422060ba6d1eb067b41218c12af4d96c">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> alists.at(v).size();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> alists.at(v).size();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -764,9 +769,9 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>Remove v from the adjacency list of u. Complexity Gurantee: O(lg outdeg u)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#a23ada1c235da9fda871d3d9cfa8cdf75">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                                                       {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    alists[u].erase(v);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    alists[u].erase(v);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -796,27 +801,27 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 <p>Delete the adjacency list of v. Then, delete v from any other alist that contains it. Complexity Gurantee: O(V lg V)</p>
 
 <p>Implements <a class="el" href="classgraph__model.html#aa3d31aeb2be0b03f81c7182e3b5f0b00">graph_model&lt; vertex_t, edge_t &gt;</a>.</p>
-<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                                                      {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    alists.erase(v);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        entry.second.erase(v);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                                                      {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    alists.erase(v);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; entry : alists) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        entry.second.erase(v);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ae32905002325e656ccc3e46d70b87d74"></a>
+<a class="anchor" id="a5f3d79ef725014206b4919df33116ff9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
+template&lt;typename vertex_t, typename edge_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::vbegin </td>
+          <td class="memname"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::vbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -825,53 +830,68 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                             {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists.begin(), get_vertex);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a479ae0cbf044b2c9887412f87c6e9209"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t, typename edge_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::vend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                           {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> boost::make_transform_iterator(alists.end(), get_vertex);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="ac220ce1c155db1ac44146c12d178056f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t, typename edge_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class const_iterator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns an iterator to the beg. </p>
-<p>Using boost::transform_iterator, transform the map iterator to look like an iterator to a sequential container holding vertices. Complexity Gurantee: O(1)</p>
-<div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                   {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="structget__first.html">get_first&lt;std::pair&lt;vertex_t, alist_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists.begin(), trans);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
-<div class="ttc" id="structget__first_html"><div class="ttname"><a href="structget__first.html">get_first</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:22</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="ab7a8862664fc6a37f1855a8f4fd75b83"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::<a class="el" href="classadj__list.html#ae21037390546abb0d910db024e0e6560">const_viterator</a> <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::vend </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Complexity Gurantee: O(1)</p>
-<div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                 {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="structget__first.html">get_first&lt;std::pair&lt;vertex_t, alist_t&gt;</a>&gt; trans;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> boost::make_transform_iterator(alists.end(), trans);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
-<div class="ttc" id="structget__first_html"><div class="ttname"><a href="structget__first.html">get_first</a></div><div class="ttdef"><b>Definition:</b> adj_list.h:22</div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>alglib/graph/<a class="el" href="adj__list_8h_source.html">adj_list.h</a></li>
+<li>alglib/graph/models/<a class="el" href="adj__list_8h_source.html">adj_list.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -882,7 +902,7 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

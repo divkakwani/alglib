@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['ebegin',['ebegin',['../classadj__list.html#a820c4c7a9fafe85681c8e3769b9fb459',1,'adj_list::ebegin()'],['../classundirected__graph.html#a7c6769ddbba16bfe9a48933ad67b7ad5',1,'undirected_graph::ebegin()'],['../classundirected__graph.html#a7c6769ddbba16bfe9a48933ad67b7ad5',1,'undirected_graph::ebegin()'],['../classgraph.html#acc24ea70644ea3c153997e572602a516',1,'graph::ebegin()']]],
-  ['eccentricity_2eh',['eccentricity.h',['../eccentricity_8h.html',1,'']]],
-  ['edge_2eh',['edge.h',['../edge_8h.html',1,'']]],
-  ['edge_5fiter',['edge_iter',['../classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2',1,'undirected_graph::edge_iter()'],['../classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2',1,'undirected_graph::edge_iter()']]],
-  ['edge_5ft',['edge_t',['../structedge__t.html',1,'edge_t&lt; vertex_t, attr_t, Enable &gt;'],['../classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa',1,'undirected_graph::edge_t()'],['../classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa',1,'undirected_graph::edge_t()'],['../structedge__t.html#a106fc718d684013747e7d38b57b01d14',1,'edge_t::edge_t(long long a, long long b, long long weight)'],['../structedge__t.html#a106fc718d684013747e7d38b57b01d14',1,'edge_t::edge_t(long long a, long long b, long long weight)']]],
-  ['edge_5ft_3c_20vertex_5ft_2c_20attr_5ft_2c_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20_20typename_20std_3a_3aenable_5fif_3c_20std_3a_3ais_5ffundamental_3c_20attr_5ft_20_3e_3a_3avalue_20_3e_3a_3atype_20_3e',['edge_t&lt; vertex_t, attr_t,                                                                                           typename std::enable_if&lt; std::is_fundamental&lt; attr_t &gt;::value &gt;::type &gt;',['../structedge__t_3_01vertex__t_00_01attr__t_00_01_01_01_01_01_01_01_01_01_01_01_01_01_01_01_01_01_00b24e19bcd207f5dc360073a6286b0fd.html',1,'']]],
-  ['eend',['eend',['../classadj__list.html#a8f50415f52dade9603bb96136c25b1ce',1,'adj_list::eend()'],['../classundirected__graph.html#a3337764ba3ee8cbb11f712ceac09b80a',1,'undirected_graph::eend()'],['../classundirected__graph.html#a3337764ba3ee8cbb11f712ceac09b80a',1,'undirected_graph::eend()'],['../classgraph.html#a0db2b68b5a0763f9a135ac62fbfbf61d',1,'graph::eend()']]],
-  ['either',['either',['../structedge__t.html#a9e57316706d698aa1601884c3b9afce1',1,'edge_t::either()'],['../structedge__t.html#a9e57316706d698aa1601884c3b9afce1',1,'edge_t::either()']]],
-  ['elt_5ftype',['elt_type',['../classbinary__heap.html#aff32edc5e56dc631b370e6136873d367',1,'binary_heap']]],
-  ['empty',['empty',['../classbinary__heap.html#ae934ecc5eef67c1d9aaec7321bb5d66c',1,'binary_heap::empty()'],['../classunkeyed__binary__heap.html#af1ef0118a7e1c2a41d1d6dee5ae17f55',1,'unkeyed_binary_heap::empty()'],['../classmin__heap.html#aa4dc2f89a1ee8495d65f974efcca69c6',1,'min_heap::empty()']]],
-  ['esize',['esize',['../classgraph.html#a74767c3bd6574779fdc235a1814ea196',1,'graph']]],
-  ['exp_2ecpp',['exp.cpp',['../exp_8cpp.html',1,'']]]
+  ['delete_5fedge',['delete_edge',['../classDynamicDirectedGraph.html#afc44e6185e974ab286c79dbb83e156db',1,'DynamicDirectedGraph']]],
+  ['delete_5fmin',['delete_min',['../classalglib_1_1heap_1_1binary__heap.html#ad2c851e81c5becd5ea4a98f90d47c86a',1,'alglib::heap::binary_heap::delete_min()'],['../classalglib_1_1heap_1_1unkeyed__binary__heap.html#abd585cb1f8990c9f58ec53d72aa4e5b7',1,'alglib::heap::unkeyed_binary_heap::delete_min()'],['../classalglib_1_1heap_1_1min__heap.html#a8608c614aa97f2749316c34f3918ce7b',1,'alglib::heap::min_heap::delete_min()']]],
+  ['design_2emd',['design.md',['../design_8md.html',1,'']]],
+  ['dfs',['dfs',['../dfs_8h.html#ac7643952a189b92d0a146c7a0b037075',1,'dfs(const GraphType &amp;G, OutputIter dest):&#160;dfs.h'],['../search_8h.html#a2e21c942607d06effbe6c03d2046e1f7',1,'dfs(graph &amp;G, Vertex *start, std::unordered_map&lt; Vertex *, bool, graph::Hasher &gt; &amp;visited, OutputIterator dest):&#160;search.h']]],
+  ['dfs_2eh',['dfs.h',['../dfs_8h.html',1,'']]],
+  ['dfs_5forder',['dfs_order',['../search_8h.html#a07ce6099eccb570b3848442885d9b3e2',1,'search.h']]],
+  ['dijkstra_2ecpp',['dijkstra.cpp',['../dijkstra_8cpp.html',1,'']]],
+  ['dijkstra_5fsssp',['dijkstra_sssp',['../classdijkstra__sssp.html',1,'dijkstra_sssp&lt; graph &gt;'],['../classdijkstra__sssp.html#ac0a1e2bdfe5dbad3eb135516a9c0e46d',1,'dijkstra_sssp::dijkstra_sssp(graph &amp;g, vertex_t source)'],['../classdijkstra__sssp.html#ab6cd60e3493d29e2c3ac3d8c0a261585',1,'dijkstra_sssp::dijkstra_sssp(graph &amp;g, vertex &amp;source)']]],
+  ['directed_5fgraph',['directed_graph',['../classdirected__graph.html',1,'']]],
+  ['directed_5fgraph_2eh',['directed_graph.h',['../directed__graph_8h.html',1,'']]],
+  ['directed_5fgraph_3c_20vertex_5ft_2c_20void_2c_20model_20_3e',['directed_graph&lt; vertex_t, void, model &gt;',['../classdirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html',1,'']]],
+  ['disjoint_5fsets',['disjoint_sets',['../classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ae1fad10963a6ed64b938d4be63fa9848',1,'alglib::disjoint_sets::disjoint_sets']]],
+  ['disjoint_5fsets',['disjoint_sets',['../classalglib_1_1disjoint__sets_1_1disjoint__sets.html',1,'alglib::disjoint_sets']]],
+  ['disjoint_5fsets_2eh',['disjoint_sets.h',['../disjoint__sets_8h.html',1,'']]],
+  ['disjoints_5fsets_2eh',['disjoints_sets.h',['../disjoints__sets_8h.html',1,'']]],
+  ['dist_5fto',['dist_to',['../classdijkstra__sssp.html#a22f33786aa793e4c38467a2043354343',1,'dijkstra_sssp::dist_to(vertex_t dest)'],['../classdijkstra__sssp.html#a34f777fdc10ba7363bb260228103339b',1,'dijkstra_sssp::dist_to(vertex &amp;dest)']]],
+  ['dynamicdirectedgraph',['DynamicDirectedGraph',['../classDynamicDirectedGraph.html',1,'DynamicDirectedGraph'],['../classDynamicDirectedGraph.html#a71460cedc449f4234845c70df4674b6e',1,'DynamicDirectedGraph::DynamicDirectedGraph()']]],
+  ['design_20of_20the_20graph_20library',['Design of the Graph Library',['../md_alglib_graph_design.html',1,'']]]
 ];

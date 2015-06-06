@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -166,7 +167,7 @@ template&lt;typename OutputIter &gt; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; pvertex : pvertex_list) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">auto</span> prev_it = dfs_it;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span>(!visited[pvertex])</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="search_8h.html#a2e21c942607d06effbe6c03d2046e1f7">dfs</a>(G, pvertex, visited, dfs_it);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="dfs_8h.html#ac7643952a189b92d0a146c7a0b037075">dfs</a>(G, pvertex, visited, dfs_it);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = prev_it; it != dfs_it; it++) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// somehow insert at the place where dest points</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
@@ -174,7 +175,7 @@ template&lt;typename OutputIter &gt; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> dest;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="ttc" id="search_8h_html_a2e21c942607d06effbe6c03d2046e1f7"><div class="ttname"><a href="search_8h.html#a2e21c942607d06effbe6c03d2046e1f7">dfs</a></div><div class="ttdeci">void dfs(graph &amp;G, Vertex *start, std::unordered_map&lt; Vertex *, bool, graph::Hasher &gt; &amp;visited, OutputIterator dest)</div><div class="ttdef"><b>Definition:</b> search.h:44</div></div>
+<div class="ttc" id="dfs_8h_html_ac7643952a189b92d0a146c7a0b037075"><div class="ttname"><a href="dfs_8h.html#ac7643952a189b92d0a146c7a0b037075">dfs</a></div><div class="ttdeci">OutputIter dfs(const GraphType &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> dfs.h:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,7 +228,7 @@ template&lt;typename OutputIter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

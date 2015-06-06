@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>alglib: undirected_graph&lt; vertex_type, edge_type &gt; Class Template Reference</title>
+        <title>alglib: undirected_graph&lt; vertex_t, attr_t, model &gt; Class Template Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,181 +96,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classundirected__graph-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">undirected_graph&lt; vertex_type, edge_type &gt; Class Template Reference</div>  </div>
+<div class="title">undirected_graph&lt; vertex_t, attr_t, model &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="undirected__graph_8h_source.html">undirected_graph.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for undirected_graph&lt; vertex_t, attr_t, model &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classundirected__graph.png" usemap="#undirected_graph&lt; vertex_t, attr_t, model &gt;_map" alt=""/>
+  <map id="undirected_graph&lt; vertex_t, attr_t, model &gt;_map" name="undirected_graph&lt; vertex_t, attr_t, model &gt;_map">
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a8ebce79d17d424f8f5a54f701a488f1d"><td class="memItemLeft" align="right" valign="top">typedef vertex_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a></td></tr>
-<tr class="separator:a8ebce79d17d424f8f5a54f701a488f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c183f4b4276ca9bafc21a5a6b0693fa"><td class="memItemLeft" align="right" valign="top">typedef edge_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a></td></tr>
-<tr class="separator:a7c183f4b4276ca9bafc21a5a6b0693fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64a54dd59d86a75ae0d50f0ecf282e2"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; <a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2">edge_iter</a></td></tr>
-<tr class="separator:aa64a54dd59d86a75ae0d50f0ecf282e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19e2a12e3743415f52f46a4bb75513da"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; <a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a19e2a12e3743415f52f46a4bb75513da">vertex_iter</a></td></tr>
-<tr class="separator:a19e2a12e3743415f52f46a4bb75513da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ebce79d17d424f8f5a54f701a488f1d"><td class="memItemLeft" align="right" valign="top">typedef vertex_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a></td></tr>
-<tr class="separator:a8ebce79d17d424f8f5a54f701a488f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c183f4b4276ca9bafc21a5a6b0693fa"><td class="memItemLeft" align="right" valign="top">typedef edge_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a></td></tr>
-<tr class="separator:a7c183f4b4276ca9bafc21a5a6b0693fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64a54dd59d86a75ae0d50f0ecf282e2"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; <a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2">edge_iter</a></td></tr>
-<tr class="separator:aa64a54dd59d86a75ae0d50f0ecf282e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19e2a12e3743415f52f46a4bb75513da"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; <a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a19e2a12e3743415f52f46a4bb75513da">vertex_iter</a></td></tr>
-<tr class="separator:a19e2a12e3743415f52f46a4bb75513da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0dce6bd81391979ca1e9a98689bb1d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structedge__t.html">edge_t</a>&lt; vertex_t, attr_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7c0dce6bd81391979ca1e9a98689bb1d">edge_type</a></td></tr>
+<tr class="separator:a7c0dce6bd81391979ca1e9a98689bb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a59eb7ec25f75d8bb47c6b29da728a3e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a59eb7ec25f75d8bb47c6b29da728a3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4efed8eb4e2bf1b890ef2050b108456a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a4efed8eb4e2bf1b890ef2050b108456a">add_edge</a> (<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a> e)</td></tr>
-<tr class="separator:a4efed8eb4e2bf1b890ef2050b108456a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c3ac3f77307157e8faff62c3dd05ff"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a33c3ac3f77307157e8faff62c3dd05ff">vbegin</a> ()</td></tr>
-<tr class="separator:a33c3ac3f77307157e8faff62c3dd05ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d9de051fa7ab56d942aa73ee71a1eda"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a3d9de051fa7ab56d942aa73ee71a1eda">vend</a> ()</td></tr>
-<tr class="separator:a3d9de051fa7ab56d942aa73ee71a1eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c6769ddbba16bfe9a48933ad67b7ad5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7c6769ddbba16bfe9a48933ad67b7ad5">ebegin</a> ()</td></tr>
-<tr class="separator:a7c6769ddbba16bfe9a48933ad67b7ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3337764ba3ee8cbb11f712ceac09b80a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a3337764ba3ee8cbb11f712ceac09b80a">eend</a> ()</td></tr>
-<tr class="separator:a3337764ba3ee8cbb11f712ceac09b80a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fccae74e9534e5acc23383278cc17f3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a8fccae74e9534e5acc23383278cc17f3">avbegin</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a8fccae74e9534e5acc23383278cc17f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a89f6c34e815fa9b3d766eb586a4aee"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a9a89f6c34e815fa9b3d766eb586a4aee">avend</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a9a89f6c34e815fa9b3d766eb586a4aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a22a0d0d92f9e78a938cb96a72bdf2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a15a22a0d0d92f9e78a938cb96a72bdf2">aebegin</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a15a22a0d0d92f9e78a938cb96a72bdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699e836dbfc965d23f2c52dd37c0b2d8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a699e836dbfc965d23f2c52dd37c0b2d8">aeend</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a699e836dbfc965d23f2c52dd37c0b2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59eb7ec25f75d8bb47c6b29da728a3e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a59eb7ec25f75d8bb47c6b29da728a3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4efed8eb4e2bf1b890ef2050b108456a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a4efed8eb4e2bf1b890ef2050b108456a">add_edge</a> (<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a> e)</td></tr>
-<tr class="separator:a4efed8eb4e2bf1b890ef2050b108456a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a7e4f44d4bb6b030be706638f27d4ff"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7a7e4f44d4bb6b030be706638f27d4ff">vsize</a> () const </td></tr>
-<tr class="separator:a7a7e4f44d4bb6b030be706638f27d4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c3ac3f77307157e8faff62c3dd05ff"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a33c3ac3f77307157e8faff62c3dd05ff">vbegin</a> ()</td></tr>
-<tr class="separator:a33c3ac3f77307157e8faff62c3dd05ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d9de051fa7ab56d942aa73ee71a1eda"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a3d9de051fa7ab56d942aa73ee71a1eda">vend</a> ()</td></tr>
-<tr class="separator:a3d9de051fa7ab56d942aa73ee71a1eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c6769ddbba16bfe9a48933ad67b7ad5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a7c6769ddbba16bfe9a48933ad67b7ad5">ebegin</a> ()</td></tr>
-<tr class="separator:a7c6769ddbba16bfe9a48933ad67b7ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3337764ba3ee8cbb11f712ceac09b80a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a3337764ba3ee8cbb11f712ceac09b80a">eend</a> ()</td></tr>
-<tr class="separator:a3337764ba3ee8cbb11f712ceac09b80a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fccae74e9534e5acc23383278cc17f3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a8fccae74e9534e5acc23383278cc17f3">avbegin</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a8fccae74e9534e5acc23383278cc17f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a89f6c34e815fa9b3d766eb586a4aee"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a9a89f6c34e815fa9b3d766eb586a4aee">avend</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a9a89f6c34e815fa9b3d766eb586a4aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a22a0d0d92f9e78a938cb96a72bdf2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a15a22a0d0d92f9e78a938cb96a72bdf2">aebegin</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a15a22a0d0d92f9e78a938cb96a72bdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699e836dbfc965d23f2c52dd37c0b2d8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#a699e836dbfc965d23f2c52dd37c0b2d8">aeend</a> (<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> vertex)</td></tr>
-<tr class="separator:a699e836dbfc965d23f2c52dd37c0b2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab08f5000bd8ad95e2174d48c4fba1e1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classundirected__graph.html#ab08f5000bd8ad95e2174d48c4fba1e1c">add_edge</a> (const vertex_t &amp;u, const vertex_t &amp;v, const attr_t &amp;attr)</td></tr>
+<tr class="separator:ab08f5000bd8ad95e2174d48c4fba1e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="aa64a54dd59d86a75ae0d50f0ecf282e2"></a>
+<a class="anchor" id="a7c0dce6bd81391979ca1e9a98689bb1d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
+template&lt;typename vertex_t, typename attr_t = void, template&lt; typename, typename &gt; class model = adj_list&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef vector&lt;<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a>&gt;::iterator <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2">edge_iter</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa64a54dd59d86a75ae0d50f0ecf282e2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef vector&lt;<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a>&gt;::iterator <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#aa64a54dd59d86a75ae0d50f0ecf282e2">edge_iter</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7c183f4b4276ca9bafc21a5a6b0693fa"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef edge_type <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7c183f4b4276ca9bafc21a5a6b0693fa"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef edge_type <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a19e2a12e3743415f52f46a4bb75513da"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef vector&lt;<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&gt;::iterator <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a19e2a12e3743415f52f46a4bb75513da">vertex_iter</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a19e2a12e3743415f52f46a4bb75513da"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef vector&lt;<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&gt;::iterator <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a19e2a12e3743415f52f46a4bb75513da">vertex_iter</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8ebce79d17d424f8f5a54f701a488f1d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef vertex_type <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8ebce79d17d424f8f5a54f701a488f1d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef vertex_type <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::<a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a></td>
+          <td class="memname">typedef <a class="el" href="structedge__t.html">edge_t</a>&lt;vertex_t, attr_t&gt; <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_t, attr_t, model &gt;::<a class="el" href="classundirected__graph.html#a7c0dce6bd81391979ca1e9a98689bb1d">edge_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -277,105 +136,37 @@ template&lt;typename vertex_type, typename edge_type&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a4efed8eb4e2bf1b890ef2050b108456a"></a>
+<a class="anchor" id="ab08f5000bd8ad95e2174d48c4fba1e1c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
+template&lt;typename vertex_t, typename attr_t = void, template&lt; typename, typename &gt; class model = adj_list&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::add_edge </td>
+          <td class="memname">void <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_t, attr_t, model &gt;::add_edge </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a>&#160;</td>
-          <td class="paramname"><em>e</em></td><td>)</td>
+          <td class="paramtype">const vertex_t &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const vertex_t &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">if</span>(find(edge_list.begin(), edge_list.end(), e) == edge_list.end()) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> u = e.<a class="code" href="structedge__t.html#a9e57316706d698aa1601884c3b9afce1">either</a>(), v = e.<a class="code" href="structedge__t.html#a1ef55e3a1884b50da22fdcbcccf90d69">other</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <a class="code" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a>(u);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <a class="code" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a>(v);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                adjacency_list[u].push_back(v);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                adjacency_list[v].push_back(u);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                adjacency_edge[u].push_back(e);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                adjacency_edge[v].push_back(e);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                edge_list.push_back(e);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }       </div>
-<div class="ttc" id="structedge__t_html_a9e57316706d698aa1601884c3b9afce1"><div class="ttname"><a href="structedge__t.html#a9e57316706d698aa1601884c3b9afce1">edge_t::either</a></div><div class="ttdeci">long long either()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:186</div></div>
-<div class="ttc" id="structedge__t_html_a1ef55e3a1884b50da22fdcbcccf90d69"><div class="ttname"><a href="structedge__t.html#a1ef55e3a1884b50da22fdcbcccf90d69">edge_t::other</a></div><div class="ttdeci">long long other()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:187</div></div>
-<div class="ttc" id="classundirected__graph_html_a8ebce79d17d424f8f5a54f701a488f1d"><div class="ttname"><a href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">undirected_graph::vertex_t</a></div><div class="ttdeci">vertex_type vertex_t</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:15</div></div>
-<div class="ttc" id="classundirected__graph_html_a59eb7ec25f75d8bb47c6b29da728a3e6"><div class="ttname"><a href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">undirected_graph::add_vertex</a></div><div class="ttdeci">void add_vertex(vertex_t vertex)</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:28</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a4efed8eb4e2bf1b890ef2050b108456a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::add_edge </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a7c183f4b4276ca9bafc21a5a6b0693fa">edge_t</a>&#160;</td>
-          <td class="paramname"><em>e</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const attr_t &amp;&#160;</td>
+          <td class="paramname"><em>attr</em>&#160;</td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">if</span>(find(edge_list.begin(), edge_list.end(), e) == edge_list.end()) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a> u = e.<a class="code" href="structedge__t.html#a9e57316706d698aa1601884c3b9afce1">either</a>(), v = e.<a class="code" href="structedge__t.html#a1ef55e3a1884b50da22fdcbcccf90d69">other</a>(u);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <a class="code" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a>(u);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <a class="code" href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">add_vertex</a>(v);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                adjacency_list[u].push_back(v);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                adjacency_list[v].push_back(u);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                adjacency_edge[u].push_back(e);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                adjacency_edge[v].push_back(e);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                edge_list.push_back(e);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="ttc" id="structedge__t_html_a9e57316706d698aa1601884c3b9afce1"><div class="ttname"><a href="structedge__t.html#a9e57316706d698aa1601884c3b9afce1">edge_t::either</a></div><div class="ttdeci">long long either()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:186</div></div>
-<div class="ttc" id="structedge__t_html_a1ef55e3a1884b50da22fdcbcccf90d69"><div class="ttname"><a href="structedge__t.html#a1ef55e3a1884b50da22fdcbcccf90d69">edge_t::other</a></div><div class="ttdeci">long long other()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:187</div></div>
-<div class="ttc" id="classundirected__graph_html_a8ebce79d17d424f8f5a54f701a488f1d"><div class="ttname"><a href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">undirected_graph::vertex_t</a></div><div class="ttdeci">vertex_type vertex_t</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:15</div></div>
-<div class="ttc" id="classundirected__graph_html_a59eb7ec25f75d8bb47c6b29da728a3e6"><div class="ttname"><a href="classundirected__graph.html#a59eb7ec25f75d8bb47c6b29da728a3e6">undirected_graph::add_vertex</a></div><div class="ttdeci">void add_vertex(vertex_t vertex)</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:28</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a59eb7ec25f75d8bb47c6b29da728a3e6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::add_vertex </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
           <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -384,540 +175,16 @@ template&lt;typename vertex_type, typename edge_type&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                         {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span>(adjacency_list.find(vertex) == adjacency_list.end()) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                adjacency_list[vertex] = vector&lt;vertex_t&gt;();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                adjacency_edge[vertex] = vector&lt;edge_t&gt;();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                vertex_list.push_back(vertex);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                                            {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        super::add_edge(u, v, <a class="code" href="classundirected__graph.html#a7c0dce6bd81391979ca1e9a98689bb1d">edge_type</a>(u, v, attr));</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        super::add_edge(v, u, <a class="code" href="classundirected__graph.html#a7c0dce6bd81391979ca1e9a98689bb1d">edge_type</a>(v, u, attr));</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="ttc" id="classundirected__graph_html_a7c0dce6bd81391979ca1e9a98689bb1d"><div class="ttname"><a href="classundirected__graph.html#a7c0dce6bd81391979ca1e9a98689bb1d">undirected_graph::edge_type</a></div><div class="ttdeci">edge_t&lt; vertex_t, attr_t &gt; edge_type</div><div class="ttdef"><b>Definition:</b> undirected_graph.h:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a59eb7ec25f75d8bb47c6b29da728a3e6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::add_vertex </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                         {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span>(adjacency_list.find(vertex) == adjacency_list.end()) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                adjacency_list[vertex] = vector&lt;vertex_t&gt;();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                adjacency_edge[vertex] = vector&lt;edge_t&gt;();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                vertex_list.push_back(vertex);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a15a22a0d0d92f9e78a938cb96a72bdf2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::aebegin </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                      {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span> adjacency_edge[vertex].begin();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a15a22a0d0d92f9e78a938cb96a72bdf2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::aebegin </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                      {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">return</span> adjacency_edge[vertex].begin();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a699e836dbfc965d23f2c52dd37c0b2d8"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::aeend </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> adjacency_edge[vertex].end();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a699e836dbfc965d23f2c52dd37c0b2d8"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::aeend </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                    {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">return</span> adjacency_edge[vertex].end();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a8fccae74e9534e5acc23383278cc17f3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::avbegin </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                      {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">return</span> adjacency_list[vertex].begin();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a8fccae74e9534e5acc23383278cc17f3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::avbegin </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                      {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> adjacency_list[vertex].begin();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a9a89f6c34e815fa9b3d766eb586a4aee"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::avend </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                    {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> adjacency_list[vertex].end();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a9a89f6c34e815fa9b3d766eb586a4aee"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::avend </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classundirected__graph.html#a8ebce79d17d424f8f5a54f701a488f1d">vertex_t</a>&#160;</td>
-          <td class="paramname"><em>vertex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">return</span> adjacency_list[vertex].end();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a7c6769ddbba16bfe9a48933ad67b7ad5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::ebegin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                      {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> edge_list.begin();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a7c6769ddbba16bfe9a48933ad67b7ad5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::ebegin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                      {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> edge_list.begin();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a3337764ba3ee8cbb11f712ceac09b80a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::eend </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span>  edge_list.end();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a3337764ba3ee8cbb11f712ceac09b80a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::eend </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span>  edge_list.end();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a33c3ac3f77307157e8faff62c3dd05ff"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::vbegin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                      {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> vertex_list.begin();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a33c3ac3f77307157e8faff62c3dd05ff"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::vbegin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                      {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> vertex_list.begin();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a3d9de051fa7ab56d942aa73ee71a1eda"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::vend </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> vertex_list.end();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a3d9de051fa7ab56d942aa73ee71a1eda"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::vend </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> vertex_list.end();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a7a7e4f44d4bb6b030be706638f27d4ff"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_type, typename edge_type&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long long <a class="el" href="classundirected__graph.html">undirected_graph</a>&lt; vertex_type, edge_type &gt;::vsize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> vertex_list.size();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>alglib/graph/<a class="el" href="dijkstra_8cpp.html">dijkstra.cpp</a></li>
-<li>alglib/graph/<a class="el" href="exp_8cpp.html">exp.cpp</a></li>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>alglib/graph/<a class="el" href="undirected__graph_8h_source.html">undirected_graph.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -928,7 +195,7 @@ template&lt;typename vertex_type, typename edge_type&gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

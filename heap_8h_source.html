@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -111,90 +112,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;boost/concept_check.hpp&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *  Abstract class for a heap</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *  Any heap must conform to this interface</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *  There are two types of ordering of the type elt_t - natural ordering and</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *  priority ordering. The operator&lt; defines the natural ordering and the</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *  keys associated with the elements define the priority ordering. The former</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> *  ordering is defined by the class and the latter by the client of this</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> *  library.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *  The natural ordering is used to establish the equality of two elements. If</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> *  none of the two elements is greater than the other, then they are equal.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *  Hence, the `min_heap` class is configurable with different schemes of</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *  priority ordering by supplying corresponding keys. In case, none is</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> *  supplied, the ordering chosen by the `min_heap` defaults to natural</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> *  ordering.</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *  The reason of having another variable `key` for ordering the</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> *  elements is to decouple the scheme of ordering from the</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> *  object itself.</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> *  If we use operator&lt; of elt&#39;s class, it would be far too</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> *  restrictive. It would allow only one type of ordering - the</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *  one defined by the class. In many situations, that may not be</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> *  the scheme we require. Worse still, it precludes any non-comparable</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> *  item from being used to make a min-heap.</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> *  To make this more concrete, consider a use-case in which a shopkeeper</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> *  services the requests of his customers. The customers are of Person type</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> *  that doesn&#39;t have any total-ordering relation. The shopkeeper, however,</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> *  can have different schemes of prioritizing his customers, some of them</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> *  are -</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> *    Prioritize the shop&#39;s investor.</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> *    Prioritize senior citizens.</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> *    Prioritize acquaintances</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *    ... and so on.</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *  The essence of this methodology is that the criterion of ordering should</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> *  be specified by the min_heap user, not by the class.</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> *  Why not use a functor?</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> *  Using a functor can potentially lead to inconsistency of the heap. Since by</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> *  allowing the user to supply a user-defined functor, we allow him to change</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> *  the priority order arbitrarily and as many times as the user wishes, but</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> *  the heap requires that every change be followed by a sift up or a sift down.</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_t, <span class="keyword">typename</span> key_t&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classmin__heap.html">   62</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmin__heap.html">min_heap</a> {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    BOOST_CONCEPT_ASSERT((boost::LessThanComparable&lt;elt_t&gt;));</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    BOOST_CONCEPT_ASSERT((boost::LessThanComparable&lt;key_t&gt;));</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a3a72875777085fbaa7b3639635603859">insert</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>heap {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_t, <span class="keyword">typename</span> key_t&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classalglib_1_1heap_1_1min__heap.html">   65</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1heap_1_1min__heap.html">min_heap</a> {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    BOOST_CONCEPT_ASSERT((boost::LessThanComparable&lt;elt_t&gt;));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    BOOST_CONCEPT_ASSERT((boost::LessThanComparable&lt;key_t&gt;));</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">/* get the root */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> elt_t&amp; <a class="code" href="classmin__heap.html#ae891bca9a2009b3b13f8316e17c3cf4f">get_min_elt</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> key_t&amp; <a class="code" href="classmin__heap.html#ae6bdbed68407d2fcd73a69eff2b2c5bb">get_min_key</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* remove the root */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#af54a5c911f44dddafb9bafe55d9a14f7">delete_min</a>() = 0;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a561bbc95c3045f9bec6817556cd2e94a">replace</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">/* Inspection */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classmin__heap.html#a1879392f7b11be7e69f4c4ac787746aa">size</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classmin__heap.html#aa4dc2f89a1ee8495d65f974efcca69c6">empty</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">/* Internal modification */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classmin__heap.html#a37227dcd88275133fceff58444852d70">update_key</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a7873cd20e9e91ed14234f3f600181b33">insert</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">/* get the root */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> elt_t&amp; <a class="code" href="classalglib_1_1heap_1_1min__heap.html#aec0131c08588b3af93bd7ce1382ff363">get_min_elt</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> key_t&amp; <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a4e1e1b386ec6aaff6342a039857ab31e">get_min_key</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">/* remove the root */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a8608c614aa97f2749316c34f3918ce7b">delete_min</a>() = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#ab35012f692ba8850be3754bd94fe54af">replace</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/* Inspection */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a56699951bc6aab696242c9f219bb7b22">size</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a560c6cb5d6ebe78e547709cad5636f40">empty</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* return a new heap that is the merger of the heap h and *this. */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// min_heap&lt;elt_t, Compare&gt; merge_heaps(const min_heap&lt;elt_t, Compare&gt;&amp; h);</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // _HEAP_H</span></div>
-<div class="ttc" id="classmin__heap_html_ae891bca9a2009b3b13f8316e17c3cf4f"><div class="ttname"><a href="classmin__heap.html#ae891bca9a2009b3b13f8316e17c3cf4f">min_heap::get_min_elt</a></div><div class="ttdeci">virtual const elt_t &amp; get_min_elt() const  =0</div></div>
-<div class="ttc" id="classmin__heap_html_a37227dcd88275133fceff58444852d70"><div class="ttname"><a href="classmin__heap.html#a37227dcd88275133fceff58444852d70">min_heap::update_key</a></div><div class="ttdeci">virtual void update_key(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
-<div class="ttc" id="classmin__heap_html_a1879392f7b11be7e69f4c4ac787746aa"><div class="ttname"><a href="classmin__heap.html#a1879392f7b11be7e69f4c4ac787746aa">min_heap::size</a></div><div class="ttdeci">virtual int size() const  =0</div></div>
-<div class="ttc" id="classmin__heap_html"><div class="ttname"><a href="classmin__heap.html">min_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:62</div></div>
-<div class="ttc" id="classmin__heap_html_ae6bdbed68407d2fcd73a69eff2b2c5bb"><div class="ttname"><a href="classmin__heap.html#ae6bdbed68407d2fcd73a69eff2b2c5bb">min_heap::get_min_key</a></div><div class="ttdeci">virtual const key_t &amp; get_min_key() const  =0</div></div>
-<div class="ttc" id="classmin__heap_html_a561bbc95c3045f9bec6817556cd2e94a"><div class="ttname"><a href="classmin__heap.html#a561bbc95c3045f9bec6817556cd2e94a">min_heap::replace</a></div><div class="ttdeci">virtual void replace(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
-<div class="ttc" id="classmin__heap_html_aa4dc2f89a1ee8495d65f974efcca69c6"><div class="ttname"><a href="classmin__heap.html#aa4dc2f89a1ee8495d65f974efcca69c6">min_heap::empty</a></div><div class="ttdeci">virtual bool empty() const  =0</div></div>
-<div class="ttc" id="classmin__heap_html_a3a72875777085fbaa7b3639635603859"><div class="ttname"><a href="classmin__heap.html#a3a72875777085fbaa7b3639635603859">min_heap::insert</a></div><div class="ttdeci">virtual void insert(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
-<div class="ttc" id="classmin__heap_html_af54a5c911f44dddafb9bafe55d9a14f7"><div class="ttname"><a href="classmin__heap.html#af54a5c911f44dddafb9bafe55d9a14f7">min_heap::delete_min</a></div><div class="ttdeci">virtual void delete_min()=0</div></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">/* Internal modification */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1heap_1_1min__heap.html#a632af1a522c2189aa2027f266090a8fe">update_key</a>(<span class="keyword">const</span> elt_t&amp; elt, <span class="keyword">const</span> key_t&amp; key) = 0;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">/* return a new heap that is the merger of the heap h and *this. */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// min_heap&lt;elt_t, Compare&gt; merge_heaps(const min_heap&lt;elt_t, Compare&gt;&amp; h);</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}  <span class="comment">// end heap namespace</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}  <span class="comment">// end alglib namespace</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif // _HEAP_H</span></div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a8608c614aa97f2749316c34f3918ce7b"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a8608c614aa97f2749316c34f3918ce7b">alglib::heap::min_heap::delete_min</a></div><div class="ttdeci">virtual void delete_min()=0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a632af1a522c2189aa2027f266090a8fe"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a632af1a522c2189aa2027f266090a8fe">alglib::heap::min_heap::update_key</a></div><div class="ttdeci">virtual void update_key(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a560c6cb5d6ebe78e547709cad5636f40"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a560c6cb5d6ebe78e547709cad5636f40">alglib::heap::min_heap::empty</a></div><div class="ttdeci">virtual bool empty() const  =0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html">alglib::heap::min_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:65</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a4e1e1b386ec6aaff6342a039857ab31e"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a4e1e1b386ec6aaff6342a039857ab31e">alglib::heap::min_heap::get_min_key</a></div><div class="ttdeci">virtual const key_t &amp; get_min_key() const  =0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a56699951bc6aab696242c9f219bb7b22"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a56699951bc6aab696242c9f219bb7b22">alglib::heap::min_heap::size</a></div><div class="ttdeci">virtual int size() const  =0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_ab35012f692ba8850be3754bd94fe54af"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#ab35012f692ba8850be3754bd94fe54af">alglib::heap::min_heap::replace</a></div><div class="ttdeci">virtual void replace(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_a7873cd20e9e91ed14234f3f600181b33"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#a7873cd20e9e91ed14234f3f600181b33">alglib::heap::min_heap::insert</a></div><div class="ttdeci">virtual void insert(const elt_t &amp;elt, const key_t &amp;key)=0</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1min__heap_html_aec0131c08588b3af93bd7ce1382ff363"><div class="ttname"><a href="classalglib_1_1heap_1_1min__heap.html#aec0131c08588b3af93bd7ce1382ff363">alglib::heap::min_heap::get_min_elt</a></div><div class="ttdeci">virtual const elt_t &amp; get_min_elt() const  =0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -204,7 +167,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

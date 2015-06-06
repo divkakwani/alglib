@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -93,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">parallel_sort.h File Reference</div>  </div>
@@ -104,59 +106,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="parallel__sort_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacealglib"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib.html">alglib</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacealglib_1_1mutithreaded"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1mutithreaded.html">alglib::mutithreaded</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1a172f0fb45884d2883722e42e39d09b"><td class="memTemplParams" colspan="2">template&lt;typename RandomAccessIter &gt; </td></tr>
-<tr class="memitem:a1a172f0fb45884d2883722e42e39d09b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="parallel__sort_8h.html#a1a172f0fb45884d2883722e42e39d09b">merge_sort</a> (RandomAccessIter _first, RandomAccessIter _last)</td></tr>
-<tr class="separator:a1a172f0fb45884d2883722e42e39d09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72071c4737019ff3403182c1310bcc24"><td class="memTemplParams" colspan="2">template&lt;typename RandomAccessIter &gt; </td></tr>
+<tr class="memitem:a72071c4737019ff3403182c1310bcc24"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1mutithreaded.html#a72071c4737019ff3403182c1310bcc24">alglib::mutithreaded::merge_sort</a> (RandomAccessIter first, RandomAccessIter last)</td></tr>
+<tr class="separator:a72071c4737019ff3403182c1310bcc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a1a172f0fb45884d2883722e42e39d09b"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename RandomAccessIter &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void merge_sort </td>
-          <td>(</td>
-          <td class="paramtype">RandomAccessIter&#160;</td>
-          <td class="paramname"><em>_first</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">RandomAccessIter&#160;</td>
-          <td class="paramname"><em>_last</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> sz = _last - _first;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span>(sz &gt; 1) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">// Left subarray</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::vector&lt;typename RandomAccessIter::value_type&gt; subarr1(_first, _first + sz / 2);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::thread left(merge_sort&lt;RandomAccessIter&gt;, subarr1.begin(), subarr1.end());</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// Right subarray</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::vector&lt;typename RandomAccessIter::value_type&gt; subarr2(_first + sz / 2, _last);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::thread right(merge_sort&lt;RandomAccessIter&gt;, subarr2.begin(), subarr2.end());</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        left.join();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        right.join();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::merge(subarr1.begin(), subarr1.end(), subarr2.begin(), subarr2.end(), _first);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -166,7 +128,7 @@ template&lt;typename RandomAccessIter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

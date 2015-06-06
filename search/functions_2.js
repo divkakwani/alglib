@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['connected_5fcomponents',['connected_components',['../graph__algo_8h.html#aad9db4c07a758d067608716ecec8eab2',1,'graph_algo.h']]],
-  ['const_5feiterator',['const_eiterator',['../classadj__list_1_1const__eiterator.html#aad7e1ca3a5668dad7acf071fe7f69cce',1,'adj_list::const_eiterator::const_eiterator(adj_list&lt; vertex_t, edge_t &gt; &amp;obj)'],['../classadj__list_1_1const__eiterator.html#a86703442a043564ad5e5714406670c7f',1,'adj_list::const_eiterator::const_eiterator(const const_eiterator &amp;eit)']]]
+  ['bfs_5forder',['bfs_order',['../search_8h.html#a95decb2b83efe7ed3d2752b45a38f82a',1,'search.h']]],
+  ['bimap',['bimap',['../classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8',1,'alglib::bimap::bimap']]],
+  ['binary_5fheap',['binary_heap',['../classalglib_1_1heap_1_1binary__heap.html#af2eaa042e2ddcc3da62da60df97081ab',1,'alglib::heap::binary_heap::binary_heap()'],['../classalglib_1_1heap_1_1binary__heap.html#ac3663f2ea468c21e831d934001d6ee36',1,'alglib::heap::binary_heap::binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first)']]]
 ];

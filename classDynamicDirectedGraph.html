@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -155,12 +156,13 @@ Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    vector&lt;int&gt; zeroes(vertices);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    fill_n(zeroes.begin(), vertices, 0);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; vertices; i++)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        adj_matrix.push_back(zeroes);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classadj__matrix.html">adj_matrix</a>.push_back(zeroes);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Initialize the indeg and outdeg vectors to all zeroes</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    fill_n(back_inserter(indeg), vertices, 0);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    fill_n(back_inserter(outdeg), vertices, 0);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="ttc" id="classadj__matrix_html"><div class="ttname"><a href="classadj__matrix.html">adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -190,10 +192,11 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                                {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    adj_matrix[u][v] = 1;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="classadj__matrix.html">adj_matrix</a>[u][v] = 1;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    outdeg[u]++;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    indeg[v]++;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="ttc" id="classadj__matrix_html"><div class="ttname"><a href="classadj__matrix.html">adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -224,10 +227,11 @@ template&lt;typename Iter &gt; </div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                      {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> idx = 0; idx &lt; total_vertices; idx++)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span>(adj_matrix[vertex][idx] == 1)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classadj__matrix.html">adj_matrix</a>[vertex][idx] == 1)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            *dest++ = idx;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> dest;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="ttc" id="classadj__matrix_html"><div class="ttname"><a href="classadj__matrix.html">adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -255,10 +259,11 @@ template&lt;typename Iter &gt; </div>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                   {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    adj_matrix[u][v] = 0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classadj__matrix.html">adj_matrix</a>[u][v] = 0;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    outdeg[u]--;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    indeg[v]--;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="ttc" id="classadj__matrix_html"><div class="ttname"><a href="classadj__matrix.html">adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -353,7 +358,7 @@ template&lt;typename Iter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

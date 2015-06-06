@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -98,68 +99,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="disjoint__sets_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    Operations on a disjoint set data structure</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">        union</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">        find_set</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">        make_set</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">        </span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacealglib_1_1disjoint__sets.html">    8</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">disjoint_sets</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">disjoint_sets</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_type&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classdisjoint__sets.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdisjoint__sets.html">disjoint_sets</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        map&lt;int, int&gt; parent;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="comment">/* Translate to int */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        map&lt;elt_type, int&gt; eltid;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        map&lt;int, elt_type&gt; inv_eltid;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> elts;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classdisjoint__sets.html#a888ac4de103bc729245039c5eb5e8b84">   27</a></span>&#160;        <a class="code" href="classdisjoint__sets.html#a888ac4de103bc729245039c5eb5e8b84">disjoint_sets</a>() : elts(0) {}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> unite(elt_type e1, elt_type e2);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">int</span> find_set(elt_type e);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> make_set(elt_type e);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_type&gt;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classdisjoint__sets.html#afaaab21655c8727a8794b89655baebb0">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classdisjoint__sets.html#afaaab21655c8727a8794b89655baebb0">disjoint_sets&lt;elt_type&gt;::make_set</a>(elt_type e) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    inv_eltid[elts] = e;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    eltid[e] = elts;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    parent[elts] = elts;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ++elts;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::vector&lt;int&gt; parent;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/* Translate to int */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::map&lt;elt_type, int&gt; eltid;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">/* Number of elements in the disjoint set */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> elts;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ae1fad10963a6ed64b938d4be63fa9848">   24</a></span>&#160;    <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ae1fad10963a6ed64b938d4be63fa9848">disjoint_sets</a>() : elts(0) {}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a82c2f30bd6fa1ab633ff0e8922be582f">union_set</a>(<span class="keyword">const</span> elt_type&amp; e1, <span class="keyword">const</span> elt_type&amp; e2);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a72ba5aea386c7631dd108533fbbd036d">find_set</a>(<span class="keyword">const</span> elt_type&amp; e);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a49e1dda95b1d9f7b4dbb7d71f59a4f8e">find_set_by_id</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a4f3c94724412355bc35702c84c751f98">make_set</a>(<span class="keyword">const</span> elt_type&amp; e);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ab1342e6817c109bb21ad39fc93c8497a">same_set</a>(<span class="keyword">const</span> elt_type&amp; e1, <span class="keyword">const</span> elt_type&amp; e2);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a80543e5ccbad432870e0febdd85135df">set_count</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a81717a4a7b95b876adb68d13ece95f91">set_size</a>(<span class="keyword">const</span> elt_type&amp; e);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;tempate &lt;typename elt_type&gt;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">int</span> disjoint_set&lt;elt_type&gt;::find_set_by_id(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (<span class="keywordtype">id</span> == parent[<span class="keywordtype">id</span>])</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> id;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> parent[id] = find_set_by_id(parent[<span class="keywordtype">id</span>]);     <span class="comment">// Path compression</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_type&gt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classdisjoint__sets.html#a1500ceb3744902dcb0f22e8db7d8e866">   44</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classdisjoint__sets.html#a1500ceb3744902dcb0f22e8db7d8e866">disjoint_sets&lt;elt_type&gt;::find_set</a>(elt_type e) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> <span class="keywordtype">id</span> = eltid[e];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">while</span>(<span class="keywordtype">id</span> != parent[<span class="keywordtype">id</span>])</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">id</span> = parent[id];</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> id;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a4f3c94724412355bc35702c84c751f98">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">disjoint_sets&lt;elt_type&gt;::make_set</a>(<span class="keyword">const</span> elt_type&amp; e) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    eltid[e] = elts;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    parent[elts] = elts;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    ++elts; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> elt_type&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classdisjoint__sets.html#aeabd237d65c37e40c75d8c0f490c4d2c">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classdisjoint__sets.html#aeabd237d65c37e40c75d8c0f490c4d2c">disjoint_sets&lt;elt_type&gt;::unite</a>(elt_type e1, elt_type e2) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> repr_id1 = find_set(e1);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> repr_id2 = find_set(e2);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    parent[repr_id1] = repr_id2;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="classdisjoint__sets_html_a888ac4de103bc729245039c5eb5e8b84"><div class="ttname"><a href="classdisjoint__sets.html#a888ac4de103bc729245039c5eb5e8b84">disjoint_sets::disjoint_sets</a></div><div class="ttdeci">disjoint_sets()</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:27</div></div>
-<div class="ttc" id="classdisjoint__sets_html_afaaab21655c8727a8794b89655baebb0"><div class="ttname"><a href="classdisjoint__sets.html#afaaab21655c8727a8794b89655baebb0">disjoint_sets::make_set</a></div><div class="ttdeci">void make_set(elt_type e)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:34</div></div>
-<div class="ttc" id="classdisjoint__sets_html"><div class="ttname"><a href="classdisjoint__sets.html">disjoint_sets</a></div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:15</div></div>
-<div class="ttc" id="classdisjoint__sets_html_aeabd237d65c37e40c75d8c0f490c4d2c"><div class="ttname"><a href="classdisjoint__sets.html#aeabd237d65c37e40c75d8c0f490c4d2c">disjoint_sets::unite</a></div><div class="ttdeci">void unite(elt_type e1, elt_type e2)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:52</div></div>
-<div class="ttc" id="classdisjoint__sets_html_a1500ceb3744902dcb0f22e8db7d8e866"><div class="ttname"><a href="classdisjoint__sets.html#a1500ceb3744902dcb0f22e8db7d8e866">disjoint_sets::find_set</a></div><div class="ttdeci">int find_set(elt_type e)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:44</div></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a72ba5aea386c7631dd108533fbbd036d">   52</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">disjoint_sets&lt;elt_type&gt;::find_set</a>(<span class="keyword">const</span> elt_type&amp; e) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> find_set_by_id(eltid[e]);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a82c2f30bd6fa1ab633ff0e8922be582f">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">disjoint_sets&lt;elt_type&gt;::union_set</a>(<span class="keyword">const</span> elt_type&amp; e1, <span class="keyword">const</span> elt_type&amp; e2) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">int</span> repr_id1 = find_set(e1);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> repr_id2 = find_set(e2);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    parent[repr_id1] = repr_id2;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">bool</span> disjoint_set&lt;elt_type&gt;::same_set(<span class="keyword">const</span> elt_type&amp; e1, <span class="keyword">const</span> elt_type&amp; e2) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> find_set(eltid[e1]) == find_set(eltid[e2]);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> disjoint_set&lt;elt_type&gt;::set_count() {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> elt_type&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> disjoint_set&lt;elt_type&gt;::set_count() {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};  <span class="comment">// end disjoint_set namespace</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};  <span class="comment">// end alglib namespace</span></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a4f3c94724412355bc35702c84c751f98"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a4f3c94724412355bc35702c84c751f98">alglib::disjoint_sets::disjoint_sets::make_set</a></div><div class="ttdeci">void make_set(const elt_type &amp;e)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:44</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_ab1342e6817c109bb21ad39fc93c8497a"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ab1342e6817c109bb21ad39fc93c8497a">alglib::disjoint_sets::disjoint_sets::same_set</a></div><div class="ttdeci">bool same_set(const elt_type &amp;e1, const elt_type &amp;e2)</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a82c2f30bd6fa1ab633ff0e8922be582f"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a82c2f30bd6fa1ab633ff0e8922be582f">alglib::disjoint_sets::disjoint_sets::union_set</a></div><div class="ttdeci">void union_set(const elt_type &amp;e1, const elt_type &amp;e2)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:58</div></div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a80543e5ccbad432870e0febdd85135df"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a80543e5ccbad432870e0febdd85135df">alglib::disjoint_sets::disjoint_sets::set_count</a></div><div class="ttdeci">int set_count()</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html">alglib::disjoint_sets::disjoint_sets</a></div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:12</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a72ba5aea386c7631dd108533fbbd036d"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a72ba5aea386c7631dd108533fbbd036d">alglib::disjoint_sets::disjoint_sets::find_set</a></div><div class="ttdeci">int find_set(const elt_type &amp;e)</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:52</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a81717a4a7b95b876adb68d13ece95f91"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a81717a4a7b95b876adb68d13ece95f91">alglib::disjoint_sets::disjoint_sets::set_size</a></div><div class="ttdeci">int set_size(const elt_type &amp;e)</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_ae1fad10963a6ed64b938d4be63fa9848"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ae1fad10963a6ed64b938d4be63fa9848">alglib::disjoint_sets::disjoint_sets::disjoint_sets</a></div><div class="ttdeci">disjoint_sets()</div><div class="ttdef"><b>Definition:</b> disjoint_sets.h:24</div></div>
+<div class="ttc" id="classalglib_1_1disjoint__sets_1_1disjoint__sets_html_a49e1dda95b1d9f7b4dbb7d71f59a4f8e"><div class="ttname"><a href="classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a49e1dda95b1d9f7b4dbb7d71f59a4f8e">alglib::disjoint_sets::disjoint_sets::find_set_by_id</a></div><div class="ttdeci">int find_set_by_id(int id)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -169,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 14:59:35 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
