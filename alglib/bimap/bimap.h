@@ -4,6 +4,7 @@
 
 #include <map>
 #include <vector>
+#include <stdexcept>
 
 namespace alglib {
 
@@ -74,7 +75,7 @@ const type2& bimap<type1, type2> :: getimage(const type1& elt) const {
 
   auto it = type1set.find(elt);
   if(it == type1set.end())
-    throw "Invalid element";
+    throw std::out_of_range("The key doesn't exist");
 
   return (directory[it->second].second)->first;
 
@@ -85,7 +86,7 @@ const type1& bimap<type1, type2> :: getpreimage(const type2& elt) const {
 
   auto it = type2set.find(elt);
   if(it == type2set.end())
-    throw "Invalid element";
+    throw std::out_of_range("The key doesn't exist");
 
     return (directory[it->second].first)->first;
 

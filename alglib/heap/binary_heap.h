@@ -39,7 +39,7 @@ class binary_heap : public min_heap<elt_t, key_t> {
 
     /* aggregate initialization */
     template<typename InputIter>
-    binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first);
+    explicit binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first);
 
 
     void insert(const elt_t& elt, const key_t& key);
@@ -82,9 +82,8 @@ class binary_heap : public min_heap<elt_t, key_t> {
     int __sz;
 
     typename std::map<elt_t, int>::iterator make_entry(const elt_t& elt) {
-        if (nodeof.find(elt) != nodeof.end())
-            throw "Element already exists";
-        nodeof[elt] = -1;
+        if (nodeof.find(elt) == nodeof.end())
+            nodeof[elt] = -1;
         return nodeof.find(elt);
     }
     void update_entry(int idx) { (heaparr[idx].elt_it)->second = idx; }
@@ -152,7 +151,7 @@ template<typename elt_t, typename key_t>
 void binary_heap<elt_t, key_t>::replace(const elt_t& elt,
                                         const key_t& key) {
     if (__sz == 0)
-        throw "no element";
+        throw std::underflow_error("Empty heap");
     auto loc = make_entry(elt);
     nodeof.erase(heaparr[0].elt_it);  // Clean up the elt from nodeof map
     heaparr[0] = node_t {key, loc};
@@ -163,7 +162,7 @@ template<typename elt_t, typename key_t>
 void binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
                                            const key_t& key) {
     if (nodeof.find(elt) == nodeof.end())
-        throw "Non-existent element";
+        throw std::domain_error("The element doesn't exist");
     int index_in_heap = nodeof[elt];
     heaparr[index_in_heap] = node_t {key, heaparr[index_in_heap].elt_it};
     __sift_up(index_in_heap);
