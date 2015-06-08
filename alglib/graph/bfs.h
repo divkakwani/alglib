@@ -18,9 +18,9 @@ namespace graph {
 
 template<typename GraphType, typename OutputIter>
 OutputIter _single_bfs(const GraphType& G,
-               const typename GraphType::vertex_type& start,
-               vertex_property<GraphType, bool>& visited,
-               OutputIter dest) {    
+                       const typename GraphType::vertex_type& start,
+                       vertex_property<GraphType, bool>& visited,
+                       OutputIter dest) {    
     
     typedef typename GraphType::vertex_type vertex_type;
 
@@ -48,8 +48,8 @@ OutputIter _single_bfs(const GraphType& G,
 
 template<typename GraphType, typename OutputIter>
 OutputIter single_bfs(const GraphType& G,
-               const typename GraphType::vertex_type& start,
-               OutputIter dest) {    
+                      const typename GraphType::vertex_type& start,
+                      OutputIter dest) {    
     return _single_bfs(G, start, vertex_property<GraphType, bool>(G, false), dest);
 }
 
