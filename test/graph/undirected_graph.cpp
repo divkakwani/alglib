@@ -3,6 +3,7 @@
 #include <alglib/graph/undirected_graph.h>
 
 using namespace std;
+using namespace alglib::graph;
 
 int main() {
 

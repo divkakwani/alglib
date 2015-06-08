@@ -1,9 +1,10 @@
-#include <alglib/graph/adj_list.h>
+#include <alglib/graph/models/adj_list.h>
 #include <alglib/graph/edge.h>
 #include <iostream>
 
 using namespace std;
-
+using namespace alglib::graph;
+using namespace alglib::graph::models;
 
 int main() {
 

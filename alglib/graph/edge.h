@@ -11,6 +11,10 @@
 
 #include <iostream>
 
+namespace alglib {
+namespace graph {
+
+
 template<typename vertex_t, typename attr_t = void>
 struct edge_t {
               
@@ -18,7 +22,7 @@ struct edge_t {
     vertex_t to;
     attr_t attribute;
 
-    edge_t() {}
+    edge_t() = default;
 
     edge_t(const vertex_t& u, const vertex_t& v, const attr_t& attr) {
         from = u;
@@ -68,4 +72,9 @@ struct edge_t<vertex_t, void> : public edge_t<vertex_t, int> {
     edge_t(const vertex_t& u, const vertex_t v) : edge_t<vertex_t, int>(u, v, 1) {}
 
 };
+
+
+}  // end of graph namespace
+}  // end of alglib namespace
+
 

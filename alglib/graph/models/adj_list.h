@@ -11,7 +11,7 @@
 #include <map>
 #include <functional>
 #include <boost/iterator/transform_iterator.hpp>
-#include <alglib/graph/graph_model.h>
+#include <alglib/graph/models/graph_model.h>
 
 #pragma once
 
@@ -36,6 +36,9 @@ struct get_second : public std::unary_function<T, typename T::second_type> {
     typename T::second_type operator() (const T& p) const { return p.second; }
 };
 
+namespace alglib {
+namespace graph {
+namespace models {
 
 /**
  * \breif A 'model' of a graph
@@ -70,6 +73,12 @@ class adj_list : public graph_model<vertex_t, edge_t> {
     typedef std::map<vertex_t, edge_t> alist_t;
     typedef std::map<vertex_t, alist_t> alists_t;
 
+    get_first<std::pair<vertex_t, alist_t>> get_vertex;
+    get_second<std::pair<vertex_t, alist_t>> get_alist;
+
+    get_first<std::pair<vertex_t, edge_t>> get_avertex;
+    get_second<std::pair<vertex_t, edge_t>> get_aedge;
+   
  public:
     
     /// Iterators
@@ -87,12 +96,6 @@ class adj_list : public graph_model<vertex_t, edge_t> {
     class const_eiterator;
     friend class const_iterator;
 
-    get_first<std::pair<vertex_t, alist_t>> get_vertex;
-    get_second<std::pair<vertex_t, alist_t>> get_alist;
-
-    get_first<std::pair<vertex_t, edge_t>> get_avertex;
-    get_second<std::pair<vertex_t, edge_t>> get_aedge;
-   
     const_viterator vbegin() {
         return boost::make_transform_iterator(alists.begin(), get_vertex);
     }
@@ -270,11 +273,12 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     friend std::ostream& operator<<(std::ostream& out,
                                     typename adj_list<t1, t2>::const_eiterator cit);
 
-    const_eiterator() { }
 
  public:
     
-    const_eiterator(adj_list<vertex_t, edge_t>& graph) : G(graph) {
+    const_eiterator() = delete;
+
+    explicit const_eiterator(adj_list<vertex_t, edge_t>& graph) : G(graph) {
         if(G.alists.size() != 0) {
             vit = G.alists.begin();
             ait = (vit->second).begin();
@@ -343,3 +347,9 @@ std::ostream& operator<<(std::ostream& out,
         out << *(eit.ait).second;
         return out;
 }
+
+}  // end of models namespace
+}  // end of graph namespace
+}  // end of alglib namespace
+
+

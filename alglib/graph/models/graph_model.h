@@ -10,13 +10,17 @@
 
 #pragma once
 
+
+namespace alglib {
+namespace graph {
+namespace models {
+
 /**
  * \brief The interface of a graph model.
  * 
  * A graph model must implement this interface to be usable
  * with graph types in this library.
  */
-
 template<typename vertex_t, typename edge_t>
 class graph_model {
 
@@ -49,4 +53,6 @@ class graph_model {
 */
 };
 
-
+}  // end of models namespace
+}  // end of graph namespace
+}  // end of alglib namespace

@@ -7,13 +7,16 @@
  * that was distributed with this source code.
  */
 
-#include <alglib/graph/adj_list.h>
+#include <alglib/graph/models/adj_list.h>
 #include <alglib/graph/edge.h> 
 
 #pragma once
 
+namespace alglib {
+namespace graph {
+
 template<typename vertex_t, typename attr_t = void,
-         template<typename, typename> class model = adj_list>
+         template<typename, typename> class model = models::adj_list>
 class directed_graph : public model<vertex_t, edge_t<vertex_t, attr_t>> {
 
  public:
@@ -38,4 +41,7 @@ class directed_graph<vertex_t, void, model> : public model<vertex_t, edge_t<vert
     }
 
 };
+
+}  // end of graph namespace
+}  // end of alglib namespace
 
