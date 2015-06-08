@@ -12,6 +12,7 @@
 #include <functional>
 #include <boost/iterator/transform_iterator.hpp>
 #include <alglib/graph/models/graph_model.h>
+#include <stdexcept>
 
 #pragma once
 
@@ -83,45 +84,59 @@ class adj_list : public graph_model<vertex_t, edge_t> {
     
     /// Iterators
     typedef boost::transform_iterator<get_first<std::pair<vertex_t, alist_t>>,
-                                      typename std::map<vertex_t, alist_t>::iterator>
+                                      typename std::map<vertex_t, alist_t>::const_iterator>
             const_viterator;
 
     typedef boost::transform_iterator<get_first<std::pair<vertex_t, edge_t>>,
-                                      typename std::map<vertex_t, edge_t>::iterator>
+                                      typename std::map<vertex_t, edge_t>::const_iterator>
             const_aviterator;
     typedef boost::transform_iterator<get_second<std::pair<vertex_t, edge_t>>,
-                                      typename std::map<vertex_t, edge_t>::iterator>
+                                      typename std::map<vertex_t, edge_t>::const_iterator>
             const_aeiterator;
     
     class const_eiterator;
     friend class const_iterator;
 
-    const_viterator vbegin() {
-        return boost::make_transform_iterator(alists.begin(), get_vertex);
+    const_viterator vbegin() const noexcept {
+        return boost::make_transform_iterator(alists.cbegin(), get_vertex);
     }
-    const_viterator vend() {
-        return boost::make_transform_iterator(alists.end(), get_vertex);
+    const_viterator vend() const noexcept {
+        return boost::make_transform_iterator(alists.cend(), get_vertex);
     }
-    const_eiterator ebegin() {
+    const_eiterator ebegin() const noexcept {
         return const_eiterator(*this);
     }
-    const_eiterator eend() {      
+    const_eiterator eend() const noexcept {       
         const_eiterator it(*this);
         it.vit = alists.end();
         return it;
     }
-    const_aviterator avbegin(const vertex_t& u) { 
-        return boost::make_transform_iterator(alists[u].begin(), get_avertex);
+    const_aviterator avbegin(const vertex_t& u) const {
+        typename alists_t::const_iterator it;
+        if((it = alists.find(u)) == alists.end())
+            throw std::out_of_range("The vertex doesn't exist");
+        return boost::make_transform_iterator((it->second).cbegin(), get_avertex);
     }
-    const_aviterator avend(const vertex_t& u) {
-        return boost::make_transform_iterator(alists[u].end(), get_avertex);
+
+    const_aviterator avend(const vertex_t& u) const {
+        typename alists_t::const_iterator it;
+        if((it = alists.find(u)) == alists.end())
+            throw std::out_of_range("The vertex doesn't exist");
+        return boost::make_transform_iterator((it->second).cend(), get_avertex);
     }
     
-    const_aeiterator aebegin(const vertex_t& u) {
-        return boost::make_transform_iterator(alists[u].begin(), get_aedge);
+    const_aeiterator aebegin(const vertex_t& u) const {
+        typename alists_t::const_iterator it;
+        if((it = alists.find(u)) == alists.end())
+            throw std::out_of_range("The vertex doesn't exist");
+        return boost::make_transform_iterator((it->second).cbegin(), get_aedge);
     }
-    const_aeiterator aeend(const vertex_t& u) {
-        return boost::make_transform_iterator(alists[u].end(), get_aedge);
+
+    const_aeiterator aeend(const vertex_t& u) const { 
+        typename alists_t::const_iterator it;
+        if((it = alists.find(u)) == alists.end())
+            throw std::out_of_range("The vertex doesn't exist");
+        return boost::make_transform_iterator((it->second).cend(), get_aedge);
     }
 
  private:
@@ -261,9 +276,9 @@ template<typename vertex_t, typename edge_t>
 class adj_list<vertex_t, edge_t>::const_eiterator {
 
  private:
-    typename alist_t::iterator  ait;
-    typename alists_t::iterator vit;
-    adj_list<vertex_t, edge_t>& G;
+    typename alist_t::const_iterator  ait;
+    typename alists_t::const_iterator vit;
+    const adj_list<vertex_t, edge_t>& G;
 
     typedef adj_list<vertex_t, edge_t> outer;
 
@@ -278,10 +293,10 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     
     const_eiterator() = delete;
 
-    explicit const_eiterator(adj_list<vertex_t, edge_t>& graph) : G(graph) {
+    explicit const_eiterator(const adj_list<vertex_t, edge_t>& graph) : G(graph) {
         if(G.alists.size() != 0) {
-            vit = G.alists.begin();
-            ait = (vit->second).begin();
+            vit = G.alists.cbegin();
+            ait = (vit->second).cbegin();
         }
     }
 
@@ -293,19 +308,19 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
     // Prefix increment
     const outer::edge_type& operator++() {
         ait++;
-        while(vit != G.alists.end() and ait == (vit->second).end()) {
+        while(vit != G.alists.cend() and ait == (vit->second).cend()) {
             vit++;
-            ait = (vit->second).begin();
+            ait = (vit->second).cbegin();
         }
         return ait->second;
     }
 
     // prefix decrement
     const outer::edge_type& operator--() {
-        if(ait == (vit->second).begin()) {
-            while(vit != G.alists.begin() and (vit->second).begin() == (vit->second).end())
+        if(ait == (vit->second).cbegin()) {
+            while(vit != G.alists.cbegin() and (vit->second).cbegin() == (vit->second).cend())
                 vit--;
-            ait = --((vit->second).end());
+            ait = --((vit->second).cend());
         } else {
             ait--;
         }
