@@ -1,0 +1,65 @@
+/*
+ * This file is part of the alglib project.
+ *
+ * (c) Divyanshu Kakwani <divkakwani@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
+#include <alglib/graph/graph_property.h>
+
+namespace alglib {
+namespace graph {
+
+template<typename GraphType, typename OutputIter>
+OutputIter _single_preorder_dfs(const GraphType& G,
+                                const typename GraphType::vertex_type& start,
+                                vertex_property<GraphType, bool>& visited,
+                                OutputIter dest) {
+    *dest++ = start;
+    visited[start] = true;
+    for(auto it = G.avbegin(start); it != G.avend(start); it++)
+        if(!visited(*it))
+            dest = _single_preorder_dfs(G, *it, visited, dest);
+    return dest;
+}
+
+template<typename GraphType, typename OutputIter>
+OutputIter _single_postorder_dfs(const GraphType& G,
+                                 const typename GraphType::vertex_type& start,
+                                 vertex_property<GraphType, bool>& visited,
+                                 OutputIter dest) {
+    visited[start] = true;
+    for(auto it = G.avbegin(start); it != G.avend(start); it++)
+        if(!visited(*it))
+            dest = _single_postorder_dfs(G, *it, visited, dest);
+    *dest++ = start;
+    return dest;
+}
+
+template<typename GraphType, typename OutputIter>
+OutputIter preorder_dfs(const GraphType& G, OutputIter dest) {
+
+    vertex_property<GraphType, bool> visited(G, false);
+
+    for(auto it = G.vbegin(); it != G.vend(); it++)
+        if(!visited(*it))
+            dest = _single_preorder_dfs(G, *it, visited, dest);
+    return dest;
+}
+
+template<typename GraphType, typename OutputIter>
+OutputIter postorder_dfs(const GraphType& G, OutputIter dest) {
+
+    vertex_property<GraphType, bool> visited(G, false);
+
+    for(auto it = G.vbegin(); it != G.vend(); it++)
+        if(!visited(*it))
+            dest = _single_postorder_dfs(G, *it, visited, dest);
+    return dest;
+}
+
+}  // end of graph namespace
+}  // end of alglib namespace
+
