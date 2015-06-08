@@ -25,13 +25,14 @@ class vertex_property {
     /** 
      * \brief vertex_property constructor 
      * \param G The graph on which the property is to be defined
+     * \param default_val (optional) Default property of each vertex
      */
-    vertex_property(GraphType& G) {  // FIXME: change to const
-
+    explicit vertex_property(const GraphType& G, 
+                             const PropertyType& default_val = PropertyType()) {
         for(auto it = G.vbegin(); it != G.vend(); it++)
-            property[*it] = PropertyType();
+            property[*it] = default_val;
     }
-    
+
     /*
      * \breif get the reference to the property associated with a vertex
      * \param v vertex whose property is sought
