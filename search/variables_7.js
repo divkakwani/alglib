@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['u',['u',['../structedge__t.html#a7f505360103059cfbfa1e4d558a1bdf3',1,'edge_t']]]
+  ['subtrees',['subtrees',['../structNode.html#a88cdfeb66445302ea57b6fbab71be84f',1,'Node']]]
 ];

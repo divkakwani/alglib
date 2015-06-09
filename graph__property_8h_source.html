@@ -106,43 +106,111 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * that was distributed with this source code.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> PropertyType&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classvertex__property.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvertex__property.html">vertex_property</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> GraphType::vertex_type vertex_type;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::map&lt;vertex_type, PropertyType&gt; property;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>graph {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> PropertyType&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property</a> {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvertex__property.html#a9ebea7dae5c8a7bbbd4241f46d933c53">   27</a></span>&#160;    <a class="code" href="classvertex__property.html#a9ebea7dae5c8a7bbbd4241f46d933c53">vertex_property</a>(<span class="keyword">const</span> GraphType&amp; G) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.vbegin(); it != G.vend(); it++)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            property[*it] = PropertyType();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvertex__property.html#a970db0cdc844ed114bde343417169b11">   33</a></span>&#160;    PropertyType&amp; <a class="code" href="classvertex__property.html#a970db0cdc844ed114bde343417169b11">operator[] </a>(<span class="keyword">const</span> vertex_type&amp; v) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">typename</span> std::map&lt;vertex_type, PropertyType&gt;::iterator it;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">if</span>((it = property.find(v)) == property.end())</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">throw</span> std::domain_error(<span class="stringliteral">&quot;The vertex doesn&#39;t exist in the supplied graph&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classvertex__property.html#a26c3800f03ab0d9e66b421bd0fa4602c">   40</a></span>&#160;    PropertyType <a class="code" href="classvertex__property.html#a26c3800f03ab0d9e66b421bd0fa4602c">operator() </a>(<span class="keyword">const</span> vertex_type&amp; v)<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">typename</span> std::map&lt;vertex_type, PropertyType&gt;::iterator it;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span>((it = property.find(v)) == property.end())</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">throw</span> std::domain_error(<span class="stringliteral">&quot;The vertex doesn&#39;t exist in the supplied graph&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="ttc" id="classvertex__property_html_a970db0cdc844ed114bde343417169b11"><div class="ttname"><a href="classvertex__property.html#a970db0cdc844ed114bde343417169b11">vertex_property::operator[]</a></div><div class="ttdeci">PropertyType &amp; operator[](const vertex_type &amp;v)</div><div class="ttdef"><b>Definition:</b> graph_property.h:33</div></div>
-<div class="ttc" id="classvertex__property_html_a9ebea7dae5c8a7bbbd4241f46d933c53"><div class="ttname"><a href="classvertex__property.html#a9ebea7dae5c8a7bbbd4241f46d933c53">vertex_property::vertex_property</a></div><div class="ttdeci">vertex_property(const GraphType &amp;G)</div><div class="ttdoc">vertex_property constructor </div><div class="ttdef"><b>Definition:</b> graph_property.h:27</div></div>
-<div class="ttc" id="classvertex__property_html_a26c3800f03ab0d9e66b421bd0fa4602c"><div class="ttname"><a href="classvertex__property.html#a26c3800f03ab0d9e66b421bd0fa4602c">vertex_property::operator()</a></div><div class="ttdeci">PropertyType operator()(const vertex_type &amp;v) const </div><div class="ttdef"><b>Definition:</b> graph_property.h:40</div></div>
-<div class="ttc" id="classvertex__property_html"><div class="ttname"><a href="classvertex__property.html">vertex_property</a></div><div class="ttdef"><b>Definition:</b> graph_property.h:15</div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/* typedefs */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#ae846b2ea5bfad693ac4f44eea9a50802">   24</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> GraphType::vertex_type <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#ae846b2ea5bfad693ac4f44eea9a50802">vertex_type</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#a149bffcd0671c2c7a9badd63c99c4ca7">   25</a></span>&#160;    <span class="keyword">typedef</span> PropertyType <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#a149bffcd0671c2c7a9badd63c99c4ca7">property_type</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764">   26</a></span>&#160;    <span class="keyword">typedef</span> GraphType <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764">graph_type</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::map&lt;vertex_type, PropertyType&gt; property;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#a62a438a5834e6f749feb29685d8c3817">   37</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#a62a438a5834e6f749feb29685d8c3817">vertex_property</a>(<span class="keyword">const</span> GraphType&amp; G, </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                             <span class="keyword">const</span> PropertyType&amp; default_val = PropertyType()) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.vbegin(); it != G.vend(); it++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            property[*it] = default_val;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#a62a438a5834e6f749feb29685d8c3817">vertex_property</a>(<span class="keyword">const</span> <a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property</a>&amp; P) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * \brief move-constructor</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#a8065a0a78af808f9ac61c6ef7b7433f4">   49</a></span>&#160;    <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#a8065a0a78af808f9ac61c6ef7b7433f4">vertex_property</a>(<a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property</a>&amp;&amp; P) : property(<a class="code" href="namespacestd.html">std</a>::move(P.property)) {}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     * \breif get the reference to the property associated with a vertex</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     * \param v vertex whose property is sought</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     * \return A reference to the property of the vertex</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#ab668c176ed142b3bda2b9628dc074064">   56</a></span>&#160;    PropertyType&amp; <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#ab668c176ed142b3bda2b9628dc074064">operator[] </a>(<span class="keyword">const</span> vertex_type&amp; v) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">typename</span> std::map&lt;vertex_type, PropertyType&gt;::iterator it;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span>((it = property.find(v)) == property.end())</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">throw</span> std::domain_error(<span class="stringliteral">&quot;The vertex doesn&#39;t exist in the supplied graph&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#aa85be26fbd231a8b8c05ae4115daf9ba">   63</a></span>&#160;    PropertyType <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#aa85be26fbd231a8b8c05ae4115daf9ba">operator() </a>(<span class="keyword">const</span> vertex_type&amp; v)<span class="keyword"> const </span>{ </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">typename</span> std::map&lt;vertex_type, PropertyType&gt;::const_iterator it;  <span class="comment">// const-ness imperative</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span>((it = property.find(v)) == property.end())</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">throw</span> std::domain_error(<span class="stringliteral">&quot;The vertex doesn&#39;t exist in the supplied graph&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     * \brief Update the property of many vertices at once.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> InputIter&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#ada4cd3d5dc3dd0b06f7bb572fc11d213">   74</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#ada4cd3d5dc3dd0b06f7bb572fc11d213">bulk_update</a>(InputIter first, InputIter last, property_type val) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">while</span>(first != last) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">property</span>.at(*first) = val;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            ++first;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1vertex__property.html#ade8e7f0875eda5a3339aa6db154e4171">   81</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classalglib_1_1graph_1_1vertex__property.html#ade8e7f0875eda5a3339aa6db154e4171">operator&lt;&lt; </a>(std::ostream&amp; out, <span class="keyword">const</span> <a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property</a>&amp; P) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = P.property.cbegin(); it != P.property.cend(); it++) </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            out &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> PropertyType&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1edge__property.html">   89</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1graph_1_1edge__property.html">edge_property</a> {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">/* typedefs */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> GraphType::edge_type edge_type;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">typedef</span> PropertyType property_type;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">typedef</span> GraphType graph_type;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::map&lt;edge_type, PropertyType&gt; property;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}  <span class="comment">// end of graph namespace</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}  <span class="comment">// end of alglib namespace</span></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_ae846b2ea5bfad693ac4f44eea9a50802"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#ae846b2ea5bfad693ac4f44eea9a50802">alglib::graph::vertex_property::vertex_type</a></div><div class="ttdeci">GraphType::vertex_type vertex_type</div><div class="ttdef"><b>Definition:</b> graph_property.h:24</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_ade8e7f0875eda5a3339aa6db154e4171"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#ade8e7f0875eda5a3339aa6db154e4171">alglib::graph::vertex_property::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const vertex_property &amp;P)</div><div class="ttdef"><b>Definition:</b> graph_property.h:81</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html">alglib::graph::vertex_property</a></div><div class="ttdef"><b>Definition:</b> graph_property.h:20</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_ada4cd3d5dc3dd0b06f7bb572fc11d213"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#ada4cd3d5dc3dd0b06f7bb572fc11d213">alglib::graph::vertex_property::bulk_update</a></div><div class="ttdeci">void bulk_update(InputIter first, InputIter last, property_type val)</div><div class="ttdef"><b>Definition:</b> graph_property.h:74</div></div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_a8065a0a78af808f9ac61c6ef7b7433f4"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#a8065a0a78af808f9ac61c6ef7b7433f4">alglib::graph::vertex_property::vertex_property</a></div><div class="ttdeci">vertex_property(vertex_property &amp;&amp;P)</div><div class="ttdef"><b>Definition:</b> graph_property.h:49</div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_ab668c176ed142b3bda2b9628dc074064"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#ab668c176ed142b3bda2b9628dc074064">alglib::graph::vertex_property::operator[]</a></div><div class="ttdeci">PropertyType &amp; operator[](const vertex_type &amp;v)</div><div class="ttdef"><b>Definition:</b> graph_property.h:56</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_af207c510188a3a6086e06e490fe0e764"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764">alglib::graph::vertex_property::graph_type</a></div><div class="ttdeci">GraphType graph_type</div><div class="ttdef"><b>Definition:</b> graph_property.h:26</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1edge__property_html"><div class="ttname"><a href="classalglib_1_1graph_1_1edge__property.html">alglib::graph::edge_property</a></div><div class="ttdef"><b>Definition:</b> graph_property.h:89</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_a62a438a5834e6f749feb29685d8c3817"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#a62a438a5834e6f749feb29685d8c3817">alglib::graph::vertex_property::vertex_property</a></div><div class="ttdeci">vertex_property(const GraphType &amp;G, const PropertyType &amp;default_val=PropertyType())</div><div class="ttdoc">vertex_property constructor </div><div class="ttdef"><b>Definition:</b> graph_property.h:37</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_aa85be26fbd231a8b8c05ae4115daf9ba"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#aa85be26fbd231a8b8c05ae4115daf9ba">alglib::graph::vertex_property::operator()</a></div><div class="ttdeci">PropertyType operator()(const vertex_type &amp;v) const </div><div class="ttdef"><b>Definition:</b> graph_property.h:63</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html_a149bffcd0671c2c7a9badd63c99c4ca7"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html#a149bffcd0671c2c7a9badd63c99c4ca7">alglib::graph::vertex_property::property_type</a></div><div class="ttdeci">PropertyType property_type</div><div class="ttdef"><b>Definition:</b> graph_property.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -152,7 +220,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

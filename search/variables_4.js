@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parent',['parent',['../structNode.html#a5a5094fe707fd50ac6283c39397def05',1,'Node']]]
+  ['lt_5fsubtree',['lt_subtree',['../structBST__node.html#a75997b41d58ef27a67887721e0f3f60b',1,'BST_node']]]
 ];

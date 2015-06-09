@@ -108,23 +108,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph__model_8h.html">alglib/graph/models/graph_model.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> vertex_t, <span class="keyword">typename</span> edge_t&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classadj__matrix.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classadj__matrix.html">adj_matrix</a> : <span class="keyword">public</span> <a class="code" href="classgraph__model.html">graph_model</a>&lt;vertex_t, edge_t&gt; {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>graph {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>models {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> indeg(<span class="keyword">const</span> vertex_t&amp; u)<span class="keyword"> const </span>{}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> outdeg(<span class="keyword">const</span> vertex_t&amp; v)<span class="keyword"> const </span>{}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> num_vertices()<span class="keyword"> const </span>{}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> num_edges()<span class="keyword"> const </span>{}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> vertex_t, <span class="keyword">typename</span> edge_t&gt;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classalglib_1_1graph_1_1models_1_1adj__matrix.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1graph_1_1models_1_1adj__matrix.html">adj_matrix</a> : <span class="keyword">public</span> <a class="code" href="classalglib_1_1graph_1_1models_1_1graph__model.html">graph_model</a>&lt;vertex_t, edge_t&gt; {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> indeg(<span class="keyword">const</span> vertex_t&amp; u)<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> outdeg(<span class="keyword">const</span> vertex_t&amp; v)<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> num_vertices()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> num_edges()<span class="keyword"> const </span>{}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="ttc" id="classgraph__model_html"><div class="ttname"><a href="classgraph__model.html">graph_model</a></div><div class="ttdoc">The interface of a graph model. </div><div class="ttdef"><b>Definition:</b> graph_model.h:21</div></div>
-<div class="ttc" id="classadj__matrix_html"><div class="ttname"><a href="classadj__matrix.html">adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:13</div></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}  <span class="comment">// end of models namespace</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}  <span class="comment">// end of graph namespace</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}  <span class="comment">// end of alglib namespace</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1models_1_1graph__model_html"><div class="ttname"><a href="classalglib_1_1graph_1_1models_1_1graph__model.html">alglib::graph::models::graph_model</a></div><div class="ttdoc">The interface of a graph model. </div><div class="ttdef"><b>Definition:</b> graph_model.h:25</div></div>
+<div class="ttc" id="classalglib_1_1graph_1_1models_1_1adj__matrix_html"><div class="ttname"><a href="classalglib_1_1graph_1_1models_1_1adj__matrix.html">alglib::graph::models::adj_matrix</a></div><div class="ttdef"><b>Definition:</b> adj_matrix.h:17</div></div>
 <div class="ttc" id="graph__model_8h_html"><div class="ttname"><a href="graph__model_8h.html">graph_model.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -135,7 +145,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -106,6 +106,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * that was distributed with this source code.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph__property_8h.html">alglib/graph/graph_property.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>graph {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> OutputIter&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">   20</a></span>&#160;OutputIter <a class="code" href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">_single_bfs</a>(<span class="keyword">const</span> GraphType&amp; G,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                       <span class="keyword">const</span> <span class="keyword">typename</span> GraphType::vertex_type&amp; start,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                       <a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property&lt;GraphType, bool&gt;</a>&amp; visited,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                       OutputIter dest) {    </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> GraphType::vertex_type vertex_type;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">/* Maintains a list of unexplored vertices in order of their distance</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">     * from the start vertex */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::queue&lt;vertex_type&gt; frontier;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">/* Put `start` in the queue to start the bfs from */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    frontier.push(start);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">while</span>(!frontier.empty()) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        vertex_type inspect = frontier.front();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        frontier.pop();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        visited[inspect] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">/* Put it into the output stream before inspection */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        *dest++ = inspect;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.avbegin(inspect); it != G.avend(inspect); it++)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span>(!visited(*it))</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                frontier.push(*it);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> dest;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> OutputIter&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespacealglib_1_1graph.html#ac83ad19e3682b06a29a0c6dc05cae317">   50</a></span>&#160;OutputIter <a class="code" href="namespacealglib_1_1graph.html#ac83ad19e3682b06a29a0c6dc05cae317">single_bfs</a>(<span class="keyword">const</span> GraphType&amp; G,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                      <span class="keyword">const</span> <span class="keyword">typename</span> GraphType::vertex_type&amp; start,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                      OutputIter dest) {    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">_single_bfs</a>(G, start, <a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property&lt;GraphType, bool&gt;</a>(G, <span class="keyword">false</span>), dest);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> OutputIter&gt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespacealglib_1_1graph.html#ad6f5e9eb55c321510f4086e79c623993">   58</a></span>&#160;OutputIter <a class="code" href="namespacealglib_1_1graph.html#ad6f5e9eb55c321510f4086e79c623993">bfs</a>(<span class="keyword">const</span> GraphType&amp; G, </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;               <span class="keyword">const</span> <span class="keyword">typename</span> GraphType::vertex_type&amp; start,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;               OutputIter dest) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">/* visited property initialized with false for each vertex */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classalglib_1_1graph_1_1vertex__property.html">vertex_property&lt;GraphType, bool&gt;</a> visited(G, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">/* do the bfs of the start vertex first */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    dest = <a class="code" href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">_single_bfs</a>(G, start, visited, dest);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">/* then others if they are not visited */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.vbegin(); it != G.vend(); it++)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span>(!visited(*it))</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            dest = <a class="code" href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">_single_bfs</a>(G, *it, visited, dest);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> dest;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> OutputIter&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacealglib_1_1graph.html#a1d5fe5b0139f06f5afe9fa3a0ca7d1fa">   78</a></span>&#160;OutputIter <a class="code" href="namespacealglib_1_1graph.html#ad6f5e9eb55c321510f4086e79c623993">bfs</a>(<span class="keyword">const</span> GraphType&amp; G, OutputIter dest) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacealglib_1_1graph.html#ad6f5e9eb55c321510f4086e79c623993">bfs</a>(G, *G.vbegin(), dest);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}  <span class="comment">// end of graph namespace</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}  <span class="comment">// end of alglib namespace</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="ttc" id="classalglib_1_1graph_1_1vertex__property_html"><div class="ttname"><a href="classalglib_1_1graph_1_1vertex__property.html">alglib::graph::vertex_property</a></div><div class="ttdef"><b>Definition:</b> graph_property.h:20</div></div>
+<div class="ttc" id="graph__property_8h_html"><div class="ttname"><a href="graph__property_8h.html">graph_property.h</a></div></div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
+<div class="ttc" id="namespacealglib_1_1graph_html_ac83ad19e3682b06a29a0c6dc05cae317"><div class="ttname"><a href="namespacealglib_1_1graph.html#ac83ad19e3682b06a29a0c6dc05cae317">alglib::graph::single_bfs</a></div><div class="ttdeci">OutputIter single_bfs(const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> bfs.h:50</div></div>
+<div class="ttc" id="namespacealglib_1_1graph_html_ad6f5e9eb55c321510f4086e79c623993"><div class="ttname"><a href="namespacealglib_1_1graph.html#ad6f5e9eb55c321510f4086e79c623993">alglib::graph::bfs</a></div><div class="ttdeci">OutputIter bfs(const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> bfs.h:58</div></div>
+<div class="ttc" id="namespacealglib_1_1graph_html_aa44c990e75f94ba6a4635c68d03bd169"><div class="ttname"><a href="namespacealglib_1_1graph.html#aa44c990e75f94ba6a4635c68d03bd169">alglib::graph::_single_bfs</a></div><div class="ttdeci">OutputIter _single_bfs(const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, vertex_property&lt; GraphType, bool &gt; &amp;visited, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> bfs.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -115,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

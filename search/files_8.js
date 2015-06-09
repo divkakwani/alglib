@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linked_5fimp_2eh',['linked_imp.h',['../linked__imp_8h.html',1,'']]]
+  ['kruskal_5fmst_2eh',['kruskal_mst.h',['../kruskal__mst_8h.html',1,'']]]
 ];

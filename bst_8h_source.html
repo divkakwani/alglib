@@ -108,22 +108,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> node_type&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classBST.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBST.html">BST</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Forward declaration</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classBST.html">   13</a></span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>&gt; <span class="keyword">class  </span><a class="code" href="classBST.html">BST</a>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    node_type&amp; root;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> node_type&gt;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classBST__node.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBST__node.html">BST_node</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    node_type data;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    vector&lt;node_type&amp;&gt; children;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * \brief A bst node</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> value_type&gt;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structBST__node.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structBST__node.html">BST_node</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structBST__node.html#a02912e99bc0f49950282eaf0454b9fb5">   21</a></span>&#160;    <a class="code" href="structBST__node.html#a02912e99bc0f49950282eaf0454b9fb5">BST_node</a>(<span class="keyword">const</span> value_type&amp; val, <a class="code" href="structBST__node.html">BST_node&lt;value_type&gt;</a>* _parent = 0,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;             <a class="code" href="classBST.html">BST&lt;value_type&gt;</a>* left_subtree = 0, <a class="code" href="classBST.html">BST&lt;value_type&gt;</a>* right_subtree = 0) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="structBST__node.html#a3ee55897e4216261cb3565b08bc54866">data</a> = val;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="structBST__node.html#aa24da381912eeb78190de816362bd402">parent</a> = _parent;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="structBST__node.html#a75997b41d58ef27a67887721e0f3f60b">lt_subtree</a> = left_subtree;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="structBST__node.html#adf16bf4aff60928aefe4e76c551307df">rt_subtree</a> = right_subtree;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structBST__node.html#aa24da381912eeb78190de816362bd402">   30</a></span>&#160;    <a class="code" href="structBST__node.html">BST_node&lt;value_type&gt;</a>* <a class="code" href="structBST__node.html#aa24da381912eeb78190de816362bd402">parent</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structBST__node.html#a3ee55897e4216261cb3565b08bc54866">   32</a></span>&#160;    value_type <a class="code" href="structBST__node.html#a3ee55897e4216261cb3565b08bc54866">data</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structBST__node.html#a75997b41d58ef27a67887721e0f3f60b">   34</a></span>&#160;    <a class="code" href="classBST.html">BST&lt;value_type&gt;</a>* <a class="code" href="structBST__node.html#a75997b41d58ef27a67887721e0f3f60b">lt_subtree</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structBST__node.html#adf16bf4aff60928aefe4e76c551307df">   35</a></span>&#160;    <a class="code" href="classBST.html">BST&lt;value_type&gt;</a>* <a class="code" href="structBST__node.html#adf16bf4aff60928aefe4e76c551307df">rt_subtree</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> value_type&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">class </span><a class="code" href="classBST.html">BST</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="structBST__node.html">BST_node&lt;value_type&gt;</a> root;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classBST.html">BST</a>(<span class="keyword">const</span> <a class="code" href="structBST__node.html">BST_node&lt;value_type&gt;</a>&amp; rt) { root = rt; }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> insert(<a class="code" href="structBST__node.html">BST_node&lt;value_type&gt;</a> node) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classBST.html#a87e55a25643bcdba525671b186bf93ef">   54</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="classBST.html#a87e55a25643bcdba525671b186bf93ef">PreIter</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classBST.html#a34106a06795ff0d65683027a26b45c28">   55</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="classBST.html#a34106a06795ff0d65683027a26b45c28">PostIter</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classBST.html#a0c48e7e634e5bf550a47eda82df112da">   56</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="classBST.html#a0c48e7e634e5bf550a47eda82df112da">InIter</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Changes to a tree</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classBST.html#a598089c33d4a657f467e889d4dfaecb2">   59</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBST.html#a598089c33d4a657f467e889d4dfaecb2">insert</a>(<span class="keyword">const</span> value_type&amp; val) {}</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classBST.html#a3b634b8b641308b75f0346db913b238e">   60</a></span>&#160;    <span class="keywordtype">void</span> <span class="keyword">remove</span>(<span class="keyword">const</span> value_type&amp; val) {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Inspection through iterators</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classBST.html#a5aa80b0602b939ab8741930243cb7696">   63</a></span>&#160;    PreIter <a class="code" href="classBST.html#a5aa80b0602b939ab8741930243cb7696">prebegin</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classBST.html#acadc68170f6ad222221520fbf4913824">   64</a></span>&#160;    PreIter <a class="code" href="classBST.html#acadc68170f6ad222221520fbf4913824">preend</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classBST.html#ae991fbc60e4778bc7088bde80a6b1169">   65</a></span>&#160;    InIter <a class="code" href="classBST.html#ae991fbc60e4778bc7088bde80a6b1169">inbegin</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classBST.html#a40f78a51432344c57bc49a37852f276f">   66</a></span>&#160;    InIter <a class="code" href="classBST.html#a40f78a51432344c57bc49a37852f276f">inend</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classBST.html#a7132160bc99346fedf2c8620e2286c0b">   67</a></span>&#160;    PostIter <a class="code" href="classBST.html#a7132160bc99346fedf2c8620e2286c0b">postbegin</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classBST.html#a3b7e33b06df3ffa99a1462f4b5fcfcba">   68</a></span>&#160;    PostIter <a class="code" href="classBST.html#a3b7e33b06df3ffa99a1462f4b5fcfcba">postend</a>()<span class="keyword"> const </span>{}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="ttc" id="classBST_html"><div class="ttname"><a href="classBST.html">BST</a></div><div class="ttdef"><b>Definition:</b> bst.h:13</div></div>
-<div class="ttc" id="classBST__node_html"><div class="ttname"><a href="classBST__node.html">BST_node</a></div><div class="ttdef"><b>Definition:</b> bst.h:20</div></div>
+<div class="ttc" id="classBST_html_a3b7e33b06df3ffa99a1462f4b5fcfcba"><div class="ttname"><a href="classBST.html#a3b7e33b06df3ffa99a1462f4b5fcfcba">BST::postend</a></div><div class="ttdeci">PostIter postend() const </div><div class="ttdef"><b>Definition:</b> bst.h:68</div></div>
+<div class="ttc" id="classBST_html_acadc68170f6ad222221520fbf4913824"><div class="ttname"><a href="classBST.html#acadc68170f6ad222221520fbf4913824">BST::preend</a></div><div class="ttdeci">PreIter preend() const </div><div class="ttdef"><b>Definition:</b> bst.h:64</div></div>
+<div class="ttc" id="classBST_html_a0c48e7e634e5bf550a47eda82df112da"><div class="ttname"><a href="classBST.html#a0c48e7e634e5bf550a47eda82df112da">BST::InIter</a></div><div class="ttdeci">int InIter</div><div class="ttdef"><b>Definition:</b> bst.h:56</div></div>
+<div class="ttc" id="structBST__node_html_a02912e99bc0f49950282eaf0454b9fb5"><div class="ttname"><a href="structBST__node.html#a02912e99bc0f49950282eaf0454b9fb5">BST_node::BST_node</a></div><div class="ttdeci">BST_node(const value_type &amp;val, BST_node&lt; value_type &gt; *_parent=0, BST&lt; value_type &gt; *left_subtree=0, BST&lt; value_type &gt; *right_subtree=0)</div><div class="ttdef"><b>Definition:</b> bst.h:21</div></div>
+<div class="ttc" id="classBST_html_a34106a06795ff0d65683027a26b45c28"><div class="ttname"><a href="classBST.html#a34106a06795ff0d65683027a26b45c28">BST::PostIter</a></div><div class="ttdeci">int PostIter</div><div class="ttdef"><b>Definition:</b> bst.h:55</div></div>
+<div class="ttc" id="structBST__node_html_adf16bf4aff60928aefe4e76c551307df"><div class="ttname"><a href="structBST__node.html#adf16bf4aff60928aefe4e76c551307df">BST_node::rt_subtree</a></div><div class="ttdeci">BST&lt; value_type &gt; * rt_subtree</div><div class="ttdef"><b>Definition:</b> bst.h:35</div></div>
+<div class="ttc" id="structBST__node_html_a3ee55897e4216261cb3565b08bc54866"><div class="ttname"><a href="structBST__node.html#a3ee55897e4216261cb3565b08bc54866">BST_node::data</a></div><div class="ttdeci">value_type data</div><div class="ttdef"><b>Definition:</b> bst.h:32</div></div>
+<div class="ttc" id="classBST_html_a7132160bc99346fedf2c8620e2286c0b"><div class="ttname"><a href="classBST.html#a7132160bc99346fedf2c8620e2286c0b">BST::postbegin</a></div><div class="ttdeci">PostIter postbegin() const </div><div class="ttdef"><b>Definition:</b> bst.h:67</div></div>
+<div class="ttc" id="structBST__node_html_aa24da381912eeb78190de816362bd402"><div class="ttname"><a href="structBST__node.html#aa24da381912eeb78190de816362bd402">BST_node::parent</a></div><div class="ttdeci">BST_node&lt; value_type &gt; * parent</div><div class="ttdef"><b>Definition:</b> bst.h:30</div></div>
+<div class="ttc" id="classBST_html_a87e55a25643bcdba525671b186bf93ef"><div class="ttname"><a href="classBST.html#a87e55a25643bcdba525671b186bf93ef">BST::PreIter</a></div><div class="ttdeci">int PreIter</div><div class="ttdef"><b>Definition:</b> bst.h:54</div></div>
+<div class="ttc" id="classBST_html_a40f78a51432344c57bc49a37852f276f"><div class="ttname"><a href="classBST.html#a40f78a51432344c57bc49a37852f276f">BST::inend</a></div><div class="ttdeci">InIter inend() const </div><div class="ttdef"><b>Definition:</b> bst.h:66</div></div>
+<div class="ttc" id="structBST__node_html"><div class="ttname"><a href="structBST__node.html">BST_node</a></div><div class="ttdef"><b>Definition:</b> bst.h:19</div></div>
+<div class="ttc" id="classBST_html_a598089c33d4a657f467e889d4dfaecb2"><div class="ttname"><a href="classBST.html#a598089c33d4a657f467e889d4dfaecb2">BST::insert</a></div><div class="ttdeci">void insert(const value_type &amp;val)</div><div class="ttdef"><b>Definition:</b> bst.h:59</div></div>
+<div class="ttc" id="classBST_html_a5aa80b0602b939ab8741930243cb7696"><div class="ttname"><a href="classBST.html#a5aa80b0602b939ab8741930243cb7696">BST::prebegin</a></div><div class="ttdeci">PreIter prebegin() const </div><div class="ttdef"><b>Definition:</b> bst.h:63</div></div>
+<div class="ttc" id="structBST__node_html_a75997b41d58ef27a67887721e0f3f60b"><div class="ttname"><a href="structBST__node.html#a75997b41d58ef27a67887721e0f3f60b">BST_node::lt_subtree</a></div><div class="ttdeci">BST&lt; value_type &gt; * lt_subtree</div><div class="ttdef"><b>Definition:</b> bst.h:34</div></div>
+<div class="ttc" id="classBST_html_ae991fbc60e4778bc7088bde80a6b1169"><div class="ttname"><a href="classBST.html#ae991fbc60e4778bc7088bde80a6b1169">BST::inbegin</a></div><div class="ttdeci">InIter inbegin() const </div><div class="ttdef"><b>Definition:</b> bst.h:65</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -133,7 +197,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -93,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structNode-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -100,27 +101,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="linked__imp_8h_source.html">linked_imp.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="linked__impl_8h_source.html">linked_impl.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a1e551fe14c8379f0b6d401fbaac5b811"><td class="memItemLeft" align="right" valign="top">typedef value_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a></td></tr>
 <tr class="separator:a1e551fe14c8379f0b6d401fbaac5b811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab71a1fc1da250ec876fd6f3590df26cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#ab71a1fc1da250ec876fd6f3590df26cb">Node</a> (const <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &amp;value)</td></tr>
+<tr class="separator:ab71a1fc1da250ec876fd6f3590df26cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e36402eafe0cfe7ed3ba2daa603c4f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classTree.html">Tree</a>&lt; value_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a38e36402eafe0cfe7ed3ba2daa603c4f">get_ith_subtree</a> (int i)</td></tr>
+<tr class="separator:a38e36402eafe0cfe7ed3ba2daa603c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca1c607a9f740b288dd237cfea8f103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#aaca1c607a9f740b288dd237cfea8f103">set_ith_subtree</a> (std::shared_ptr&lt; <a class="el" href="classTree.html">Tree</a>&lt; <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &gt;&gt; pT, int i)</td></tr>
+<tr class="separator:aaca1c607a9f740b288dd237cfea8f103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2e366475e4976f2b3988dec6d0a92d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#af2e366475e4976f2b3988dec6d0a92d0">get_val</a> ()</td></tr>
+<tr class="separator:af2e366475e4976f2b3988dec6d0a92d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe3889bac8564cb5a954fb0e754293a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a6fe3889bac8564cb5a954fb0e754293a">set_val</a> (const <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &amp;value)</td></tr>
+<tr class="separator:a6fe3889bac8564cb5a954fb0e754293a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac0b49caa3ed57931f6b59d225ba5d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html">Node</a>&lt; <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a1ac0b49caa3ed57931f6b59d225ba5d4">get_parent</a> ()</td></tr>
+<tr class="separator:a1ac0b49caa3ed57931f6b59d225ba5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a446be9ae67b7a6bdf944523e5efe3126"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a446be9ae67b7a6bdf944523e5efe3126">set_parent</a> (std::shared_ptr&lt; <a class="el" href="structNode.html">Node</a>&lt; <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &gt;&gt; new_parent)</td></tr>
+<tr class="separator:a446be9ae67b7a6bdf944523e5efe3126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a056d4138d053cdd7ab681afc98bb8a5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a056d4138d053cdd7ab681afc98bb8a5e">value</a></td></tr>
-<tr class="memdesc:a056d4138d053cdd7ab681afc98bb8a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The content stored by the node.  <a href="#a056d4138d053cdd7ab681afc98bb8a5e">More...</a><br /></td></tr>
-<tr class="separator:a056d4138d053cdd7ab681afc98bb8a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a5094fe707fd50ac6283c39397def05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a5a5094fe707fd50ac6283c39397def05">parent</a></td></tr>
-<tr class="memdesc:a5a5094fe707fd50ac6283c39397def05"><td class="mdescLeft">&#160;</td><td class="mdescRight">a reference to parent  <a href="#a5a5094fe707fd50ac6283c39397def05">More...</a><br /></td></tr>
-<tr class="separator:a5a5094fe707fd50ac6283c39397def05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2bea3ad4f26ce9f61ef1104f8da1e00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#aa2bea3ad4f26ce9f61ef1104f8da1e00">left</a></td></tr>
-<tr class="memdesc:aa2bea3ad4f26ce9f61ef1104f8da1e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">a reference to left child  <a href="#aa2bea3ad4f26ce9f61ef1104f8da1e00">More...</a><br /></td></tr>
-<tr class="separator:aa2bea3ad4f26ce9f61ef1104f8da1e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec02490dde0781292e70ea93790c7c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a4ec02490dde0781292e70ea93790c7c7">right</a></td></tr>
-<tr class="memdesc:a4ec02490dde0781292e70ea93790c7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a reference to right child  <a href="#a4ec02490dde0781292e70ea93790c7c7">More...</a><br /></td></tr>
-<tr class="separator:a4ec02490dde0781292e70ea93790c7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c36838637601f1a40e202a806d05da7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structNode.html">Node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a0c36838637601f1a40e202a806d05da7">parent</a></td></tr>
+<tr class="separator:a0c36838637601f1a40e202a806d05da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9771e6e5f322fbbf04d51d97b585ce51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">val</a></td></tr>
+<tr class="separator:a9771e6e5f322fbbf04d51d97b585ce51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88cdfeb66445302ea57b6fbab71be84f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classTree.html">Tree</a>&lt; value_t &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a></td></tr>
+<tr class="separator:a88cdfeb66445302ea57b6fbab71be84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a1e551fe14c8379f0b6d401fbaac5b811"></a>
@@ -137,73 +149,282 @@ template&lt;typename value_t&gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab71a1fc1da250ec876fd6f3590df26cb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::<a class="el" href="structNode.html">Node</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a node, given the value associated with the node, references to its parent and subtrees </p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                  {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">val</a> = value;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="structNode.html#a0c36838637601f1a40e202a806d05da7">parent</a> = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// Keep the subtrees list empty</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a9771e6e5f322fbbf04d51d97b585ce51"><div class="ttname"><a href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">Node::val</a></div><div class="ttdeci">value_type val</div><div class="ttdef"><b>Definition:</b> linked_impl.h:66</div></div>
+<div class="ttc" id="structNode_html_a0c36838637601f1a40e202a806d05da7"><div class="ttname"><a href="structNode.html#a0c36838637601f1a40e202a806d05da7">Node::parent</a></div><div class="ttdeci">std::shared_ptr&lt; Node &gt; parent</div><div class="ttdef"><b>Definition:</b> linked_impl.h:64</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a38e36402eafe0cfe7ed3ba2daa603c4f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classTree.html">Tree</a>&lt;value_t&gt; &gt; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::get_ith_subtree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span>(i &gt;= <a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>.size())</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;i is too big&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>[i];</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a88cdfeb66445302ea57b6fbab71be84f"><div class="ttname"><a href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">Node::subtrees</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Tree&lt; value_t &gt; &gt; &gt; subtrees</div><div class="ttdef"><b>Definition:</b> linked_impl.h:68</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1ac0b49caa3ed57931f6b59d225ba5d4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNode.html">Node</a>&lt;<a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a>&gt;&amp; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::get_parent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                   {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structNode.html#a0c36838637601f1a40e202a806d05da7">parent</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a0c36838637601f1a40e202a806d05da7"><div class="ttname"><a href="structNode.html#a0c36838637601f1a40e202a806d05da7">Node::parent</a></div><div class="ttdeci">std::shared_ptr&lt; Node &gt; parent</div><div class="ttdef"><b>Definition:</b> linked_impl.h:64</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="af2e366475e4976f2b3988dec6d0a92d0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::get_val </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                         {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">val</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a9771e6e5f322fbbf04d51d97b585ce51"><div class="ttname"><a href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">Node::val</a></div><div class="ttdeci">value_type val</div><div class="ttdef"><b>Definition:</b> linked_impl.h:66</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aaca1c607a9f740b288dd237cfea8f103"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::set_ith_subtree </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classTree.html">Tree</a>&lt; <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>pT</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span>(i &gt; <a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>.size())</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;i is too big&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>.size() == i)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>.push_back(pT);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">subtrees</a>[i] = pT;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a88cdfeb66445302ea57b6fbab71be84f"><div class="ttname"><a href="structNode.html#a88cdfeb66445302ea57b6fbab71be84f">Node::subtrees</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Tree&lt; value_t &gt; &gt; &gt; subtrees</div><div class="ttdef"><b>Definition:</b> linked_impl.h:68</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a446be9ae67b7a6bdf944523e5efe3126"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::set_parent </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="structNode.html">Node</a>&lt; <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>new_parent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="structNode.html#a0c36838637601f1a40e202a806d05da7">parent</a> = new_parent;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a0c36838637601f1a40e202a806d05da7"><div class="ttname"><a href="structNode.html#a0c36838637601f1a40e202a806d05da7">Node::parent</a></div><div class="ttdeci">std::shared_ptr&lt; Node &gt; parent</div><div class="ttdef"><b>Definition:</b> linked_impl.h:64</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a6fe3889bac8564cb5a954fb0e754293a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename value_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::set_val </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                          {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">val</a> = value;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="ttc" id="structNode_html_a9771e6e5f322fbbf04d51d97b585ce51"><div class="ttname"><a href="structNode.html#a9771e6e5f322fbbf04d51d97b585ce51">Node::val</a></div><div class="ttdeci">value_type val</div><div class="ttdef"><b>Definition:</b> linked_impl.h:66</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="aa2bea3ad4f26ce9f61ef1104f8da1e00"></a>
+<a class="anchor" id="a0c36838637601f1a40e202a806d05da7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename value_t&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNode.html">Node</a>&amp; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::left</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structNode.html">Node</a>&gt; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::parent</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>a reference to left child </p>
-
 </div>
 </div>
-<a class="anchor" id="a5a5094fe707fd50ac6283c39397def05"></a>
+<a class="anchor" id="a88cdfeb66445302ea57b6fbab71be84f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename value_t&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNode.html">Node</a>&amp; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::parent</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classTree.html">Tree</a>&lt;value_t&gt; &gt; &gt; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::subtrees</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>a reference to parent </p>
-
 </div>
 </div>
-<a class="anchor" id="a4ec02490dde0781292e70ea93790c7c7"></a>
+<a class="anchor" id="a9771e6e5f322fbbf04d51d97b585ce51"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename value_t&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structNode.html">Node</a>&amp; <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::right</td>
+          <td class="memname"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::val</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>a reference to right child </p>
-
-</div>
-</div>
-<a class="anchor" id="a056d4138d053cdd7ab681afc98bb8a5e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename value_t&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structNode.html#a1e551fe14c8379f0b6d401fbaac5b811">value_type</a> <a class="el" href="structNode.html">Node</a>&lt; value_t &gt;::value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The content stored by the node. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>alglib/tree/models/<a class="el" href="linked__imp_8h_source.html">linked_imp.h</a></li>
+<li>alglib/tree/models/<a class="el" href="linked__impl_8h_source.html">linked_impl.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -214,7 +435,7 @@ template&lt;typename value_t&gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wt',['wt',['../structedge__t.html#ae3d4afda913ba909ac82ef1d743431ba',1,'edge_t']]]
+  ['u',['u',['../structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe',1,'edge_t']]]
 ];

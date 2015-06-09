@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.9.1"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>alglib: alglib/graph/graph_algo.h Source File</title>
+        <title>alglib: alglib/graph/legacy/graph_algo.h Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_f75a3bd253f8465ea2256a57fffd9d37.html">graph</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c62200f4d160ad9bc48384062b4898c.html">alglib</a></li><li class="navelem"><a class="el" href="dir_f75a3bd253f8465ea2256a57fffd9d37.html">graph</a></li><li class="navelem"><a class="el" href="dir_55a023942c1a6a7ec28449b5bf10192b.html">legacy</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -123,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::vector&lt;val_type&gt; postorder(G.no_of_vertices());</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="search_8h.html#a07ce6099eccb570b3848442885d9b3e2">dfs_order</a>(G, postorder.begin());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    dfs_order(G, postorder.begin());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> copy(postorder.rbegin(), postorder.rend(), dest);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
@@ -153,7 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; pvertex : pvertex_list) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">auto</span> prev_it = dfs_it;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span>(!visited[pvertex])</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="dfs_8h.html#ac7643952a189b92d0a146c7a0b037075">dfs</a>(G, pvertex, visited, dfs_it);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            dfs(G, pvertex, visited, dfs_it);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = prev_it; it != dfs_it; it++) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// somehow insert at the place where dest points</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
@@ -207,8 +207,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="graph__algo_8h_html_aad9db4c07a758d067608716ecec8eab2"><div class="ttname"><a href="graph__algo_8h.html#aad9db4c07a758d067608716ecec8eab2">connected_components</a></div><div class="ttdeci">OutputIter connected_components(UndirectedGraph &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> graph_algo.h:40</div></div>
-<div class="ttc" id="search_8h_html_a07ce6099eccb570b3848442885d9b3e2"><div class="ttname"><a href="search_8h.html#a07ce6099eccb570b3848442885d9b3e2">dfs_order</a></div><div class="ttdeci">OutputIterator dfs_order(graph &amp;G, OutputIterator dest)</div><div class="ttdef"><b>Definition:</b> search.h:16</div></div>
-<div class="ttc" id="dfs_8h_html_ac7643952a189b92d0a146c7a0b037075"><div class="ttname"><a href="dfs_8h.html#ac7643952a189b92d0a146c7a0b037075">dfs</a></div><div class="ttdeci">OutputIter dfs(const GraphType &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> dfs.h:22</div></div>
 <div class="ttc" id="graph__algo_8h_html_a4ceb0357adcdd2d38c49fb06a01af1b0"><div class="ttname"><a href="graph__algo_8h.html#a4ceb0357adcdd2d38c49fb06a01af1b0">topological_sort</a></div><div class="ttdeci">OutputIter topological_sort(UndirectedGraph &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> graph_algo.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -219,7 +217,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

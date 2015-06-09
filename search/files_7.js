@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kruskal_5fmst_2eh',['kruskal_mst.h',['../kruskal__mst_8h.html',1,'']]]
+  ['heap_2eh',['heap.h',['../heap_8h.html',1,'']]]
 ];

@@ -94,102 +94,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">dfs.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &lt;<a class="el" href="graph__property_8h_source.html">alglib/graph/graph_property.h</a>&gt;</code><br />
+</div>
 <p><a href="dfs_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacealglib"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib.html">alglib</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacealglib_1_1graph"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html">alglib::graph</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac202c1b29c9dd9c7009c6c2efbe848ed"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename UnaryPredicate , typename OutputIter &gt; </td></tr>
-<tr class="memitem:ac202c1b29c9dd9c7009c6c2efbe848ed"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="dfs_8h.html#ac202c1b29c9dd9c7009c6c2efbe848ed">_single_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type &amp;vertex, UnaryPredicate visited, OutputIter dest)</td></tr>
-<tr class="separator:ac202c1b29c9dd9c7009c6c2efbe848ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7643952a189b92d0a146c7a0b037075"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
-<tr class="memitem:ac7643952a189b92d0a146c7a0b037075"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="dfs_8h.html#ac7643952a189b92d0a146c7a0b037075">dfs</a> (const GraphType &amp;G, OutputIter dest)</td></tr>
-<tr class="separator:ac7643952a189b92d0a146c7a0b037075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713c6bef988a7f977ed6d726f0e82044"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a713c6bef988a7f977ed6d726f0e82044"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a713c6bef988a7f977ed6d726f0e82044">alglib::graph::_single_preorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, vertex_property&lt; GraphType, bool &gt; &amp;visited, OutputIter dest)</td></tr>
+<tr class="separator:a713c6bef988a7f977ed6d726f0e82044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebbd00a2f7992ff5339e626e87cb646"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a2ebbd00a2f7992ff5339e626e87cb646"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a2ebbd00a2f7992ff5339e626e87cb646">alglib::graph::single_preorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, OutputIter dest)</td></tr>
+<tr class="separator:a2ebbd00a2f7992ff5339e626e87cb646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b1ec74d9264da011443ca3a8c9fb74f"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a9b1ec74d9264da011443ca3a8c9fb74f"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a9b1ec74d9264da011443ca3a8c9fb74f">alglib::graph::_single_postorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, vertex_property&lt; GraphType, bool &gt; &amp;visited, OutputIter dest)</td></tr>
+<tr class="separator:a9b1ec74d9264da011443ca3a8c9fb74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89dbb3e80c60482e5a6b775ee11ccffe"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a89dbb3e80c60482e5a6b775ee11ccffe"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a89dbb3e80c60482e5a6b775ee11ccffe">alglib::graph::single_postorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type &amp;start, OutputIter dest)</td></tr>
+<tr class="separator:a89dbb3e80c60482e5a6b775ee11ccffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc3849f94c7a17ab15f1d3fb02a4a2f"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a7bc3849f94c7a17ab15f1d3fb02a4a2f"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a7bc3849f94c7a17ab15f1d3fb02a4a2f">alglib::graph::preorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type start, OutputIter dest)</td></tr>
+<tr class="separator:a7bc3849f94c7a17ab15f1d3fb02a4a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d50d6fa7cb4873f4013679314af1eb"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:a05d50d6fa7cb4873f4013679314af1eb"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#a05d50d6fa7cb4873f4013679314af1eb">alglib::graph::preorder_dfs</a> (const GraphType &amp;G, OutputIter dest)</td></tr>
+<tr class="separator:a05d50d6fa7cb4873f4013679314af1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3af58660295c3bb67f71672bc6338e"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:aee3af58660295c3bb67f71672bc6338e"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#aee3af58660295c3bb67f71672bc6338e">alglib::graph::postorder_dfs</a> (const GraphType &amp;G, const typename GraphType::vertex_type start, OutputIter dest)</td></tr>
+<tr class="separator:aee3af58660295c3bb67f71672bc6338e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af06887b79e798765d7c851097fc26889"><td class="memTemplParams" colspan="2">template&lt;typename GraphType , typename OutputIter &gt; </td></tr>
+<tr class="memitem:af06887b79e798765d7c851097fc26889"><td class="memTemplItemLeft" align="right" valign="top">OutputIter&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html#af06887b79e798765d7c851097fc26889">alglib::graph::postorder_dfs</a> (const GraphType &amp;G, OutputIter dest)</td></tr>
+<tr class="separator:af06887b79e798765d7c851097fc26889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac202c1b29c9dd9c7009c6c2efbe848ed"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename GraphType , typename UnaryPredicate , typename OutputIter &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">OutputIter _single_dfs </td>
-          <td>(</td>
-          <td class="paramtype">const GraphType &amp;&#160;</td>
-          <td class="paramname"><em>G</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const typename GraphType::vertex_type &amp; vertex&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UnaryPredicate&#160;</td>
-          <td class="paramname"><em>visited</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">OutputIter&#160;</td>
-          <td class="paramname"><em>dest</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                       {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="ac7643952a189b92d0a146c7a0b037075"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename GraphType , typename OutputIter &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">OutputIter dfs </td>
-          <td>(</td>
-          <td class="paramtype">const GraphType &amp;&#160;</td>
-          <td class="paramname"><em>G</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">OutputIter&#160;</td>
-          <td class="paramname"><em>dest</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -199,7 +147,7 @@ template&lt;typename GraphType , typename OutputIter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

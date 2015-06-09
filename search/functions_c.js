@@ -2,6 +2,7 @@ var searchData=
 [
   ['naive_5fstr_5fmatching',['naive_str_matching',['../namespacealglib_1_1string.html#aec1f3a4deab38a26e7889cc1db045d1f',1,'alglib::string']]],
   ['no_5fof_5fvertices',['no_of_vertices',['../classDynamicDirectedGraph.html#a85b2b5f40d59ed650d2242325699a299',1,'DynamicDirectedGraph']]],
-  ['num_5fedges',['num_edges',['../classadj__list.html#a2bea35632a136d5da6967a9dd854b2ca',1,'adj_list::num_edges()'],['../classgraph__model.html#adaa87c254865ea31a7fdf0a5c0218820',1,'graph_model::num_edges()']]],
-  ['num_5fvertices',['num_vertices',['../classadj__list.html#a4f4503c399333ffdd2846eced28c6739',1,'adj_list::num_vertices()'],['../classgraph__model.html#a0db5dab1eb4f4d9920516e474fe2c3a0',1,'graph_model::num_vertices()']]]
+  ['node',['Node',['../structNode.html#ab71a1fc1da250ec876fd6f3590df26cb',1,'Node']]],
+  ['num_5fedges',['num_edges',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a02e5e715fb0c4922d4427b604c674bcd',1,'alglib::graph::models::adj_list::num_edges()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#ab941d6981afc1f42c9438ffc353dea9b',1,'alglib::graph::models::graph_model::num_edges()']]],
+  ['num_5fvertices',['num_vertices',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a3606634899ab58f061ad954f88d70677',1,'alglib::graph::models::adj_list::num_vertices()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#a5aa4dad71c3f319d24f960a2ca87149b',1,'alglib::graph::models::graph_model::num_vertices()']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['left',['left',['../structNode.html#aa2bea3ad4f26ce9f61ef1104f8da1e00',1,'Node::left()'],['../structTree.html#a9c5d21c1929142817cba1247639a8a2f',1,'Tree::left()']]],
-  ['linked_5fimp_2eh',['linked_imp.h',['../linked__imp_8h.html',1,'']]]
+  ['linked_5fimpl_2eh',['linked_impl.h',['../linked__impl_8h.html',1,'']]],
+  ['lt_5fsubtree',['lt_subtree',['../structBST__node.html#a75997b41d58ef27a67887721e0f3f60b',1,'BST_node']]]
 ];

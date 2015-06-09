@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['to',['to',['../structedge__t.html#a6d5759c00591f2f72a713458d55731dc',1,'edge_t']]]
+  ['root',['root',['../classTree.html#a37a16be6cdc51b00599c2ffbe5c38b25',1,'Tree']]],
+  ['rt_5fsubtree',['rt_subtree',['../structBST__node.html#adf16bf4aff60928aefe4e76c551307df',1,'BST_node']]]
 ];

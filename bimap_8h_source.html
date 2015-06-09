@@ -98,155 +98,112 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="bimap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef _BIMAP_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define _BIMAP_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;boost/iterator/transform_iterator.hpp&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespacealglib.html">    9</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespacealglib_1_1bimap.html">   11</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">bimap</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> type2&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">getimage</a>(<span class="keyword">const</span> type1&amp; elt) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> type1&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">getpreimage</a>(<span class="keyword">const</span> type2&amp; elt) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> type&gt;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">   27</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Iterators</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#ab041eddaa3163db9cde86f3dd32ccd2f">   30</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#ab041eddaa3163db9cde86f3dd32ccd2f">type1begin</a>() {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a>(type1set.begin());</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#abd9a9c765899df04e0b51d294b284514">   33</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#abd9a9c765899df04e0b51d294b284514">type1end</a>() {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type1&gt;</a>(type1set.end());</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a4d809de5b369215de4f7e2cd066db812">   36</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a4d809de5b369215de4f7e2cd066db812">type2begin</a>() {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a>(type2set.begin());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#afc2e1d7a85cd98d9ba1644412b3f7a2c">   39</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#afc2e1d7a85cd98d9ba1644412b3f7a2c">type2end</a>() {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type2&gt;</a>(type2set.end());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacealglib_1_1bimap.html">   10</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * \brief Data structure to hold bijective mappings</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">bimap</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> type2&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">getimage</a>(<span class="keyword">const</span> type1&amp; elt) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> type1&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">getpreimage</a>(<span class="keyword">const</span> type2&amp; elt) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">typedef</span> boost::transform_iterator&lt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        type1_iterator;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">typedef</span> type2_iterator;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// Iterators</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    type_iterator&lt;type1&gt; type1begin() {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> type_iterator&lt;type1&gt;(type1set.begin());</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    type_iterator&lt;type1&gt; type1end() {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> type_iterator&lt;type1&gt;(type1set.end());</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    type_iterator&lt;type2&gt; type2begin() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> type_iterator&lt;type2&gt;(type2set.begin());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    type_iterator&lt;type2&gt; type2end() {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> type_iterator&lt;type2&gt;(type2set.end());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">typedef</span> std::pair&lt;typename std::map&lt;type1, int&gt;::iterator, <span class="keyword">typename</span> std::map&lt;type2, int&gt;::iterator&gt; dir_entry;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::map&lt;type1, int&gt; type1set;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::map&lt;type2, int&gt; type2set;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;dir_entry&gt; directory; <span class="comment">// An indirection</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> dir_entries;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">   56</a></span>&#160;<a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: bimap</a>() {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  dir_entries = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// throw an exception if either elt1 or elt2 exists</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">auto</span> ret1 = type1set.<a class="code" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">insert</a>(std::make_pair(elt1, dir_entries));</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">auto</span> ret2 = type2set.insert(std::make_pair(elt2, dir_entries));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  directory.push_back(std::make_pair(ret1.first, ret2.first));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  ++dir_entries;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">   74</a></span>&#160;<span class="keyword">const</span> type2&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: getimage</a>(<span class="keyword">const</span> type1&amp; elt)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">auto</span> it = type1set.find(elt);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span>(it == type1set.end())</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;The key doesn&#39;t exist&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">typedef</span> std::pair&lt;typename std::map&lt;type1, int&gt;::iterator,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                      <span class="keyword">typename</span> std::map&lt;type2, int&gt;::iterator&gt; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            dir_entry;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::map&lt;type1, int&gt; type1set;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::map&lt;type2, int&gt; type2set;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::vector&lt;dir_entry&gt; directory;  <span class="comment">// An indirection</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> dir_entries;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">   60</a></span>&#160;<a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: bimap</a>() {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  dir_entries = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: insert</a>(<span class="keyword">const</span> type1&amp; elt1, <span class="keyword">const</span> type2&amp; elt2) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// throw an exception if either elt1 or elt2 exists</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">auto</span> ret1 = type1set.<a class="code" href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">insert</a>(std::make_pair(elt1, dir_entries));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">auto</span> ret2 = type2set.insert(std::make_pair(elt2, dir_entries));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  directory.push_back(std::make_pair(ret1.first, ret2.first));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  ++dir_entries;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">   78</a></span>&#160;<span class="keyword">const</span> type2&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: getimage</a>(<span class="keyword">const</span> type1&amp; elt)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">return</span> (directory[it-&gt;second].second)-&gt;first;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">auto</span> it = type1set.find(elt);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span>(it == type1set.end())</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;The key doesn&#39;t exist&quot;</span>);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">   85</a></span>&#160;<span class="keyword">const</span> type1&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: getpreimage</a>(<span class="keyword">const</span> type2&amp; elt)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">auto</span> it = type2set.find(elt);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordflow">if</span>(it == type2set.end())</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;The key doesn&#39;t exist&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> (directory[it-&gt;second].second)-&gt;first;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">   89</a></span>&#160;<span class="keyword">const</span> type1&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap&lt;type1, type2&gt; :: getpreimage</a>(<span class="keyword">const</span> type2&amp; elt)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> (directory[it-&gt;second].first)-&gt;first;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">auto</span> it = type2set.find(elt);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">if</span>(it == type2set.end())</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;The key doesn&#39;t exist&quot;</span>);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// Iterator classes</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> (directory[it-&gt;second].first)-&gt;first;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type1, <span class="keyword">typename</span> type2&gt;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> type&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">class </span><a class="code" href="classalglib_1_1bimap_1_1bimap.html">bimap</a>&lt;type1, type2&gt; :: type_iterator {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a2032beb2c7bc6c4c2d4c02ae99bdbd31">  103</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a2032beb2c7bc6c4c2d4c02ae99bdbd31">type_iterator</a>(<span class="keyword">typename</span> std::map&lt;type, int&gt;::iterator it) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      current = it;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae8d26e06821e0cecf85eede15c01e817">  107</a></span>&#160;    <span class="keyword">const</span> type&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae8d26e06821e0cecf85eede15c01e817">operator*</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keywordflow">return</span> current-&gt;first;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a1245bd59aeaab21dd67b94d2e115f89b">  110</a></span>&#160;    <span class="keyword">const</span> type&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a1245bd59aeaab21dd67b94d2e115f89b">operator++</a>() {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keyword">const</span> type&amp; ref = current-&gt;first;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      ++current;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordflow">return</span> ref;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae2b0d9015858b138dffdbc4c133ca596">  115</a></span>&#160;    <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator</a>&amp; <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae2b0d9015858b138dffdbc4c133ca596">operator=</a>(<a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type&gt;</a>&amp; other) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      current = other.current;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a279e008a2dd83e9b3cd52cb4f566418a">  119</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a279e008a2dd83e9b3cd52cb4f566418a">operator!=</a>(<a class="code" href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">type_iterator&lt;type&gt;</a> other) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keywordflow">if</span>(current == other.current)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">typename</span> std::map&lt;type, int&gt;::iterator current;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}  <span class="comment">// end bimap namespace</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}  <span class="comment">// end alglib namespace</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_afc2e1d7a85cd98d9ba1644412b3f7a2c"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#afc2e1d7a85cd98d9ba1644412b3f7a2c">alglib::bimap::bimap::type2end</a></div><div class="ttdeci">type_iterator&lt; type2 &gt; type2end()</div><div class="ttdef"><b>Definition:</b> bimap.h:39</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html_ae8d26e06821e0cecf85eede15c01e817"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae8d26e06821e0cecf85eede15c01e817">alglib::bimap::bimap::type_iterator::operator*</a></div><div class="ttdeci">const type &amp; operator*() const </div><div class="ttdef"><b>Definition:</b> bimap.h:107</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a8e8e93ecb4263f2d0f9b046c4ebf447e"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">alglib::bimap::bimap::getimage</a></div><div class="ttdeci">const type2 &amp; getimage(const type1 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:74</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a166bcf3ae1febfa5f052ab9b689cf2a8"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">alglib::bimap::bimap::bimap</a></div><div class="ttdeci">bimap()</div><div class="ttdef"><b>Definition:</b> bimap.h:56</div></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}  <span class="comment">// end bimap namespace</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}  <span class="comment">// end alglib namespace</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a8e8e93ecb4263f2d0f9b046c4ebf447e"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a8e8e93ecb4263f2d0f9b046c4ebf447e">alglib::bimap::bimap::getimage</a></div><div class="ttdeci">const type2 &amp; getimage(const type1 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:78</div></div>
+<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a166bcf3ae1febfa5f052ab9b689cf2a8"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a166bcf3ae1febfa5f052ab9b689cf2a8">alglib::bimap::bimap::bimap</a></div><div class="ttdeci">bimap()</div><div class="ttdef"><b>Definition:</b> bimap.h:60</div></div>
 <div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:9</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a4d809de5b369215de4f7e2cd066db812"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a4d809de5b369215de4f7e2cd066db812">alglib::bimap::bimap::type2begin</a></div><div class="ttdeci">type_iterator&lt; type2 &gt; type2begin()</div><div class="ttdef"><b>Definition:</b> bimap.h:36</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html">alglib::bimap::bimap::type_iterator</a></div><div class="ttdef"><b>Definition:</b> bimap.h:27</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a748fb7c8582974d6fd23bb1dbc7a3476"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">alglib::bimap::bimap::insert</a></div><div class="ttdeci">void insert(const type1 &amp;elt1, const type2 &amp;elt2)</div><div class="ttdef"><b>Definition:</b> bimap.h:61</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html_a1245bd59aeaab21dd67b94d2e115f89b"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a1245bd59aeaab21dd67b94d2e115f89b">alglib::bimap::bimap::type_iterator::operator++</a></div><div class="ttdeci">const type &amp; operator++()</div><div class="ttdef"><b>Definition:</b> bimap.h:110</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_abd9a9c765899df04e0b51d294b284514"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#abd9a9c765899df04e0b51d294b284514">alglib::bimap::bimap::type1end</a></div><div class="ttdeci">type_iterator&lt; type1 &gt; type1end()</div><div class="ttdef"><b>Definition:</b> bimap.h:33</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html_ae2b0d9015858b138dffdbc4c133ca596"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#ae2b0d9015858b138dffdbc4c133ca596">alglib::bimap::bimap::type_iterator::operator=</a></div><div class="ttdeci">type_iterator &amp; operator=(type_iterator&lt; type &gt; &amp;other)</div><div class="ttdef"><b>Definition:</b> bimap.h:115</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_ab041eddaa3163db9cde86f3dd32ccd2f"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#ab041eddaa3163db9cde86f3dd32ccd2f">alglib::bimap::bimap::type1begin</a></div><div class="ttdeci">type_iterator&lt; type1 &gt; type1begin()</div><div class="ttdef"><b>Definition:</b> bimap.h:30</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html_a2032beb2c7bc6c4c2d4c02ae99bdbd31"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a2032beb2c7bc6c4c2d4c02ae99bdbd31">alglib::bimap::bimap::type_iterator::type_iterator</a></div><div class="ttdeci">type_iterator(typename std::map&lt; type, int &gt;::iterator it)</div><div class="ttdef"><b>Definition:</b> bimap.h:103</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_1_1type__iterator_html_a279e008a2dd83e9b3cd52cb4f566418a"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap_1_1type__iterator.html#a279e008a2dd83e9b3cd52cb4f566418a">alglib::bimap::bimap::type_iterator::operator!=</a></div><div class="ttdeci">bool operator!=(type_iterator&lt; type &gt; other)</div><div class="ttdef"><b>Definition:</b> bimap.h:119</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_ad058cbe1486caa3d9e8f4b050d7bf786"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">alglib::bimap::bimap::getpreimage</a></div><div class="ttdeci">const type1 &amp; getpreimage(const type2 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:85</div></div>
-<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html">alglib::bimap::bimap</a></div><div class="ttdef"><b>Definition:</b> bimap.h:15</div></div>
+<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_a748fb7c8582974d6fd23bb1dbc7a3476"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#a748fb7c8582974d6fd23bb1dbc7a3476">alglib::bimap::bimap::insert</a></div><div class="ttdeci">void insert(const type1 &amp;elt1, const type2 &amp;elt2)</div><div class="ttdef"><b>Definition:</b> bimap.h:65</div></div>
+<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html_ad058cbe1486caa3d9e8f4b050d7bf786"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html#ad058cbe1486caa3d9e8f4b050d7bf786">alglib::bimap::bimap::getpreimage</a></div><div class="ttdeci">const type1 &amp; getpreimage(const type2 &amp;elt) const </div><div class="ttdef"><b>Definition:</b> bimap.h:89</div></div>
+<div class="ttc" id="classalglib_1_1bimap_1_1bimap_html"><div class="ttname"><a href="classalglib_1_1bimap_1_1bimap.html">alglib::bimap::bimap</a></div><div class="ttdef"><b>Definition:</b> bimap.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -256,7 +213,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -95,6 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">adj_list.h File Reference</div>  </div>
@@ -105,6 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;boost/iterator/transform_iterator.hpp&gt;</code><br />
 <code>#include &lt;<a class="el" href="graph__model_8h_source.html">alglib/graph/models/graph_model.h</a>&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 </div>
 <p><a href="adj__list_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -114,50 +116,26 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structget__second.html">get_second&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list.html">adj_list&lt; vertex_t, edge_t &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1models_1_1adj__list.html">alglib::graph::models::adj_list&lt; vertex_t, edge_t &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classadj__list_1_1const__eiterator.html">adj_list&lt; vertex_t, edge_t &gt;::const_eiterator</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1models_1_1adj__list_1_1const__eiterator.html">alglib::graph::models::adj_list&lt; vertex_t, edge_t &gt;::const_eiterator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacealglib"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib.html">alglib</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacealglib_1_1graph"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph.html">alglib::graph</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacealglib_1_1graph_1_1models"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph_1_1models.html">alglib::graph::models</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a062c3a5eb1839b9b5579915fe592b2af"><td class="memTemplParams" colspan="2">template&lt;typename vertex_t , typename edge_t &gt; </td></tr>
-<tr class="memitem:a062c3a5eb1839b9b5579915fe592b2af"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="adj__list_8h.html#a062c3a5eb1839b9b5579915fe592b2af">operator&lt;&lt;</a> (std::ostream &amp;out, typename <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::const_eiterator eit)</td></tr>
-<tr class="separator:a062c3a5eb1839b9b5579915fe592b2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82cb67b6469177c1db50eb9a9b59898"><td class="memTemplParams" colspan="2">template&lt;typename vertex_t , typename edge_t &gt; </td></tr>
+<tr class="memitem:af82cb67b6469177c1db50eb9a9b59898"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacealglib_1_1graph_1_1models.html#af82cb67b6469177c1db50eb9a9b59898">alglib::graph::models::operator&lt;&lt;</a> (std::ostream &amp;out, typename adj_list&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::const_eiterator eit)</td></tr>
+<tr class="separator:af82cb67b6469177c1db50eb9a9b59898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a062c3a5eb1839b9b5579915fe592b2af"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename vertex_t , typename edge_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename <a class="el" href="classadj__list.html">adj_list</a>&lt; vertex_t, <a class="el" href="structedge__t.html">edge_t</a> &gt;::const_eiterator eit&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                                                                                 {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        out &lt;&lt; *(eit.ait).second;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -167,7 +145,7 @@ template&lt;typename vertex_t , typename edge_t &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

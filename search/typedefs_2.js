@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_5ftype',['key_type',['../classalglib_1_1heap_1_1binary__heap.html#a351182ea521598de092e5a83b9124843',1,'alglib::heap::binary_heap']]]
+  ['graph_5ftype',['graph_type',['../classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764',1,'alglib::graph::vertex_property']]]
 ];

@@ -97,134 +97,128 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">prim_mst.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="prim__mst_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<a href="prim__mst_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">class vertex_iterator</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    :   public std::iterator&lt;std::bidirectional_iterator_tag,</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">                            type, std::ptrdiff_t</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> GraphType, <span class="keyword">typename</span> OutputIter&gt;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="prim__mst_8h.html#abfa1021f122ffa63dc2403e15616a633">    7</a></span>&#160;OutputIter <a class="code" href="prim__mst_8h.html#abfa1021f122ffa63dc2403e15616a633">prim_mst</a>(<span class="keyword">const</span> GraphType&amp; G, OutputIter dest) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">/* Maintain a set of edges that go out of the tree;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">     * In each iteration, pick the lightest of them and include it in Tree */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::set&lt;typename GraphType::edge_t&gt; protruding_edges;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GraphType <a class="code" href="classTree.html">Tree</a>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> vertex_t, <span class="keyword">typename</span> edge_t, <span class="keyword">typename</span> OutputIter&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="prim__mst_8h.html#ab8f90ef4c274104ce2bf74ea9f379274">   18</a></span>&#160;OutputIter <a class="code" href="prim__mst_8h.html#ab8f90ef4c274104ce2bf74ea9f379274">prim_mst</a>(<a class="code" href="classundirected__graph.html">undirected_graph&lt;vertex_t, edge_t&gt;</a>&amp; G, OutputIter res) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">        Maintain a set of edges that go out of the tree</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">        In each iteration, pick the lightest of them and include it in T.</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    */</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    set&lt;edge_t&gt; edges;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    set&lt;vertex_t&gt; T;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.vbegin(); it != G.vend(); it++)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        Tree.add_vertex(*it);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> GraphType::vertex_type start = *G.vbegin();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(start); it != G.aeend(start); it++)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        protruding_edges.insert(*it);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> sz = G.vsize();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">while</span>(protruding_edges.size() != 0) {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    vertex_t start = *G.vbegin();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    T.insert(start);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(start); it != G.aeend(start); it++)     <span class="comment">// Why seg-fault?</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        edges.insert(*it);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> sz = G.vsize();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">while</span>(T.size() != sz) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="structedge__t.html">edge_t</a> lightest = *edges.begin();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        edges.erase(*edges.begin());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        vertex_t u = lightest.<a class="code" href="structedge__t.html#a7282bbe59f51373ac10235acd3020a56">either</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        vertex_t v = lightest.<a class="code" href="structedge__t.html#aed4932289c4e04d6872f19be77d2c852">other</a>(u);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">bool</span> u_in_T = T.find(u) != T.end();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">bool</span> v_in_T = T.find(v) != T.end();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>(u_in_T and !v_in_T) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            res++ = lightest;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            T.insert(v);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(v); it != G.aeend(v); it++)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                edges.insert(*it);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>(!u_in_T and v_in_T) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            res++ = lightest;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            T.insert(u);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(v); it != G.aeend(v); it++)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                edges.insert(*it);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">struct </span><a class="code" href="structedge__t.html">edge_t</a> {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> u;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> v;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> wt;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structedge__t.html#a8ad67f3df26e784a85de5d1691d5d7d6">   65</a></span>&#160;    <a class="code" href="structedge__t.html#a8ad67f3df26e784a85de5d1691d5d7d6">edge_t</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> a, <span class="keywordtype">long</span> <span class="keywordtype">long</span> b, <span class="keywordtype">long</span> <span class="keywordtype">long</span> weight) : u(a), v(b), wt(weight) { }</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structedge__t.html#a7282bbe59f51373ac10235acd3020a56">   66</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span>  <a class="code" href="structedge__t.html#a7282bbe59f51373ac10235acd3020a56">either</a>() { <span class="keywordflow">return</span> u; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structedge__t.html#a4c76a6508b7095eca909e23602faab4d">   67</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structedge__t.html#a4c76a6508b7095eca909e23602faab4d">other</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> vertex) { <span class="keywordflow">return</span> vertex == u ? v : u; }</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structedge__t.html#aab3f223e5e3cb27e9c6e177129a74776">   68</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structedge__t.html#aab3f223e5e3cb27e9c6e177129a74776">operator==</a>(<span class="keyword">const</span> <a class="code" href="structedge__t.html">edge_t</a> other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> u == other.<a class="code" href="structedge__t.html#a7f505360103059cfbfa1e4d558a1bdf3">u</a> and v == other.<a class="code" href="structedge__t.html#ad9ab7b3c203dad2e94b9673ddb31b408">v</a>; }</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structedge__t.html#a7b160368dd7ce6f8685fb76c74c44fa1">   69</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structedge__t.html#a7b160368dd7ce6f8685fb76c74c44fa1">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="structedge__t.html">edge_t</a> other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span>  wt &lt; other.<a class="code" href="structedge__t.html#ae3d4afda913ba909ac82ef1d743431ba">wt</a>; }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   72</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classundirected__graph.html">undirected_graph&lt;long long, edge_t&gt;</a> g;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> n, m, u, v, wt;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    cin &gt;&gt; n &gt;&gt; m;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">while</span>(m--) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        cin &gt;&gt; u &gt;&gt; v &gt;&gt; wt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="structedge__t.html">edge_t</a> e(u, v, wt);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        g.<a class="code" href="classundirected__graph.html#ab08f5000bd8ad95e2174d48c4fba1e1c">add_edge</a>(e);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    vector&lt;edge_t&gt; mst;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="prim__mst_8h.html#ab8f90ef4c274104ce2bf74ea9f379274">prim_mst</a>(g, back_inserter(mst));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> cost = 0;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">for</span>(<a class="code" href="structedge__t.html">edge_t</a> edge : mst)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        cost += edge.wt;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    cout &lt;&lt; cost &lt;&lt; endl;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">concept graph {</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">    Iterators</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    vbegin();</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    vend();</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">    ebegin();</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">    eend();</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    avbegin(vertex);</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    avend();</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    aebegin(vertex);</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">    aeend(vertex);</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="structedge__t.html">edge_t</a> lightest = *edges.begin();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        edges.erase(*edges.begin());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        vertex_t u = lightest.<a class="code" href="structedge__t.html#a8c0cd97713a5621c50257c195045501f">either</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        vertex_t v = lightest.<a class="code" href="structedge__t.html#abe502b6dc8050eccc2a10d2b9eca4320">other</a>(u);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">bool</span> u_in_T = T.find(u) != T.end();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">bool</span> v_in_T = T.find(v) != T.end();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span>(u_in_T and !v_in_T) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            res++ = lightest;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            T.insert(v);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(v); it != G.aeend(v); it++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                edges.insert(*it);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span>(!u_in_T and v_in_T) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            res++ = lightest;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            T.insert(u);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = G.aebegin(v); it != G.aeend(v); it++)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                edges.insert(*it);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    assert(Tree.esize() == Tree.vsize() - 1);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">struct </span><a class="code" href="structedge__t.html">edge_t</a> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe">u</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structedge__t.html#afeca96726fc33d65419a7d7fbb118851">v</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structedge__t.html#a28c628fae04f9b3490a35073a971d4b4">wt</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structedge__t.html#a207604a3ee311456a184bdfb12865dcc">   60</a></span>&#160;    <a class="code" href="structedge__t.html#a207604a3ee311456a184bdfb12865dcc">edge_t</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> a, <span class="keywordtype">long</span> <span class="keywordtype">long</span> b, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structedge__t.html#a69b9c9edd2d1da819ec24864abba45f6">weight</a>) : u(a), v(b), wt(weight) { }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structedge__t.html#a8c0cd97713a5621c50257c195045501f">   61</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span>  <a class="code" href="structedge__t.html#a8c0cd97713a5621c50257c195045501f">either</a>() { <span class="keywordflow">return</span> <a class="code" href="structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe">u</a>; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structedge__t.html#a2e6f23e8eef9e71a534f53f9c009cf74">   62</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structedge__t.html#a2e6f23e8eef9e71a534f53f9c009cf74">other</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> vertex) { <span class="keywordflow">return</span> vertex == u ? v : <a class="code" href="structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe">u</a>; }</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structedge__t.html#afe9d2650a290f1a4336335f704cd625b">   63</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structedge__t.html#afe9d2650a290f1a4336335f704cd625b">operator==</a>(<span class="keyword">const</span> <a class="code" href="structedge__t.html">edge_t</a> <a class="code" href="structedge__t.html#abe502b6dc8050eccc2a10d2b9eca4320">other</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> u == other.<a class="code" href="structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe">u</a> and v == other.<a class="code" href="structedge__t.html#afeca96726fc33d65419a7d7fbb118851">v</a>; }</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structedge__t.html#aaf3c3e2c9c538f6c57a003eae7891d7d">   64</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structedge__t.html#aaf3c3e2c9c538f6c57a003eae7891d7d">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="structedge__t.html">edge_t</a> <a class="code" href="structedge__t.html#abe502b6dc8050eccc2a10d2b9eca4320">other</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span>  wt &lt; other.<a class="code" href="structedge__t.html#a28c628fae04f9b3490a35073a971d4b4">wt</a>; }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   67</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    undirected_graph&lt;long long, edge_t&gt; g;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> n, m, u, v, wt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cin &gt;&gt; n &gt;&gt; m;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">while</span>(m--) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        cin &gt;&gt; u &gt;&gt; v &gt;&gt; wt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="structedge__t.html">edge_t</a> e(u, v, wt);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        g.add_edge(e);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    vector&lt;edge_t&gt; mst;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="prim__mst_8h.html#abfa1021f122ffa63dc2403e15616a633">prim_mst</a>(g, back_inserter(mst));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> cost = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span>(<a class="code" href="structedge__t.html">edge_t</a> edge : mst)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        cost += edge.wt;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    cout &lt;&lt; cost &lt;&lt; endl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">concept graph {</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">    Iterators</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">    vbegin();</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">    vend();</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    ebegin();</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">    eend();</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">    avbegin(vertex);</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    avend();</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    aebegin(vertex);</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">    aeend(vertex);</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    Interface</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    add_edge</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    add_vertex</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">};</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">    Interface</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">    add_edge</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">    add_vertex</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">};</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">*/</span></div>
 <div class="ttc" id="structedge__t_html"><div class="ttname"><a href="structedge__t.html">edge_t</a></div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:104</div></div>
-<div class="ttc" id="classundirected__graph_html_ab08f5000bd8ad95e2174d48c4fba1e1c"><div class="ttname"><a href="classundirected__graph.html#ab08f5000bd8ad95e2174d48c4fba1e1c">undirected_graph::add_edge</a></div><div class="ttdeci">void add_edge(const vertex_t &amp;u, const vertex_t &amp;v, const attr_t &amp;attr)</div><div class="ttdef"><b>Definition:</b> undirected_graph.h:23</div></div>
-<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="structedge__t_html_aed4932289c4e04d6872f19be77d2c852"><div class="ttname"><a href="structedge__t.html#aed4932289c4e04d6872f19be77d2c852">edge_t::other</a></div><div class="ttdeci">long long other()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:112</div></div>
-<div class="ttc" id="structedge__t_html_a7282bbe59f51373ac10235acd3020a56"><div class="ttname"><a href="structedge__t.html#a7282bbe59f51373ac10235acd3020a56">edge_t::either</a></div><div class="ttdeci">long long either()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:111</div></div>
-<div class="ttc" id="structedge__t_html_a8ad67f3df26e784a85de5d1691d5d7d6"><div class="ttname"><a href="structedge__t.html#a8ad67f3df26e784a85de5d1691d5d7d6">edge_t::edge_t</a></div><div class="ttdeci">edge_t(long long a, long long b, long long weight)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:65</div></div>
-<div class="ttc" id="classundirected__graph_html"><div class="ttname"><a href="classundirected__graph.html">undirected_graph</a></div><div class="ttdef"><b>Definition:</b> undirected_graph.h:17</div></div>
-<div class="ttc" id="prim__mst_8h_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> prim_mst.h:72</div></div>
-<div class="ttc" id="structedge__t_html_a7f505360103059cfbfa1e4d558a1bdf3"><div class="ttname"><a href="structedge__t.html#a7f505360103059cfbfa1e4d558a1bdf3">edge_t::u</a></div><div class="ttdeci">long long u</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:105</div></div>
-<div class="ttc" id="structedge__t_html_a7b160368dd7ce6f8685fb76c74c44fa1"><div class="ttname"><a href="structedge__t.html#a7b160368dd7ce6f8685fb76c74c44fa1">edge_t::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const edge_t other) const </div><div class="ttdef"><b>Definition:</b> prim_mst.h:69</div></div>
-<div class="ttc" id="structedge__t_html_a4c76a6508b7095eca909e23602faab4d"><div class="ttname"><a href="structedge__t.html#a4c76a6508b7095eca909e23602faab4d">edge_t::other</a></div><div class="ttdeci">long long other(long long vertex)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:67</div></div>
-<div class="ttc" id="structedge__t_html_ad9ab7b3c203dad2e94b9673ddb31b408"><div class="ttname"><a href="structedge__t.html#ad9ab7b3c203dad2e94b9673ddb31b408">edge_t::v</a></div><div class="ttdeci">long long v</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:106</div></div>
-<div class="ttc" id="structedge__t_html_aab3f223e5e3cb27e9c6e177129a74776"><div class="ttname"><a href="structedge__t.html#aab3f223e5e3cb27e9c6e177129a74776">edge_t::operator==</a></div><div class="ttdeci">bool operator==(const edge_t other) const </div><div class="ttdef"><b>Definition:</b> prim_mst.h:68</div></div>
-<div class="ttc" id="prim__mst_8h_html_ab8f90ef4c274104ce2bf74ea9f379274"><div class="ttname"><a href="prim__mst_8h.html#ab8f90ef4c274104ce2bf74ea9f379274">prim_mst</a></div><div class="ttdeci">OutputIter prim_mst(undirected_graph&lt; vertex_t, edge_t &gt; &amp;G, OutputIter res)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:18</div></div>
-<div class="ttc" id="structedge__t_html_ae3d4afda913ba909ac82ef1d743431ba"><div class="ttname"><a href="structedge__t.html#ae3d4afda913ba909ac82ef1d743431ba">edge_t::wt</a></div><div class="ttdeci">long long int wt</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:107</div></div>
+<div class="ttc" id="prim__mst_8h_html_abfa1021f122ffa63dc2403e15616a633"><div class="ttname"><a href="prim__mst_8h.html#abfa1021f122ffa63dc2403e15616a633">prim_mst</a></div><div class="ttdeci">OutputIter prim_mst(const GraphType &amp;G, OutputIter dest)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:7</div></div>
+<div class="ttc" id="structedge__t_html_aaf3c3e2c9c538f6c57a003eae7891d7d"><div class="ttname"><a href="structedge__t.html#aaf3c3e2c9c538f6c57a003eae7891d7d">edge_t::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const edge_t other) const </div><div class="ttdef"><b>Definition:</b> prim_mst.h:64</div></div>
+<div class="ttc" id="structedge__t_html_a69b9c9edd2d1da819ec24864abba45f6"><div class="ttname"><a href="structedge__t.html#a69b9c9edd2d1da819ec24864abba45f6">edge_t::weight</a></div><div class="ttdeci">long long weight()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:113</div></div>
+<div class="ttc" id="structedge__t_html_afe9d2650a290f1a4336335f704cd625b"><div class="ttname"><a href="structedge__t.html#afe9d2650a290f1a4336335f704cd625b">edge_t::operator==</a></div><div class="ttdeci">bool operator==(const edge_t other) const </div><div class="ttdef"><b>Definition:</b> prim_mst.h:63</div></div>
+<div class="ttc" id="structedge__t_html_a2e6f23e8eef9e71a534f53f9c009cf74"><div class="ttname"><a href="structedge__t.html#a2e6f23e8eef9e71a534f53f9c009cf74">edge_t::other</a></div><div class="ttdeci">long long other(long long vertex)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:62</div></div>
+<div class="ttc" id="structedge__t_html_afeca96726fc33d65419a7d7fbb118851"><div class="ttname"><a href="structedge__t.html#afeca96726fc33d65419a7d7fbb118851">edge_t::v</a></div><div class="ttdeci">long long v</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:106</div></div>
+<div class="ttc" id="structedge__t_html_a207604a3ee311456a184bdfb12865dcc"><div class="ttname"><a href="structedge__t.html#a207604a3ee311456a184bdfb12865dcc">edge_t::edge_t</a></div><div class="ttdeci">edge_t(long long a, long long b, long long weight)</div><div class="ttdef"><b>Definition:</b> prim_mst.h:60</div></div>
+<div class="ttc" id="classTree_html"><div class="ttname"><a href="classTree.html">Tree</a></div><div class="ttdoc">A generic tree data structre. </div><div class="ttdef"><b>Definition:</b> linked_impl.h:57</div></div>
+<div class="ttc" id="prim__mst_8h_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="prim__mst_8h.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> prim_mst.h:67</div></div>
+<div class="ttc" id="structedge__t_html_a4d5ff8f874b36afb3912a153894c72fe"><div class="ttname"><a href="structedge__t.html#a4d5ff8f874b36afb3912a153894c72fe">edge_t::u</a></div><div class="ttdeci">long long u</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:105</div></div>
+<div class="ttc" id="structedge__t_html_a28c628fae04f9b3490a35073a971d4b4"><div class="ttname"><a href="structedge__t.html#a28c628fae04f9b3490a35073a971d4b4">edge_t::wt</a></div><div class="ttdeci">long long int wt</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:107</div></div>
+<div class="ttc" id="structedge__t_html_abe502b6dc8050eccc2a10d2b9eca4320"><div class="ttname"><a href="structedge__t.html#abe502b6dc8050eccc2a10d2b9eca4320">edge_t::other</a></div><div class="ttdeci">long long other()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:112</div></div>
+<div class="ttc" id="structedge__t_html_a8c0cd97713a5621c50257c195045501f"><div class="ttname"><a href="structedge__t.html#a8c0cd97713a5621c50257c195045501f">edge_t::either</a></div><div class="ttdeci">long long either()</div><div class="ttdef"><b>Definition:</b> dijkstra.cpp:111</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -234,7 +228,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 6 2015 21:13:47 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

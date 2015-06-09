@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['left',['left',['../structNode.html#aa2bea3ad4f26ce9f61ef1104f8da1e00',1,'Node::left()'],['../structTree.html#a9c5d21c1929142817cba1247639a8a2f',1,'Tree::left()']]]
+  ['freq',['freq',['../fenwick__tree_8h.html#a79af2f01cef4ec50475f4de29b159d5b',1,'fenwick_tree.h']]],
+  ['from',['from',['../structalglib_1_1graph_1_1edge__t.html#aff2e8b80c0ac80a2ac993ed362ed8fdb',1,'alglib::graph::edge_t']]]
 ];
