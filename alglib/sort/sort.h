@@ -21,16 +21,18 @@
 // Document this file
 /** @file */
 
-#ifndef _ALGLIB_SORT_H_
-#define _ALGLIB_SORT_H_
-
 #pragma once
 
 #include <vector>
 #include <algorithm>
 #include <iterator>
 #include <functional>
-// #include "../containers/binary_heap.h"
+#include <alglib/heap/binary_heap.h>
+
+
+namespace alglib {
+namespace sort {
+
 
 /* Sorts the elements in [first, last) using selection sort
  * @first The starting iterator of the range
@@ -140,31 +142,30 @@ void merge_sort(RandomAccessIter first, RandomAccessIter last) {
 }
 
 
-/*
-
 template<typename RandomAccessIter, typename BinaryPred>
 void heap_sort(RandomAccessIter first, RandomAccessIter last,
                const BinaryPred& LT) {
     typedef
     typename std::iterator_traits<RandomAccessIter>::value_type val_type;
 
-    binary_heap<val_type> H;  // Use LT here
+    alglib::heap::unkeyed_binary_heap<val_type> H;  // Use LT here
 
     for (RandomAccessIter it = first; it != last; it++)
         H.insert(*it);
 
-    for (RandomAccessIter it = first; it != last; it++)
-        *it = H.extract_min();
+    for (RandomAccessIter it = first; it != last; it++) {
+        *it = H.get_min();
+        H.delete_min();
+    }
 }
 
 
 template<typename RandomAccessIter>
 void heap_sort(RandomAccessIter first, RandomAccessIter last) {
-    heap_sort(first, last, DefaultLT<typename RandomAccessIter::value_type>());
+    heap_sort(first, last, std::less<typename RandomAccessIter::value_type>());
 }
 
-*/
 
+}  // end of sort namespace
+}  // end of alglib namespace
 
-
-#endif  // _ALGLIB_SORT_H_
