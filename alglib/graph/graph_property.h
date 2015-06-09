@@ -7,9 +7,11 @@
  * that was distributed with this source code.
  */
 
+#pragma once
 
 #include <map>
 #include <stdexcept>
+#include <ostream>
 
 namespace alglib {
 namespace graph {
@@ -75,8 +77,12 @@ class vertex_property {
             ++first;
         }
     }
-};
 
+    friend std::ostream& operator<< (std::ostream& out, const vertex_property& P) {
+        for(auto it = P.property.cbegin(); it != P.property.cend(); it++) 
+            out << "(" << it->first << ": " << it->second << ")\n";
+    }
+};
 
 
 }  // end of graph namespace
