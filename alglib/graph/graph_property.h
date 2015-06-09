@@ -16,8 +16,13 @@ namespace graph {
 
 template<typename GraphType, typename PropertyType>
 class vertex_property {
+ public:
 
+    /* typdefs */
     typedef typename GraphType::vertex_type vertex_type;
+    typedef PropertyType property_type;
+    typedef GraphType graph_type;
+
  private:
     std::map<vertex_type, PropertyType> property;
 
@@ -58,6 +63,17 @@ class vertex_property {
         if((it = property.find(v)) == property.end())
             throw std::domain_error("The vertex doesn't exist in the supplied graph");
         return it->second;
+    }
+
+    /*
+     * \brief Update the property of many vertices at once.
+     */
+    template<typename InputIter>
+    void bulk_update(InputIter first, InputIter last, property_type val) {
+        while(first != last) {
+            property.at(*first) = val;
+            ++first;
+        }
     }
 };
 

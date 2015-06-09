@@ -24,6 +24,10 @@ int main() {
     P["B"] = 20;
     P["C"] = 30;
     P["D"] = 40;
+
+    // make all property one
+    P.bulk_update(graph.vbegin(), graph.vend(), 100);
+
     //! P["E"] = 50; // Causes exception to be thrown
 
     for(auto it = graph.vbegin(); it != graph.vend(); it++)
