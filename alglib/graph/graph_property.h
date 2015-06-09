@@ -32,6 +32,14 @@ class vertex_property {
         for(auto it = G.vbegin(); it != G.vend(); it++)
             property[*it] = default_val;
     }
+    
+    
+    vertex_property(const vertex_property& P) = default;
+
+    /*
+     * \brief move-constructor
+     */
+    vertex_property(vertex_property&& P) : property(std::move(P.property)) {}
 
     /*
      * \breif get the reference to the property associated with a vertex
@@ -52,6 +60,8 @@ class vertex_property {
         return it->second;
     }
 };
+
+
 
 }  // end of graph namespace
 }  // end of alglib namespace
