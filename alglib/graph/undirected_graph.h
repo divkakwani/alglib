@@ -27,6 +27,9 @@ class undirected_graph : public model<vertex_t, edge_t<vertex_t, attr_t>> {
         super::add_edge(u, v, edge_type(u, v, attr));
         super::add_edge(v, u, edge_type(v, u, attr));
     }
+    int num_edges() const override {
+        return super::num_edges() / 2;
+    }
 };
 
 // Partial specialzation for void attributes (or not attributes)
@@ -40,6 +43,9 @@ class undirected_graph<vertex_t, void, model> : public model<vertex_t, edge_t<ve
     void add_edge(const vertex_t& u, const vertex_t& v) {
         super::add_edge(u, v, edge_type(u, v));
         super::add_edge(v, u, edge_type(v, u));
+    }
+    int num_edges() const override {
+        return super::num_edges() / 2;
     }
 };
 

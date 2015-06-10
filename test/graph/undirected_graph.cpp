@@ -24,6 +24,8 @@ int main() {
 
     G.add_edge(c1, c2, 100);
     G.add_edge(c5, c1, 250);
+
+    cout << "No. of edges: " << G.num_edges() << endl;
     
     cout << "Cities adjacent to Bikaner: ";
     for(auto it = G.avbegin(c1); it != G.avend(c1); it++)
