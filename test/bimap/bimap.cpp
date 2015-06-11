@@ -1,9 +1,10 @@
 
-#include <alglib/containers/bimap.h>
+#include <alglib/bimap/bimap.h>
 #include <string>
 #include <iostream>
 
 using namespace std;
+using namespace alglib::bimap;
 
 int main() {
 
@@ -12,23 +13,23 @@ int main() {
   bm.insert("div", 1);
   bm.insert("dip", 2);
 
-  cout << bm.getimage("div") << endl;
-  cout << bm.getimage("dip") << endl;
-  cout << bm.getpreimage(1) << endl;
-  cout << bm.getpreimage(2) << endl;
+  cout << bm.get_image("div") << endl;
+  cout << bm.get_image("dip") << endl;
+  cout << bm.get_preimage(1) << endl;
+  cout << bm.get_preimage(2) << endl;
 
   // Iterator tests
-  cout << "First type's set\n";
-  for(auto it = bm.type1begin(); it != bm.type1end(); ++it)
-    cout << *it << endl;
-
-  cout << "Second type's set\n";
-  for(auto it = bm.type2begin(); it != bm.type2end(); ++it)
-    cout << *it << endl;
+  cout << "Domain:  \t";
+  for(auto it = bm.domain_begin(); it != bm.domain_end(); ++it)
+    cout << *it << "\t";
 
   cout << endl;
 
+  cout << "Codomain:\t";
+  for(auto it = bm.codomain_begin(); it != bm.codomain_end(); ++it)
+    cout << *it << "\t";
 
+  cout << endl;
 
   return 0;
 }
