@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['edge_5ftype',['edge_type',['../classalglib_1_1graph_1_1directed__graph.html#a6648ffc30d3c20ab869745193e32c1cb',1,'alglib::graph::directed_graph::edge_type()'],['../classalglib_1_1graph_1_1directed__graph_3_01vertex__t_00_01void_00_01model_01_4.html#a2b9546fba9b7d8d8bab67445f7fc8f16',1,'alglib::graph::directed_graph&lt; vertex_t, void, model &gt;::edge_type()'],['../classalglib_1_1graph_1_1models_1_1adj__list.html#a736d70ecd6418443051f1a49b628bcc0',1,'alglib::graph::models::adj_list::edge_type()'],['../classalglib_1_1graph_1_1undirected__graph.html#a5abb773189fe376b66653320520cc12c',1,'alglib::graph::undirected_graph::edge_type()'],['../classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3',1,'alglib::graph::undirected_graph&lt; vertex_t, void, model &gt;::edge_type()']]],
-  ['elt_5ftype',['elt_type',['../classalglib_1_1heap_1_1binary__heap.html#afb6e10d3ad42d3733aa7d334c2ffed4c',1,'alglib::heap::binary_heap']]]
+  ['domain_5fiterator',['domain_iterator',['../classalglib_1_1bimap_1_1bimap.html#a662d8e27adf4c6cdea4e803b17c110de',1,'alglib::bimap::bimap']]],
+  ['domain_5ftype',['domain_type',['../classalglib_1_1bimap_1_1bimap.html#ac7bcbe7e0996855acf728e689ad2ee6c',1,'alglib::bimap::bimap']]]
 ];

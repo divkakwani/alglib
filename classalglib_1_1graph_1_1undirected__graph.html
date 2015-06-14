@@ -123,6 +123,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b7cc6056298fdfc9799fc5ac5eac05e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1undirected__graph.html#a2b7cc6056298fdfc9799fc5ac5eac05e">add_edge</a> (const vertex_t &amp;u, const vertex_t &amp;v, const attr_t &amp;attr)</td></tr>
 <tr class="separator:a2b7cc6056298fdfc9799fc5ac5eac05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa72bbaaedbd171edf18f390fe63418b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1undirected__graph.html#aa72bbaaedbd171edf18f390fe63418b8">num_edges</a> () const  override</td></tr>
+<tr class="separator:aa72bbaaedbd171edf18f390fe63418b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a5abb773189fe376b66653320520cc12c"></a>
@@ -187,6 +189,34 @@ template&lt;typename vertex_t , typename attr_t  = void, template&lt; typename, 
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="aa72bbaaedbd171edf18f390fe63418b8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t , typename attr_t  = void, template&lt; typename, typename &gt; class model = models::adj_list&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classalglib_1_1graph_1_1undirected__graph.html">alglib::graph::undirected_graph</a>&lt; vertex_t, attr_t, model &gt;::num_edges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                   {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">return</span> super::num_edges() / 2;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>alglib/graph/<a class="el" href="undirected__graph_8h_source.html">undirected_graph.h</a></li>
 </ul>
@@ -199,7 +229,7 @@ template&lt;typename vertex_t , typename attr_t  = void, template&lt; typename, 
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 23:11:18 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

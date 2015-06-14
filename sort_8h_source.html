@@ -118,157 +118,165 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Document this file</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"></span><span class="preprocessor">#ifndef _ALGLIB_SORT_H_</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define _ALGLIB_SORT_H_</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// #include &quot;../containers/binary_heap.h&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Sorts the elements in [first, last) using selection sort</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @first The starting iterator of the range</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * @last The one-past-the-end iterator of the range.</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0">selection_sort</a>(ForwardIter first, ForwardIter last, <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = first; it != last; it++)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::swap(*it, *std::min_element(it, last, LT));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/* Analysis</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     *   Proof of Correctness:</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     *     We prove it using the following invariant:</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     *       Prior to an iteration of the loop, A[first..it-1] contains</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     *       the smallest (it-first) elements of A in a non-decreasing order.</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     *     Initialization: Initially, it = first, so A[first..first-1] contains</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     *     no element. Hence it is trivially sorted.</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     *     Maintenance: A[first..it-1] is sorted prior to an iteration, and in</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     *     the loop A[it] is set to a minimum element in A[it..last].</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     *     A[it] &gt;= E, E ϵ A[first..it-1] because prior to the iteration,</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     *     A[it..last] did not contain any element greater than E,</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     *     E ϵ A[first..it-1]. Hence, A[first..it] contains its elements in a</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     *     non-decreasing order. Further, the range also contains the smallest</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     *     (it-first+1) elemnts of A since one more is added in the loop.</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     *     Termination: At the end, we have, A[first..last] contains all the</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     *     the elemets in a non-decreasing order. This proves the claim.</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     *  Stable: Yes (Depends on the implementation of min_element. If it</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     *          returns the first minimum element, then it is stable.)</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     *  In-place: Yes</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     *  Time-Complexity Gurantee: O(n^2).</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     *  The loop runs n times and each of the iteration invoke min_element,</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     *  which takes O(i) time where i goes from 1 to n.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     *  Mutual-Exclusion: required.</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIter&gt;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="sort_8h.html#a98f6ae7510d3a0f459c8481a639c7ce5">   73</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0">selection_sort</a>(ForwardIter first, ForwardIter last) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0">selection_sort</a>(first, last, std::less&lt;typename ForwardIter::value_type&gt;());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// Quick sort helper function</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">   80</a></span>&#160;RandomAccessIter <a class="code" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a>(RandomAccessIter first,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                      RandomAccessIter last,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                      <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">/* The function selects a random element in [first, last) as pivot and</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * partitions the interval around it.</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * The part</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">int</span> sz = std::distance(first, last);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    RandomAccessIter it = first + rand() % sz;  <span class="comment">// O(n) cost</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::swap(*it, *(last - 1));</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">auto</span> pivot = last - 1;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    RandomAccessIter sep = first;  <span class="comment">// sep heads the larger-elements partition</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = first; it != last; it++) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (*it &lt; *pivot) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            std::swap(*it, *sep);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            sep++;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::swap(*pivot, *sep);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> sep;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a>(RandomAccessIter first, RandomAccessIter last,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (first &lt; last) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        RandomAccessIter pivot = <a class="code" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a>(first, last, LT);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a>(first, pivot, LT);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a>(pivot + 1, last, LT);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="sort_8h.html#a3e707dd10678b91c98b0f1ec67d8ff27">  116</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a>(RandomAccessIter first, RandomAccessIter last) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a>(first, last, std::less&lt;typename RandomAccessIter::value_type&gt;());</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">  122</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a>(RandomAccessIter first, RandomAccessIter last,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">int</span> sz = std::distance(first, last);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> (sz &gt; 1) {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        std::vector&lt;typename RandomAccessIter::value_type&gt;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            subarr1(first, first + sz / 2);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"></span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="binary__heap_8h.html">alglib/heap/binary_heap.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacealglib.html">alglib</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html">   34</a></span>&#160;<span class="keyword">namespace </span>sort {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* Sorts the elements in [first, last) using selection sort</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @first The starting iterator of the range</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @last The one-past-the-end iterator of the range.</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404">selection_sort</a>(ForwardIter first, ForwardIter last, <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = first; it != last; it++)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        std::swap(*it, *std::min_element(it, last, LT));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">/* Analysis</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     *   Proof of Correctness:</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     *     We prove it using the following invariant:</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     *       Prior to an iteration of the loop, A[first..it-1] contains</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     *       the smallest (it-first) elements of A in a non-decreasing order.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     *     Initialization: Initially, it = first, so A[first..first-1] contains</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     *     no element. Hence it is trivially sorted.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     *     Maintenance: A[first..it-1] is sorted prior to an iteration, and in</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     *     the loop A[it] is set to a minimum element in A[it..last].</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     *     A[it] &gt;= E, E ϵ A[first..it-1] because prior to the iteration,</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     *     A[it..last] did not contain any element greater than E,</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     *     E ϵ A[first..it-1]. Hence, A[first..it] contains its elements in a</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     *     non-decreasing order. Further, the range also contains the smallest</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     *     (it-first+1) elemnts of A since one more is added in the loop.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     *     Termination: At the end, we have, A[first..last] contains all the</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     *     the elemets in a non-decreasing order. This proves the claim.</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     *  Stable: Yes (Depends on the implementation of min_element. If it</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     *          returns the first minimum element, then it is stable.)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     *  In-place: Yes</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     *  Time-Complexity Gurantee: O(n^2).</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     *  The loop runs n times and each of the iteration invoke min_element,</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     *  which takes O(i) time where i goes from 1 to n.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">     *  Mutual-Exclusion: required.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIter&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a0fa6cc48268a93a8d64bf31697c40245">   75</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404">selection_sort</a>(ForwardIter first, ForwardIter last) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404">selection_sort</a>(first, last, std::less&lt;typename ForwardIter::value_type&gt;());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// Quick sort helper function</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">   82</a></span>&#160;RandomAccessIter <a class="code" href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">randomized_partition</a>(RandomAccessIter first,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                      RandomAccessIter last,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                      <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* The function selects a random element in [first, last) as pivot and</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     * partitions the interval around it.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * The part</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> sz = std::distance(first, last);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    RandomAccessIter it = first + rand() % sz;  <span class="comment">// O(n) cost</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::swap(*it, *(last - 1));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">auto</span> pivot = last - 1;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    RandomAccessIter sep = first;  <span class="comment">// sep heads the larger-elements partition</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = first; it != last; it++) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (*it &lt; *pivot) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            std::swap(*it, *sep);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            sep++;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::swap(*pivot, *sep);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> sep;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">quick_sort</a>(RandomAccessIter first, RandomAccessIter last,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span> (first &lt; last) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        RandomAccessIter pivot = <a class="code" href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">randomized_partition</a>(first, last, LT);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">quick_sort</a>(first, pivot, LT);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">quick_sort</a>(pivot + 1, last, LT);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a857970e32c674d4b41ce33642a6aec53">  118</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">quick_sort</a>(RandomAccessIter first, RandomAccessIter last) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">quick_sort</a>(first, last, std::less&lt;typename RandomAccessIter::value_type&gt;());</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">  124</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">merge_sort</a>(RandomAccessIter first, RandomAccessIter last,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">int</span> sz = std::distance(first, last);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (sz &gt; 1) {</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        std::vector&lt;typename RandomAccessIter::value_type&gt;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            subarr2(first + sz / 2, last);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a>(subarr1.begin(), subarr1.end(), LT);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a>(subarr2.begin(), subarr2.end(), LT);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        std::merge(subarr1.begin(), subarr1.end(),</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                   subarr2.begin(), subarr2.end(), first);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="sort_8h.html#a6d6538793a5e4c643da879cb5454bfe1">  138</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a>(RandomAccessIter first, RandomAccessIter last) {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a>(first, last, std::less&lt;typename RandomAccessIter::value_type&gt;());</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">template&lt;typename RandomAccessIter, typename BinaryPred&gt;</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">void heap_sort(RandomAccessIter first, RandomAccessIter last,</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">               const BinaryPred&amp; LT) {</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">    typedef</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">    typename std::iterator_traits&lt;RandomAccessIter&gt;::value_type val_type;</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">    binary_heap&lt;val_type&gt; H;  // Use LT here</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">    for (RandomAccessIter it = first; it != last; it++)</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">        H.insert(*it);</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">    for (RandomAccessIter it = first; it != last; it++)</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">        *it = H.extract_min();</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">template&lt;typename RandomAccessIter&gt;</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">void heap_sort(RandomAccessIter first, RandomAccessIter last) {</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">    heap_sort(first, last, DefaultLT&lt;typename RandomAccessIter::value_type&gt;());</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            subarr1(first, first + sz / 2);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        std::vector&lt;typename RandomAccessIter::value_type&gt;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            subarr2(first + sz / 2, last);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">merge_sort</a>(subarr1.begin(), subarr1.end(), LT);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">merge_sort</a>(subarr2.begin(), subarr2.end(), LT);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        std::merge(subarr1.begin(), subarr1.end(),</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                   subarr2.begin(), subarr2.end(), first);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a9cfa5be4a6948fc2333d8e6d6d454990">  140</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">merge_sort</a>(RandomAccessIter first, RandomAccessIter last) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">merge_sort</a>(first, last, std::less&lt;typename RandomAccessIter::value_type&gt;());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter, <span class="keyword">typename</span> BinaryPred&gt;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a7348b28c34c0eb2c493cf0de49aae63f">  146</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a7348b28c34c0eb2c493cf0de49aae63f">heap_sort</a>(RandomAccessIter first, RandomAccessIter last,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;               <span class="keyword">const</span> BinaryPred&amp; LT) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">typedef</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">typename</span> std::iterator_traits&lt;RandomAccessIter&gt;::value_type val_type;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="classalglib_1_1heap_1_1unkeyed__binary__heap.html">alglib::heap::unkeyed_binary_heap&lt;val_type&gt;</a> H;  <span class="comment">// Use LT here</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">for</span> (RandomAccessIter it = first; it != last; it++)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        H.<a class="code" href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#a68c4d9fa4dedf17e3a120b2de4a6e25f">insert</a>(*it);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">for</span> (RandomAccessIter it = first; it != last; it++) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        *it = H.<a class="code" href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#acc947a90063aba5b08cc738c8fcc7e64">get_min</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        H.<a class="code" href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#abd585cb1f8990c9f58ec53d72aa4e5b7">delete_min</a>();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> RandomAccessIter&gt;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="namespacealglib_1_1sort.html#a96c7c6d4446317045c430735ed69f937">  164</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacealglib_1_1sort.html#a7348b28c34c0eb2c493cf0de49aae63f">heap_sort</a>(RandomAccessIter first, RandomAccessIter last) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="namespacealglib_1_1sort.html#a7348b28c34c0eb2c493cf0de49aae63f">heap_sort</a>(first, last, std::less&lt;typename RandomAccessIter::value_type&gt;());</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif  // _ALGLIB_SORT_H_</span></div>
-<div class="ttc" id="sort_8h_html_ab793044c7cf327241fe7290422e0d907"><div class="ttname"><a href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:80</div></div>
-<div class="ttc" id="sort_8h_html_a8a49b01749371888dae269e5cc4e2ef1"><div class="ttname"><a href="sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1">quick_sort</a></div><div class="ttdeci">void quick_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:105</div></div>
-<div class="ttc" id="sort_8h_html_a0f2455c2e31d303d92f60cf9431d87a0"><div class="ttname"><a href="sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0">selection_sort</a></div><div class="ttdeci">void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:40</div></div>
-<div class="ttc" id="sort_8h_html_a5a0e7e4f0b6d2f03efa92b06ddc3b0b0"><div class="ttname"><a href="sort_8h.html#a5a0e7e4f0b6d2f03efa92b06ddc3b0b0">merge_sort</a></div><div class="ttdeci">void merge_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:122</div></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}  <span class="comment">// end of sort namespace</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}  <span class="comment">// end of alglib namespace</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="ttc" id="classalglib_1_1heap_1_1unkeyed__binary__heap_html_abd585cb1f8990c9f58ec53d72aa4e5b7"><div class="ttname"><a href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#abd585cb1f8990c9f58ec53d72aa4e5b7">alglib::heap::unkeyed_binary_heap::delete_min</a></div><div class="ttdeci">void delete_min()</div><div class="ttdef"><b>Definition:</b> binary_heap.h:224</div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_a80ba59ad060ed3b1ab2f2cf27f4dd39a"><div class="ttname"><a href="namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a">alglib::sort::quick_sort</a></div><div class="ttdeci">void quick_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:107</div></div>
+<div class="ttc" id="namespacealglib_html"><div class="ttname"><a href="namespacealglib.html">alglib</a></div><div class="ttdef"><b>Definition:</b> bimap.h:17</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1unkeyed__binary__heap_html_a68c4d9fa4dedf17e3a120b2de4a6e25f"><div class="ttname"><a href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#a68c4d9fa4dedf17e3a120b2de4a6e25f">alglib::heap::unkeyed_binary_heap::insert</a></div><div class="ttdeci">void insert(const elt_t &amp;elt)</div><div class="ttdef"><b>Definition:</b> binary_heap.h:218</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1unkeyed__binary__heap_html"><div class="ttname"><a href="classalglib_1_1heap_1_1unkeyed__binary__heap.html">alglib::heap::unkeyed_binary_heap</a></div><div class="ttdef"><b>Definition:</b> binary_heap.h:213</div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_ad4d9e5bace0ffbfc4d54a7cf1eab8404"><div class="ttname"><a href="namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404">alglib::sort::selection_sort</a></div><div class="ttdeci">void selection_sort(ForwardIter first, ForwardIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:42</div></div>
+<div class="ttc" id="classalglib_1_1heap_1_1unkeyed__binary__heap_html_acc947a90063aba5b08cc738c8fcc7e64"><div class="ttname"><a href="classalglib_1_1heap_1_1unkeyed__binary__heap.html#acc947a90063aba5b08cc738c8fcc7e64">alglib::heap::unkeyed_binary_heap::get_min</a></div><div class="ttdeci">const elt_t &amp; get_min() const </div><div class="ttdef"><b>Definition:</b> binary_heap.h:221</div></div>
+<div class="ttc" id="binary__heap_8h_html"><div class="ttname"><a href="binary__heap_8h.html">binary_heap.h</a></div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_aca3b89e30bc540252aa859112453e8f2"><div class="ttname"><a href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">alglib::sort::randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:82</div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_a7348b28c34c0eb2c493cf0de49aae63f"><div class="ttname"><a href="namespacealglib_1_1sort.html#a7348b28c34c0eb2c493cf0de49aae63f">alglib::sort::heap_sort</a></div><div class="ttdeci">void heap_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:146</div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_a0062c31ef5113007ec54f6cbcbae9332"><div class="ttname"><a href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">alglib::sort::merge_sort</a></div><div class="ttdeci">void merge_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:124</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
@@ -278,7 +286,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 23:11:18 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

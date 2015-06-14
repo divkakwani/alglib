@@ -127,18 +127,19 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;           {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    DataGenerator&lt;vector&lt;int&gt;&gt; dg;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    vector&lt;int&gt; v = dg.random_data(1000000);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    vector&lt;int&gt; v = dg.random_data(10000000);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    time_t start = clock();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="namespacealglib_1_1mutithreaded.html#a72071c4737019ff3403182c1310bcc24">alglib::mutithreaded::merge_sort</a>(v.begin(), v.end()) ;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    time_t end = clock();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;runtime: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(end - start) / CLOCKS_PER_SEC &lt;&lt; endl;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="ttc" id="namespacealglib_1_1mutithreaded_html_a72071c4737019ff3403182c1310bcc24"><div class="ttname"><a href="namespacealglib_1_1mutithreaded.html#a72071c4737019ff3403182c1310bcc24">alglib::mutithreaded::merge_sort</a></div><div class="ttdeci">void merge_sort(RandomAccessIter first, RandomAccessIter last)</div><div class="ttdef"><b>Definition:</b> parallel_sort.h:13</div></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">alglib::sort::merge_sort</a>(v.begin(), v.end());</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">/* alglib::mutithreaded::merge_sort(v.begin(), v.end()) ; */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    time_t end = clock();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;runtime: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(end - start) / CLOCKS_PER_SEC &lt;&lt; endl;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="ttc" id="namespacealglib_1_1sort_html_a0062c31ef5113007ec54f6cbcbae9332"><div class="ttname"><a href="namespacealglib_1_1sort.html#a0062c31ef5113007ec54f6cbcbae9332">alglib::sort::merge_sort</a></div><div class="ttdeci">void merge_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:124</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -151,7 +152,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 23:11:18 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

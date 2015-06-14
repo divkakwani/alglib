@@ -1,11 +1,12 @@
 var searchData=
 [
   ['add_5fedge',['add_edge',['../classalglib_1_1graph_1_1directed__graph.html#aa4fc7a78b9dc6293a7ca848f71972b07',1,'alglib::graph::directed_graph::add_edge()'],['../classalglib_1_1graph_1_1directed__graph_3_01vertex__t_00_01void_00_01model_01_4.html#acf90d3aaba7ac3f0896d4b0a54f10bf7',1,'alglib::graph::directed_graph&lt; vertex_t, void, model &gt;::add_edge()'],['../classDynamicDirectedGraph.html#a56fb9b7bca9a5c98450d46452e17cd3e',1,'DynamicDirectedGraph::add_edge()'],['../classalglib_1_1graph_1_1models_1_1adj__list.html#a34c934a61f38c31d630da4a4e7ff51c4',1,'alglib::graph::models::adj_list::add_edge(const vertex_t &amp;u, const vertex_t &amp;v, const edge_t &amp;a)'],['../classalglib_1_1graph_1_1models_1_1adj__list.html#a2355c24964c60c3fb9b8c58cccb23063',1,'alglib::graph::models::adj_list::add_edge(const edge_t &amp;e)'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#ad969460cf2af28d667f71c9dbfabb5fd',1,'alglib::graph::models::graph_model::add_edge(const vertex_t &amp;u, const vertex_t &amp;v, const edge_t &amp;a)=0'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#adfdc4eb2c5ee77c8ab4bbba98508f493',1,'alglib::graph::models::graph_model::add_edge(const edge_t &amp;a)=0'],['../classalglib_1_1graph_1_1undirected__graph.html#a2b7cc6056298fdfc9799fc5ac5eac05e',1,'alglib::graph::undirected_graph::add_edge()'],['../classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#aed62cdc6e2045afc0d5ab6f59048cd3c',1,'alglib::graph::undirected_graph&lt; vertex_t, void, model &gt;::add_edge()']]],
-  ['add_5fvertex',['add_vertex',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a210ebfb2d9199d1a647564c95e1b012b',1,'alglib::graph::models::adj_list::add_vertex()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#af9fa468e1aa301ed1b7e64af2f9eeaa5',1,'alglib::graph::models::graph_model::add_vertex()']]],
+  ['add_5fvertex',['add_vertex',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a210ebfb2d9199d1a647564c95e1b012b',1,'alglib::graph::models::adj_list::add_vertex()'],['../classalglib_1_1graph_1_1models_1_1adj__matrix.html#af718169cf8a68841a68e115b82969bf6',1,'alglib::graph::models::adj_matrix::add_vertex()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#af9fa468e1aa301ed1b7e64af2f9eeaa5',1,'alglib::graph::models::graph_model::add_vertex()']]],
   ['adj_5flist',['adj_list',['../classalglib_1_1graph_1_1models_1_1adj__list.html',1,'alglib::graph::models']]],
   ['adj_5flist_2eh',['adj_list.h',['../adj__list_8h.html',1,'']]],
   ['adj_5flist_3c_20vertex_5ft_2c_20alglib_3a_3agraph_3a_3aedge_5ft_20_3e',['adj_list&lt; vertex_t, alglib::graph::edge_t &gt;',['../classalglib_1_1graph_1_1models_1_1adj__list.html',1,'alglib::graph::models']]],
   ['adj_5flist_3c_20vertex_5ft_2c_20edge_5ft_20_3e',['adj_list&lt; vertex_t, edge_t &gt;',['../classalglib_1_1graph_1_1models_1_1adj__list_1_1const__eiterator.html#a594e093a091a6a3cff2de8b3265bcad1',1,'alglib::graph::models::adj_list::const_eiterator']]],
+  ['adj_5fmatrix',['adj_matrix',['../classalglib_1_1graph_1_1models_1_1adj__matrix.html#ae281fb47fb694eb53eb7e0203b13feab',1,'alglib::graph::models::adj_matrix']]],
   ['adj_5fmatrix',['adj_matrix',['../classalglib_1_1graph_1_1models_1_1adj__matrix.html',1,'alglib::graph::models']]],
   ['adj_5fmatrix_2eh',['adj_matrix.h',['../adj__matrix_8h.html',1,'']]],
   ['adjto',['adjTo',['../classDynamicDirectedGraph.html#a1eba2bbb95a5a4d0827f5b20c5ee2b14',1,'DynamicDirectedGraph']]],
@@ -22,8 +23,10 @@ var searchData=
   ['disjoint_5fsets',['disjoint_sets',['../namespacealglib_1_1disjoint__sets.html',1,'alglib']]],
   ['graph',['graph',['../namespacealglib_1_1graph.html',1,'alglib']]],
   ['heap',['heap',['../namespacealglib_1_1heap.html',1,'alglib']]],
+  ['algorithms',['Algorithms',['../md_alglib_TODO.html',1,'']]],
   ['models',['models',['../namespacealglib_1_1graph_1_1models.html',1,'alglib::graph']]],
   ['mutithreaded',['mutithreaded',['../namespacealglib_1_1mutithreaded.html',1,'alglib']]],
   ['order_5fstat',['order_stat',['../namespacealglib_1_1order__stat.html',1,'alglib']]],
+  ['sort',['sort',['../namespacealglib_1_1sort.html',1,'alglib']]],
   ['string',['string',['../namespacealglib_1_1string.html',1,'alglib']]]
 ];

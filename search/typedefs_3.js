@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initer',['InIter',['../classBST.html#a0c48e7e634e5bf550a47eda82df112da',1,'BST']]]
+  ['graph_5ftype',['graph_type',['../classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764',1,'alglib::graph::vertex_property']]]
 ];

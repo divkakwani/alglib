@@ -15,5 +15,5 @@ var searchData=
   ['order_5fstatistic_2eh',['order_statistic.h',['../order__statistic_8h.html',1,'']]],
   ['other',['other',['../structedge__t.html#abe502b6dc8050eccc2a10d2b9eca4320',1,'edge_t::other()'],['../structedge__t.html#a2e6f23e8eef9e71a534f53f9c009cf74',1,'edge_t::other(long long vertex)']]],
   ['out_5fdegree',['out_degree',['../classDynamicDirectedGraph.html#a53ae877364501509c462998d5cd245f7',1,'DynamicDirectedGraph']]],
-  ['outdeg',['outdeg',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a78fd3a8fc8ef997fb898792c2c1ae32f',1,'alglib::graph::models::adj_list::outdeg()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#a2ce9b06361fb53848b66fceb8bbc6068',1,'alglib::graph::models::graph_model::outdeg()']]]
+  ['outdeg',['outdeg',['../classalglib_1_1graph_1_1models_1_1adj__list.html#a78fd3a8fc8ef997fb898792c2c1ae32f',1,'alglib::graph::models::adj_list::outdeg()'],['../classalglib_1_1graph_1_1models_1_1adj__matrix.html#af8694d52ec04c05a862f0dd126a20454',1,'alglib::graph::models::adj_matrix::outdeg()'],['../classalglib_1_1graph_1_1models_1_1graph__model.html#a2ce9b06361fb53848b66fceb8bbc6068',1,'alglib::graph::models::graph_model::outdeg()']]]
 ];

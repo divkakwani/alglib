@@ -3,7 +3,7 @@ var searchData=
   ['same_5fset',['same_set',['../classalglib_1_1disjoint__sets_1_1disjoint__sets.html#ab1342e6817c109bb21ad39fc93c8497a',1,'alglib::disjoint_sets::disjoint_sets']]],
   ['segmenttree',['SegmentTree',['../classSegmentTree.html#a137be01200832aa99118c89fcf7863c9',1,'SegmentTree']]],
   ['select_5fi',['select_i',['../namespacealglib_1_1order__stat.html#ae58877fc007fadf1a6a8913c653003b5',1,'alglib::order_stat']]],
-  ['selection_5fsort',['selection_sort',['../sort_8h.html#a0f2455c2e31d303d92f60cf9431d87a0',1,'selection_sort(ForwardIter first, ForwardIter last, const BinaryPred &amp;LT):&#160;sort.h'],['../sort_8h.html#a98f6ae7510d3a0f459c8481a639c7ce5',1,'selection_sort(ForwardIter first, ForwardIter last):&#160;sort.h']]],
+  ['selection_5fsort',['selection_sort',['../namespacealglib_1_1sort.html#ad4d9e5bace0ffbfc4d54a7cf1eab8404',1,'alglib::sort::selection_sort(ForwardIter first, ForwardIter last, const BinaryPred &amp;LT)'],['../namespacealglib_1_1sort.html#a0fa6cc48268a93a8d64bf31697c40245',1,'alglib::sort::selection_sort(ForwardIter first, ForwardIter last)']]],
   ['set_5fcount',['set_count',['../classalglib_1_1disjoint__sets_1_1disjoint__sets.html#a80543e5ccbad432870e0febdd85135df',1,'alglib::disjoint_sets::disjoint_sets']]],
   ['set_5fith_5fsubtree',['set_ith_subtree',['../structNode.html#aaca1c607a9f740b288dd237cfea8f103',1,'Node']]],
   ['set_5fparent',['set_parent',['../structNode.html#a446be9ae67b7a6bdf944523e5efe3126',1,'Node']]],

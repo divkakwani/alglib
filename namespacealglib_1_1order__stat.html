@@ -143,7 +143,7 @@ template&lt;typename RandomAccessIter &gt; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span>(_last &lt;= _first)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">return</span> _last;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    RandomAccessIter pivot = <a class="code" href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a>(_first, _last);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    RandomAccessIter pivot = <a class="code" href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">randomized_partition</a>(_first, _last);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> k = pivot - _first + 1;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span>(k == i)</div>
@@ -155,7 +155,7 @@ template&lt;typename RandomAccessIter &gt; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacealglib_1_1order__stat.html#ae58877fc007fadf1a6a8913c653003b5">select_i</a>(pivot + 1, _last, i - k);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="ttc" id="sort_8h_html_ab793044c7cf327241fe7290422e0d907"><div class="ttname"><a href="sort_8h.html#ab793044c7cf327241fe7290422e0d907">randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:80</div></div>
+<div class="ttc" id="namespacealglib_1_1sort_html_aca3b89e30bc540252aa859112453e8f2"><div class="ttname"><a href="namespacealglib_1_1sort.html#aca3b89e30bc540252aa859112453e8f2">alglib::sort::randomized_partition</a></div><div class="ttdeci">RandomAccessIter randomized_partition(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)</div><div class="ttdef"><b>Definition:</b> sort.h:82</div></div>
 <div class="ttc" id="namespacealglib_1_1order__stat_html_ae58877fc007fadf1a6a8913c653003b5"><div class="ttname"><a href="namespacealglib_1_1order__stat.html#ae58877fc007fadf1a6a8913c653003b5">alglib::order_stat::select_i</a></div><div class="ttdeci">RandomAccessIter select_i(RandomAccessIter _first, RandomAccessIter _last, int i)</div><div class="ttdef"><b>Definition:</b> order_statistic.h:12</div></div>
 </div><!-- fragment -->
 </div>
@@ -169,7 +169,7 @@ template&lt;typename RandomAccessIter &gt; </div>
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 23:11:18 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -123,6 +123,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aed62cdc6e2045afc0d5ab6f59048cd3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#aed62cdc6e2045afc0d5ab6f59048cd3c">add_edge</a> (const vertex_t &amp;u, const vertex_t &amp;v)</td></tr>
 <tr class="separator:aed62cdc6e2045afc0d5ab6f59048cd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f754cb45f9250e74aefbf6e56fe8fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ab0f754cb45f9250e74aefbf6e56fe8fa">num_edges</a> () const  override</td></tr>
+<tr class="separator:ab0f754cb45f9250e74aefbf6e56fe8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="ac2f5cf8c05c3e5ee083d3de03722b6c3"></a>
@@ -173,11 +175,39 @@ template&lt;typename vertex_t , template&lt; typename, typename &gt; class model
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        super::add_edge(u, v, <a class="code" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">edge_type</a>(u, v));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        super::add_edge(v, u, <a class="code" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">edge_type</a>(v, u));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="ttc" id="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4_html_ac2f5cf8c05c3e5ee083d3de03722b6c3"><div class="ttname"><a href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">alglib::graph::undirected_graph&lt; vertex_t, void, model &gt;::edge_type</a></div><div class="ttdeci">edge_t&lt; vertex_t, void &gt; edge_type</div><div class="ttdef"><b>Definition:</b> undirected_graph.h:38</div></div>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        super::add_edge(u, v, <a class="code" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">edge_type</a>(u, v));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        super::add_edge(v, u, <a class="code" href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">edge_type</a>(v, u));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="ttc" id="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4_html_ac2f5cf8c05c3e5ee083d3de03722b6c3"><div class="ttname"><a href="classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3">alglib::graph::undirected_graph&lt; vertex_t, void, model &gt;::edge_type</a></div><div class="ttdeci">edge_t&lt; vertex_t, void &gt; edge_type</div><div class="ttdef"><b>Definition:</b> undirected_graph.h:41</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab0f754cb45f9250e74aefbf6e56fe8fa"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename vertex_t , template&lt; typename, typename &gt; class model&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classalglib_1_1graph_1_1undirected__graph.html">alglib::graph::undirected_graph</a>&lt; vertex_t, void, model &gt;::num_edges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                   {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> super::num_edges() / 2;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -193,7 +223,7 @@ template&lt;typename vertex_t , template&lt; typename, typename &gt; class model
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 9 2015 19:08:42 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 23:11:18 for alglib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

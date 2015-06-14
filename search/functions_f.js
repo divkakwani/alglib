@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quick_5fsort',['quick_sort',['../sort_8h.html#a8a49b01749371888dae269e5cc4e2ef1',1,'quick_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT):&#160;sort.h'],['../sort_8h.html#a3e707dd10678b91c98b0f1ec67d8ff27',1,'quick_sort(RandomAccessIter first, RandomAccessIter last):&#160;sort.h']]]
+  ['quick_5fsort',['quick_sort',['../namespacealglib_1_1sort.html#a80ba59ad060ed3b1ab2f2cf27f4dd39a',1,'alglib::sort::quick_sort(RandomAccessIter first, RandomAccessIter last, const BinaryPred &amp;LT)'],['../namespacealglib_1_1sort.html#a857970e32c674d4b41ce33642a6aec53',1,'alglib::sort::quick_sort(RandomAccessIter first, RandomAccessIter last)']]]
 ];

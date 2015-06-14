@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['graph_5ftype',['graph_type',['../classalglib_1_1graph_1_1vertex__property.html#af207c510188a3a6086e06e490fe0e764',1,'alglib::graph::vertex_property']]]
+  ['edge_5ftype',['edge_type',['../classalglib_1_1graph_1_1directed__graph.html#a6648ffc30d3c20ab869745193e32c1cb',1,'alglib::graph::directed_graph::edge_type()'],['../classalglib_1_1graph_1_1directed__graph_3_01vertex__t_00_01void_00_01model_01_4.html#a2b9546fba9b7d8d8bab67445f7fc8f16',1,'alglib::graph::directed_graph&lt; vertex_t, void, model &gt;::edge_type()'],['../classalglib_1_1graph_1_1models_1_1adj__list.html#a736d70ecd6418443051f1a49b628bcc0',1,'alglib::graph::models::adj_list::edge_type()'],['../classalglib_1_1graph_1_1models_1_1adj__matrix.html#afffd3ba7f6bace65ea6d6564bfa01e4a',1,'alglib::graph::models::adj_matrix::edge_type()'],['../classalglib_1_1graph_1_1undirected__graph.html#a5abb773189fe376b66653320520cc12c',1,'alglib::graph::undirected_graph::edge_type()'],['../classalglib_1_1graph_1_1undirected__graph_3_01vertex__t_00_01void_00_01model_01_4.html#ac2f5cf8c05c3e5ee083d3de03722b6c3',1,'alglib::graph::undirected_graph&lt; vertex_t, void, model &gt;::edge_type()']]],
+  ['elt_5ftype',['elt_type',['../classalglib_1_1heap_1_1binary__heap.html#afb6e10d3ad42d3733aa7d334c2ffed4c',1,'alglib::heap::binary_heap']]]
 ];
