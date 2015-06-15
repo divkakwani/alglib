@@ -3,6 +3,9 @@ compiler: g++
 
 before_script:
     - sudo apt-get install libboost-test-dev
+    - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    - sudo apt-get update
+    - sudo apt-get install g++-5
     - cd test
 
 script: make test

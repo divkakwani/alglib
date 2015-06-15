@@ -1,6 +1,6 @@
 
 CC = g++
-FLAGS = -std=c++0x
+FLAGS = -std=c++14
 INCLUDE = -I ../
 
 all : test_sort.o
