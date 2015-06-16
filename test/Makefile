@@ -1,5 +1,5 @@
 
-CC = g++
+CC = g++-5
 FLAGS = -std=c++14
 INCLUDE = -I ../
 
