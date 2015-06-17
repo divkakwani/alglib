@@ -1,11 +1,25 @@
 ## Algorithms
 
 * #### Number theoretic algorithms
+ * Sieves - Eratosthenes
+ * Tau
+ * Sigma
+ * Phi
+ * Factorization
+ * Range and Point Queries of the above
+
 * #### Graph algorithms
+
 * #### Order statistic algorithms
+
 * #### Linear programming
+
 * #### Computational geometry
+ * Convex Hull
+
 * #### Parsing Algorithms
+ * Tokenizer
+ * Recursive Descent Parser
 
 
 
