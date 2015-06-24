@@ -16,60 +16,69 @@ namespace alglib {
 namespace math {
 namespace primes {
 
+template<typename T>
+struct increment {
+    T operator() (T n) { return ++n; }
+};
 
-template<typename num_type, num_type max_num>
+template<
+          long long MaxNum,
+          long long Start = 2,
+          long long End = sqrt(MaxNum),
+          typename UnaryFunc = increment<long long>
+        >
 class eratosthenes_sieve {
-
- public:
-    typedef num_type number_type;
-    typedef typename std::vector<number_type>::const_iterator citer;
 
  private:
      int sieve[max_num + 1];
-     std::vector<number_type> primes;
-     number_type sz;  // size of the sieve
-     const number_type max_number;
+     const long long max_num;
+     const long long start;
+     const long long end;
 
  public:
 
 
-    eratosthenes_sieve() : max_number(max_num) {
+    eratosthenes_sieve() : max_num(MaxNum), start(Start), end(End) {
 
-        sz = max_number + 1;  // 1 more than the numbers - because numbers will be directly indexed.
-        fill(sieve, sieve + sz, 0);
+        fill(sieve, sieve + max_number + 1, 0);
 
-        number_type sqrt_n = sqrt(max_number);
-
-        /* Need to cross out the multiples of only those numbers that are
-         * less than or equal to n, for if a number is composite number, it
-         * must have some factor less than sqrt(n).
-         */
-        for(number_type no = 2; no <= sqrt_n; no++) {
-            for(number_type multiple = 2 * no; multiple <= max_number; multiple += no)
-                sieve[multiple]++;
-        }
-
-        for(number_type no = 2; no < sz; no++) {
-            if(!sieve[no])
-                primes.push_back(no);
-        }
-
+        for(long long no = start; no <= end; no++) 
+            for(long long multiple = 2 * no; multiple <= max_number; multiple += no)
+                sieve[multiple] = update(sieve[multiple]);
     }
 
-    citer primes_begin() {
-        return primes.begin();
+    int get_ith_val(long long i) {
+        return sieve[i];
     }
-
-    citer primes_end() {
-        return primes.end();
-    }
-
-    number_type get_ith_prime(number_type i) {
-        return primes[i];
-    }
-
 };
 
+
+template<typename OutputIter>
+OutputIter get_first_n_primes(long long i, OutputIter dest) {
+
+
+}
+
+template<typename OutputIter>
+OutputIter get_primes_till(long long till, OutputIter dest) {
+
+    eratosthenes_sieve<till> sieve;
+
+    for(int i = 2; i <= till; i++)
+        if(get_ith_val(i) == 0)
+            *dest++ = i;
+
+    return dest;
+}
+
+/*
+template<
+         long long till,
+         long long method = eratosthenes_sieve
+        >
+class primes;
+
+*/
 
 
 }  // end of primes namespace
