@@ -1,87 +1,71 @@
 
-# Design of the Graph Library
+## Graph Classes in alglib
 
-
-
-
-### Established tenets
-
-* An `undirected_graph` _is_ a `directed_graph`.
-* Provide several types of iterators to iterate over the graph.
-* Provide nested types for outsiders to work with it.
-* _Ownership_ : The graph creates a copy of the vertices and edges object edges that are passed to it. It becomes the sole owner of those copies. Cleaning up is, thus, the responsibility of the graph class.
-* Handling big objects:
-
-### Design Patterns Used
-* _Iterator Pattern_ <br>
-__Intent__: To traverse vertices/edges of a graph. There are four types of iterators: vertex iterator, edge iterator plus their constant versions. The iterators either traverse the entire graph or only vertices/edges adjacent to a vertex. These iterator types and their interfaces remain the same across all the graphs and thus can be used to write generic algorithms.
-
-* _Decorator Pattern_ <br>
-__Intent__:
-
-## Graph API
-
-#### Undirected Graph
+A graph class is instantiated with a vertex type and an attribute type as follows:
 
 ```
-// vertex opertions
-add_vertex (const vertex& v);
-delete_vertex (const vertex& v);
+graph_type_template<vertex_type, edge_attribute_type>
+```
+When no edge attribute is required, as in the case of an unweighted graph, it can be set to void. 
 
-// edge operations
-add_edge (const vertex_t& u, const vertex_t& v);
-add_edge (const edge_t<vertex_t, attr_t>& edge);
-delete_edge (const vertex_t u, const vertex_t v);
-delete_edge (const edge_t<vertex_t, attr_t>& edge);
-get_attr (const vertex_t& u, const vertex_t& v);
 
-// Iterators
-// vertex, edge and adjacency iterators.
+The edges in the graph class are restriced to the form:
+    E = (from, to, attr),  from and to are vertices and attr is the attribute.
+Any customization of the edge can be performed by customizing the attribute field, which is why it is a template parameter:
+```
+template<typename vertex_t, typename attr_t>
+struct edge_t;
 ```
 
+The above scheme does not permit user-defined edge types; the edge types must be the ones instantiated through the above template class. The reason for using this
+scheme is that it enforces the two fields: from and to in every edge class. Since the two fields are necessary anyway, this scheme makes the library design easy by 
+avoiding extra code to enforce these two fields, should user-defined types be allowed.
+
+The user also has an option to change the internal representation of the graph by specifying so in an optional template parameter, model. Two models are provided by
+alglb, adj_list and adj_matrix. However, the graph classes can use other user-defined models as well, as long as they adhere to the interface established by the graph_model
+class.
+
+To sum up, the above design of the graph classes allows the users to:
+* Use _any_ type as the vertex_type.
+* Attach any type of attribute with each of the edges.
+* Change between internal representations of the graph.
 
 
-## Graph Classes Hierarchy
+#### Inspection
 
+The graph classes provide iterators for the inspection of vertices and edges. There are four type of iterators:
+* vertex iterator
+* edge iterator
+* adjacency vertex iterator
+* adjacency edge iterator
+All of them are constant, and for a good reason too. If they were allowed to be non-const, any change in a vertex or edge, unbeknowst to the graph class, can create 
+inconsistencies in the whole data structure.
 
-## Vertices and Edges
-### Vertex
-It is a user-defined class with only requirement that it be `LessThanComparable`.
+#### Resource Ownership
 
-### Edge
-It is also a user-defined class and thus can have any composition. However, there are few requirements that the graph classes and the algorithms on it place on the `edge` class.
-For instance, dijkstra's algorithm requires:
-```
-concept edge {
-	vertex& from();
-	vertex& to();
-	LessThanComparable& weight();
-};
-```
-
-An edge class can have a richer interface, only that it must support the above interface.
-
-
-## Design Choices
-
-### Directed vs Undirected Graphs
-
-
-
-
-### Weighted vs Unweighted Graphs
-
-* `weight`, among other things, is a property of an edge. The graph classes need not care about it. Only the algorithms on weighted graph require `weight` as a property of an edge.
-
-__How do we make algorithms that operate both on weighted and unweighted graph?__
-<br>
-An algorithm on a weighted graph always requires wieghts associated with edges. When considering an unweighted graph, it is an implicit assumption that all the weights are 1 unit.
-Hence, we require an automatic conversion of an unweighted graph to a weighted graph with every edge weighted by 1 unit. The `unwted_to_wted` function does this.
+All the graph classes create their own copy of vertices and edges. They are the owner of these copies. Further, these copies are only modifiable by the graph classes
+themselves. Hence, any iterator to vertices or edges are always constant.
+Consquentially, the graph classes can have a big memory footprint. On the flip-side, if the graph classes do not create their own copies, it can in no way ensure the vertices
+remain constant. For better efficiency, move-semantics and eliding copying for const- vertices would soon be added.
 
 
 
-### Adjaceny List vs Adjacency Matrix
-The graph classes, for now, support only the adjaceny list implementation. In case it is required, one can simply inherit from the `graph` interface and create his own implemenation.<br>
-An alternative strategy is to synthesize adjacency matrix of given graph object at the time of its usage.
+### Algorithms on the Graph Classes
 
-## Creating Other Graph Types
+
+The graph classes themselves do not offer much for the algorithms, except the iterators. All the algorithms visit the graph via these iterators and all this while the graph classes
+themselves remain inert.
+There is also one more useful concept that alglib provides - graph_property, through two classes - vertex_property and edge_property. They are so central to the design of alglib that
+a number of algorithms make use of property objects to store the results of their computation. For instance, the connected_component function returns a property object that assigns
+each vertex a component id.
+
+With this framework, let us see how some of the popular graph algorithms can be implemented:
+
+* DFS and BFS
+* Shortest path algorithms
+* MST algorithms
+* Eccentricity
+
+
+
+
