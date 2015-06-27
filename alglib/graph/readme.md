@@ -41,7 +41,7 @@ The graph classes provide iterators for the inspection of vertices and edges. Th
 * adjacency vertex iterator
 * adjacency edge iterator
 
-All of them are constant, and for a good reason too. If they were allowed to be non-const, any change in a vertex or edge, unbeknowst to the graph class, can create 
+All of them are constant, and for a good reason too. If they were allowed to be non-const, any change in a vertex or edge unbeknownst to the graph class can create 
 inconsistencies in the whole data structure.
 
 #### Resource Ownership
@@ -50,7 +50,10 @@ All the graph classes create their own copy of vertices and edges. They are the 
 themselves. Hence, any iterator to vertices or edges are always constant.
 
 As a consquence of having private copies, the graph classes can have a big memory footprint. On the flip-side, if the graph classes do not create their own copies, it can
-in no way ensure the vertices remain constant. For better efficiency, the addition of move-semantics and eliding copying for const- vertices is in the pipeline.
+in no way ensure the vertices remain constant.
+
+For better efficiency, the addition of move-semantics and eliding copying for const- vertices is under consideration.
+
 
 
 ### Algorithms on the Graph Classes
@@ -63,7 +66,7 @@ There is also one more useful concept that alglib provides - graph_property, thr
 a number of algorithms make use of property objects to store the results of their computation. For instance, the connected_component function returns a property object that assigns
 each vertex a component id.
 
-With this framework, let us see how some of the popular graph algorithms are implemented by alglib:
+With this framework, let us see how some of the common graph algorithms are implemented by alglib:
 
 * DFS and BFS
 
