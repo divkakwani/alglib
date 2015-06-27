@@ -106,8 +106,8 @@ keyed_binary_heap<elt_t, key_t>::keyed_binary_heap() {
 template<typename elt_t, typename key_t>
 template<typename InputIter>
 keyed_binary_heap<elt_t, key_t>::keyed_binary_heap(InputIter elt_first,
-                                       InputIter elt_last,
-                                       InputIter key_first) {
+                                                   InputIter elt_last,
+                                                   InputIter key_first) {
     __sz = 0;
     while (elt_first != elt_last) {
         auto loc = make_entry(*elt_first);
@@ -122,9 +122,14 @@ keyed_binary_heap<elt_t, key_t>::keyed_binary_heap(InputIter elt_first,
 
 template<typename elt_t, typename key_t>
 void keyed_binary_heap<elt_t, key_t>::insert(const elt_t& elt,
-                                       const key_t& key) {
+                                             const key_t& key) {
     auto loc = make_entry(elt);
-    heaparr.push_back(node_t {key, loc});
+
+    if(heaparr.size() > __sz)
+        heaparr[__sz] = (node_t {key, loc});
+    else
+        heaparr.push_back(node_t {key, loc});
+
     __sift_up(__sz);
     ++__sz;
 }
@@ -143,6 +148,10 @@ const key_t& keyed_binary_heap<elt_t, key_t>::get_min_key() const {
 
 template<typename elt_t, typename key_t>
 void keyed_binary_heap<elt_t, key_t>::delete_min() {
+
+    if(empty())
+        throw std::underflow_error("No elements in heap");
+
     nodeof.erase(heaparr[0].elt_it);
     std::swap(heaparr[0], heaparr[__sz - 1]);
     --__sz;
@@ -151,7 +160,7 @@ void keyed_binary_heap<elt_t, key_t>::delete_min() {
 
 template<typename elt_t, typename key_t>
 void keyed_binary_heap<elt_t, key_t>::replace(const elt_t& elt,
-                                        const key_t& key) {
+                                              const key_t& key) {
     if (__sz == 0)
         throw std::underflow_error("Empty heap");
     auto loc = make_entry(elt);
@@ -162,13 +171,17 @@ void keyed_binary_heap<elt_t, key_t>::replace(const elt_t& elt,
 
 template<typename elt_t, typename key_t>
 void keyed_binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
-                                           const key_t& key) {
-    if (nodeof.find(elt) == nodeof.end())
-        throw std::domain_error("The element doesn't exist");
-    int index_in_heap = nodeof[elt];
-    heaparr[index_in_heap] = node_t {key, heaparr[index_in_heap].elt_it};
-    __sift_up(index_in_heap);
-    __sift_down(index_in_heap);
+                                                 const key_t& key) {
+    // insert the key if it doesn't already exists - avoid throwing error
+    if (nodeof.find(elt) == nodeof.end()) {
+        insert(elt, key);
+    }
+    else {
+        int index_in_heap = nodeof[elt];
+        heaparr[index_in_heap] = node_t {key, heaparr[index_in_heap].elt_it};
+        __sift_up(index_in_heap);
+        __sift_down(index_in_heap);
+    }
 }
 
 template<typename elt_t, typename key_t>
@@ -189,20 +202,24 @@ void keyed_binary_heap<elt_t, key_t>::__sift_up(int node) {
 
 template<typename elt_t, typename key_t>
 void keyed_binary_heap<elt_t, key_t>::__sift_down(int node) {
-    int min_node = node;
-    int left_child = __left_child(node);
-    int right_child = __right_child(node);
+    
+    if(node < __sz) {
 
-    if (left_child < __sz && heaparr[left_child] < heaparr[min_node])
-        min_node = left_child;
-    if (right_child < __sz && heaparr[right_child] < heaparr[min_node])
-        min_node = right_child;
+        int min_node = node;
+        int left_child = __left_child(node);
+        int right_child = __right_child(node);
 
-    if (min_node != node) {
-        std::swap(heaparr[node], heaparr[min_node]);
-        update_entry(node);
-        update_entry(min_node);
-        __sift_down(min_node);
+        if (left_child < __sz && heaparr[left_child] < heaparr[min_node])
+            min_node = left_child;
+        if (right_child < __sz && heaparr[right_child] < heaparr[min_node])
+            min_node = right_child;
+
+        if (min_node != node) {
+            std::swap(heaparr[node], heaparr[min_node]);
+            update_entry(node);
+            update_entry(min_node);
+            __sift_down(min_node);
+       }
     }
 }
 
