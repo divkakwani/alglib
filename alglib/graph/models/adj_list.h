@@ -95,7 +95,7 @@ class adj_list : public graph_model<vertex_t, edge_t> {
             const_aeiterator;
     
     class const_eiterator;
-    friend class const_iterator;
+    friend class const_eiterator;
 
     const_viterator vbegin() const noexcept {
         return boost::make_transform_iterator(alists.cbegin(), get_vertex);
@@ -297,6 +297,10 @@ class adj_list<vertex_t, edge_t>::const_eiterator {
         if(G.alists.size() != 0) {
             vit = G.alists.cbegin();
             ait = (vit->second).cbegin();
+            while(vit != G.alists.cend() and ait == (vit->second).cend()) {
+                vit++;
+                ait = (vit->second).cbegin();
+            }
         }
     }
 
