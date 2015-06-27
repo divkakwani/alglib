@@ -21,11 +21,13 @@
 namespace alglib {
 namespace heap {
 
+// FIXME FIXME FIXME
+// Duplicates not allowed
 
 // TODO(divkakwani): Convert to rvalue-references
 
 template<typename elt_t, typename key_t>
-class binary_heap : public min_heap<elt_t, key_t> {
+class keyed_binary_heap : public min_heap<elt_t, key_t> {
     BOOST_CONCEPT_ASSERT((boost::LessThanComparable<elt_t>));
     BOOST_CONCEPT_ASSERT((boost::LessThanComparable<key_t>));
 
@@ -35,11 +37,11 @@ class binary_heap : public min_heap<elt_t, key_t> {
     typedef key_t key_type;
 
     /* Default Ctor */
-    binary_heap();
+    keyed_binary_heap();
 
     /* aggregate initialization */
     template<typename InputIter>
-    explicit binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first);
+    explicit keyed_binary_heap(InputIter elt_first, InputIter elt_last, InputIter key_first);
 
 
     void insert(const elt_t& elt, const key_t& key);
@@ -97,13 +99,13 @@ class binary_heap : public min_heap<elt_t, key_t> {
 };
 
 template<typename elt_t, typename key_t>
-binary_heap<elt_t, key_t>::binary_heap() {
+keyed_binary_heap<elt_t, key_t>::keyed_binary_heap() {
     __sz = 0;
 }
 
 template<typename elt_t, typename key_t>
 template<typename InputIter>
-binary_heap<elt_t, key_t>::binary_heap(InputIter elt_first,
+keyed_binary_heap<elt_t, key_t>::keyed_binary_heap(InputIter elt_first,
                                        InputIter elt_last,
                                        InputIter key_first) {
     __sz = 0;
@@ -119,7 +121,7 @@ binary_heap<elt_t, key_t>::binary_heap(InputIter elt_first,
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::insert(const elt_t& elt,
+void keyed_binary_heap<elt_t, key_t>::insert(const elt_t& elt,
                                        const key_t& key) {
     auto loc = make_entry(elt);
     heaparr.push_back(node_t {key, loc});
@@ -129,18 +131,18 @@ void binary_heap<elt_t, key_t>::insert(const elt_t& elt,
 
 
 template<typename elt_t, typename key_t>
-const elt_t& binary_heap<elt_t, key_t>::get_min_elt() const {
+const elt_t& keyed_binary_heap<elt_t, key_t>::get_min_elt() const {
     return (heaparr[0].elt_it)->first;
 }
 
 
 template<typename elt_t, typename key_t>
-const key_t& binary_heap<elt_t, key_t>::get_min_key() const {
+const key_t& keyed_binary_heap<elt_t, key_t>::get_min_key() const {
     return heaparr[0].key;
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::delete_min() {
+void keyed_binary_heap<elt_t, key_t>::delete_min() {
     nodeof.erase(heaparr[0].elt_it);
     std::swap(heaparr[0], heaparr[__sz - 1]);
     --__sz;
@@ -148,7 +150,7 @@ void binary_heap<elt_t, key_t>::delete_min() {
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::replace(const elt_t& elt,
+void keyed_binary_heap<elt_t, key_t>::replace(const elt_t& elt,
                                         const key_t& key) {
     if (__sz == 0)
         throw std::underflow_error("Empty heap");
@@ -159,7 +161,7 @@ void binary_heap<elt_t, key_t>::replace(const elt_t& elt,
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
+void keyed_binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
                                            const key_t& key) {
     if (nodeof.find(elt) == nodeof.end())
         throw std::domain_error("The element doesn't exist");
@@ -170,7 +172,7 @@ void binary_heap<elt_t, key_t>::update_key(const elt_t& elt,
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::__sift_up(int node) {
+void keyed_binary_heap<elt_t, key_t>::__sift_up(int node) {
     /*
      * Store the node in a temp and move all the other nodes encountered
      * while going upwards down and finally put the temp in the upmost place.
@@ -186,7 +188,7 @@ void binary_heap<elt_t, key_t>::__sift_up(int node) {
 }
 
 template<typename elt_t, typename key_t>
-void binary_heap<elt_t, key_t>::__sift_down(int node) {
+void keyed_binary_heap<elt_t, key_t>::__sift_down(int node) {
     int min_node = node;
     int left_child = __left_child(node);
     int right_child = __right_child(node);
@@ -210,7 +212,7 @@ void binary_heap<elt_t, key_t>::__sift_down(int node) {
 template<typename elt_t>
 class unkeyed_binary_heap {
  private:
-    binary_heap<elt_t, elt_t> heap;
+    keyed_binary_heap<elt_t, elt_t> heap;
 
  public:
     void insert(const elt_t& elt) { heap.insert(elt, elt); }

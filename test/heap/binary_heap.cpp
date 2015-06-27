@@ -8,8 +8,9 @@
  */
 
 #include <iostream>
-#include <alglib/containers/heap/binary_heap.h>
+#include <alglib/heap/binary_heap.h>
 
+using namespace alglib::heap;
 using std::cout;
 using std::endl;
 
@@ -26,7 +27,7 @@ int main() {
     cout << endl;
 
     /* keyed binary_heap_test */
-    binary_heap<int, int> kh;
+    keyed_binary_heap<int, int> kh;
     kh.insert(4, 20);
     kh.insert(5, 10);
     kh.insert(10, 30);
