@@ -15,8 +15,19 @@
 #include <boost/optional.hpp>
 
 namespace alglib {
+
+using none_t = boost::none_t;
+const none_t none = boost::none;
+
 namespace graph {
 
+/**
+ * \brief A wrapper class of std::map mapping every vertex to a property value.
+ * 
+ * In addition to wrapping std::map, the class also gurantees that all the vertices
+ * of the given graph and no other vertexes exist in the map.
+ * If a vertex is assigned no property, then it is given the `none` property. 
+ */
 template<typename graph_t, typename property_t>
 class vertex_property
 {
