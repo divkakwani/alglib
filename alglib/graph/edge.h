@@ -16,42 +16,46 @@ namespace graph {
 
 
 template<typename vertex_t, typename attr_t = void>
-struct edge_t {
-              
+struct edge_t 
+{
+    // typedefs
+    using vertex_type = vertex_t;
+    using attr_type   = attr_t;
+
     vertex_t from;
     vertex_t to;
     attr_t attribute;
 
-    edge_t() = default;
+    edge_t () = default;
 
-    edge_t(const vertex_t& u, const vertex_t& v, const attr_t& attr) {
+    edge_t (const vertex_t& u, const vertex_t& v, const attr_t& attr) {
         from = u;
         to = v;
         attribute = attr;
     }
     
-    bool operator==(const edge_t<vertex_t, edge_t>& other) const
+    bool operator== (const edge_t<vertex_t, edge_t>& other) const
     { return attribute == other.attribute; }
 
-    bool operator!=(const edge_t<vertex_t, edge_t>& other) const 
+    bool operator!= (const edge_t<vertex_t, edge_t>& other) const 
     { return attribute != other.attribute; }
 
-    bool operator>(const edge_t<vertex_t, edge_t>& other) const 
+    bool operator> (const edge_t<vertex_t, edge_t>& other) const 
     { return attribute > other.attribute; }
 
-    bool operator<(const edge_t<vertex_t, edge_t>& other) const 
+    bool operator< (const edge_t<vertex_t, edge_t>& other) const 
     { return attribute < other.attribute; }
 
-    bool operator>=(const edge_t<vertex_t, edge_t>& other) const 
+    bool operator>= (const edge_t<vertex_t, edge_t>& other) const 
     { return attribute >= other.attribute; }
 
-    bool operator<=(const edge_t<vertex_t, edge_t>& other) const 
+    bool operator<= (const edge_t<vertex_t, edge_t>& other) const 
     { return attribute <= other.attribute; }
 };
 
 template<typename vertex_t, typename attr_t>
-std::ostream& operator<<(std::ostream& out, const edge_t<vertex_t, attr_t>& e) {
-
+std::ostream& operator<< (std::ostream& out, const edge_t<vertex_t, attr_t>& e)
+{
     out << "(from: " << e.from << ", to: " << e.to
         << ", attr: " << e.attribute << ")";
     return out;
@@ -59,18 +63,17 @@ std::ostream& operator<<(std::ostream& out, const edge_t<vertex_t, attr_t>& e) {
 
 
 template<typename vertex_t, typename attr_t>
-edge_t<vertex_t, attr_t> make_edge(vertex_t from, vertex_t to,
-                                   attr_t attribute) {
+edge_t<vertex_t, attr_t> make_edge (vertex_t from, vertex_t to, attr_t attribute)
+{
     return edge_t<vertex_t, attr_t>(from, to, attribute);
 }
 
-// Specialization for types when the attribute is void
+// Parital specialization for edge_t when the attribute is void
 template<typename vertex_t>
-struct edge_t<vertex_t, void> : public edge_t<vertex_t, int> {
-    
-    edge_t() {}
-    edge_t(const vertex_t& u, const vertex_t v) : edge_t<vertex_t, int>(u, v, 1) {}
-
+struct edge_t<vertex_t, void> : public edge_t<vertex_t, int>
+{    
+    edge_t () {}
+    edge_t (const vertex_t& u, const vertex_t v) : edge_t<vertex_t, int>(u, v, 1) {}
 };
 
 
