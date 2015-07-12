@@ -83,18 +83,25 @@ class vertex_property
     vertex_property (vertex_property&& P) : property_map (std::move (P.property_map)) {}
 
     /**
-     * \brief get the reference to the property associated with a vertex
-     * \param v vertex whose property is sought
-     * \return A reference to the property of the vertex
+     * \brief Set a vertex's property
      */
-    property_type& operator[] (const vertex_type& v) 
+    void set (const vertex_type& v, const property_type& p) 
     {
-        return property_map.at (v);
+        property_map.at (v) = p;
     }
 
-    property_type operator() (const vertex_type& v) const
-    { 
-        return property_map.at (v);
+    property_type get (const vertex_type& v) const
+    {
+        if (!property_map.at (v))
+        {
+            throw std::invalid_argument ("Property unset");
+        }
+        return property_map.at (v).get ();
+    }
+
+    bool is_initialized (const vertex_type& v) const 
+    {
+        return bool (property_map.at (v));
     }
 
     /**
